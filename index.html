@@ -5,281 +5,91 @@
 <title>Foruxy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-:root {
-  --background-image: url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif");
-  --avatar-main: url("https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png");
-  --avatar-about: url("https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png"); /* Bisa diganti */
-  --name: "Foruxy";
-  --tagline: "Vtuber Talent Manager • Discord Server Manager";
-  --accent: #38bdf8;
+:root{
+--background-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif?ex=694bc6e5&is=694a7565&hm=28d4ca80a155b0c9f97a525b70ddd1406f4a56d492e7ef4dd8915fa3b08e5708&");
+--avatar-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png?ex=694be2bd&is=694a913d&hm=2d4373533966d44de6acad6f1df329d26f45c25d5c8b7b5676dcb0ee8861a844&");
+--accent:#38bdf8;
 }
-
-/* Reset & global styles */
-*,
-body,
-.container,
-.link,
-.paper-box {
-  box-sizing: border-box;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  cursor: none !important;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  min-height: 100vh;
-  background: linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), var(--background-image);
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #e5e7eb;
-  overflow: hidden;
-}
-
-/* Loading Screen */
-#loadingScreen {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #020617;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: var(--accent);
-  font-size: 2rem;
-  z-index: 99999;
-  transition: opacity .5s;
-}
-#loadingScreen .bar-container {
-  width: 60%; height: 12px;
-  border: 2px solid var(--accent);
-  border-radius: 6px;
-  margin-top: 20px;
-  overflow: hidden;
-}
-#loadingScreen .bar {
-  width: 0%; height: 100%;
-  background: var(--accent);
-  transition: width .1s linear;
-}
-
-/* Cursor */
-.cursor {
-  position: fixed;
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.9);
-  mix-blend-mode: difference;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width .2s, height .2s, background .2s, border .2s;
-}
-.cursor.magnify {
-  width: 48px; height: 48px;
-  background: rgba(255,255,255,.15);
-  border: 2px solid var(--accent);
-  backdrop-filter: blur(6px);
-}
-
-/* Main Container */
-.container {
-  width: 100%; max-width: 500px;
-  padding: 30px;
-  text-align: center;
-  background: rgba(2,6,23,.85);
-  backdrop-filter: blur(16px);
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,.08);
-  box-shadow: 0 30px 70px rgba(0,0,0,.8);
-  position: relative;
-  z-index: 1;
-  transform: translateY(100px);
-  opacity: 0;
-  transition: transform .8s cubic-bezier(.25,1,.5,1), opacity .8s;
-}
-.container.show {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* Avatar */
-.avatar-wrapper {
-  width: 100px; height: 100px;
-  margin: 0 auto 18px;
-  border-radius: 50%;
-  padding: 4px;
-  background: conic-gradient(var(--accent), #0ea5e9, var(--accent));
-}
-.avatar {
-  width: 100%; height: 100%;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  background-size: cover;
-  background-position: center;
-}
-.avatar.main { background-image: var(--avatar-main); }
-.avatar.about { background-image: var(--avatar-about); }
-
-h1 { margin: 0; font-size: 1.7rem; font-weight: 600; }
-p { margin: 8px 0 26px; font-size: .95rem; color: #94a3b8; }
-.bio-description {
-  font-size: .9rem;
-  line-height: 1.4;
-  color: #e5e7eb;
-  margin-top: 12px;
-  text-align: left;
-}
-
-/* Links */
-.link {
-  display: block;
-  padding: 18px;
-  margin-bottom: 16px;
-  border-radius: 18px;
-  background: rgba(15,23,42,.95);
-  color: #e5e7eb;
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,.08);
-  transform: translateY(0) scale(1);
-  transition: transform .3s, box-shadow .3s;
-  position: relative;
-  cursor: pointer;
-}
-.link.hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 40px rgba(56,189,248,.35); }
-.link span { display: inline-block; font-weight: 500; transition: transform .3s; }
-.link.zoom-text span { transform: scale(1.2); }
-
-/* Footer */
-footer { margin-top: 18px; font-size: .75rem; color: #64748b; }
-
-/* Paper boxes / overlays */
-.paper-box {
-  position: fixed; top:0; left:0; width:100%; height:100%;
-  display: flex; justify-content: center; align-items: center;
-  background: rgba(0,0,0,.5);
-  z-index: 2;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .3s;
-}
-.paper-box.active { opacity:1; pointer-events:auto; }
-.paper-box .box-content {
-  background: rgba(2,6,23,.95);
-  color: #e5e7eb;
-  border-radius: 22px;
-  padding: 26px;
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 30px 70px rgba(0,0,0,.8);
-  backdrop-filter: blur(16px);
-  transform: scale(.8);
-  transition: transform .3s;
-}
-.paper-box.active .box-content { transform: scale(1); }
-.paper-box .close-trigger {
-  position: absolute; top:0; left:0; width:100%; height:100%; cursor:pointer;
-}
-#workContent { max-height:600px; overflow-y:auto; padding-right:16px; }
-#workContent::-webkit-scrollbar { width:4px; }
-#workContent::-webkit-scrollbar-thumb { background-color:var(--accent); border-radius:1px; }
-#workContent::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius:1px; }
-
-/* Work Items */
-.mywork-item {
-  display:flex;
-  gap:16px;
-  background: rgba(56,189,248,.1);
-  border:2px solid var(--accent);
-  border-radius:16px;
-  padding:12px;
-  align-items:center;
-  margin-bottom:12px;
-}
-.mywork-image {
-  width:100px; height:100px;
-  object-fit:cover;
-  border-radius:12px;
-  border:2px solid var(--accent);
-  flex-shrink:0;
-}
-.mywork-desc { display:flex; flex-direction:column; gap:6px; color:#e5e7eb; }
-.mywork-name, .mywork-owner, .mywork-date { font-size:.8rem; }
-.mywork-name strong, .mywork-owner strong, .mywork-date strong { color: var(--accent); }
+*,body,.container,.link,.paper-box{box-sizing:border-box;font-family:"Comic Sans MS","Comic Sans",cursive;cursor:none!important;margin:0;padding:0;}
+body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--background-image);background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;color:#e5e7eb;overflow:hidden;}
+#loadingScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:#020617;display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--accent);font-size:2rem;z-index:99999;transition:opacity .5s;}
+#loadingScreen .bar-container{width:60%;height:12px;border:2px solid var(--accent);border-radius:6px;margin-top:20px;overflow:hidden;}
+#loadingScreen .bar{width:0%;height:100%;background:var(--accent);transition:width .1s linear;}
+.cursor{position:fixed;width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.9);mix-blend-mode:difference;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s,border .2s;}
+.cursor.magnify{width:48px;height:48px;background:rgba(255,255,255,.15);border:2px solid var(--accent);backdrop-filter:blur(6px);}
+.container{width:100%;max-width:500px;padding:30px;text-align:center;background:rgba(2,6,23,.85);backdrop-filter:blur(16px);border-radius:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px rgba(0,0,0,.8);position:relative;z-index:1;transform:translateY(100px);opacity:0;transition:transform .8s cubic-bezier(.25,1,.5,1),opacity .8s;}
+.container.show{transform:translateY(0);opacity:1;}
+.avatar-wrapper{width:100px;height:100px;margin:0 auto 18px;border-radius:50%;padding:4px;background:conic-gradient(var(--accent),#0ea5e9,var(--accent));}
+.avatar{width:100%;height:100%;border-radius:50%;border:3px solid #fff;background-image:var(--avatar-image);background-size:cover;background-position:center;}
+h1{margin:0;font-size:1.7rem;font-weight:600;}p{margin:8px 0 26px;font-size:.95rem;color:#94a3b8;}.bio-description{font-size:.9rem;line-height:1.4;color:#e5e7eb;margin-top:12px;text-align:left;}
+.link{display:block;padding:18px;margin-bottom:16px;border-radius:18px;background:rgba(15,23,42,.95);color:#e5e7eb;text-decoration:none;border:1px solid rgba(255,255,255,.08);transform:translateY(0) scale(1);transition:transform .3s,box-shadow .3s;position:relative;cursor:pointer;}
+.link.hover{transform:translateY(-3px) scale(1.02);box-shadow:0 15px 40px rgba(56,189,248,.35);}
+.link span{display:inline-block;font-weight:500;transition:transform .3s;}
+.link.zoom-text span{transform:scale(1.2);}
+footer{margin-top:18px;font-size:.75rem;color:#64748b;}
+.paper-box{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,.5);z-index:2;opacity:0;pointer-events:none;transition:opacity .3s;}
+.paper-box.active{opacity:1;pointer-events:auto;}
+.paper-box .box-content{background:rgba(2,6,23,.95);color:#e5e7eb;border-radius:22px;padding:26px;max-width:600px;width:100%;box-shadow:0 30px 70px rgba(0,0,0,.8);backdrop-filter:blur(16px);transform:scale(.8);transition:transform .3s;}
+.paper-box.active .box-content{transform:scale(1);}
+.paper-box .close-trigger{position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;}
+#workContent{max-height:600px;overflow-y:auto;padding-right:16px;}
+#workContent::-webkit-scrollbar{width:4px;}
+#workContent::-webkit-scrollbar-thumb{background-color:var(--accent);border-radius:1px;}
+#workContent::-webkit-scrollbar-track{background:rgba(255,255,255,0.05);border-radius:1px;}
+.mywork-item{display:flex;gap:16px;background:rgba(56,189,248,.1);border:2px solid var(--accent);border-radius:16px;padding:12px;align-items:center;margin-bottom:12px;}
+.mywork-image{width:100px;height:100px;object-fit:cover;border-radius:12px;border:2px solid var(--accent);flex-shrink:0;}
+.mywork-desc{display:flex;flex-direction:column;gap:6px;color:#e5e7eb;}
+.mywork-name,.mywork-owner,.mywork-date{font-size:.8rem;}
+.mywork-name strong,.mywork-owner strong,.mywork-date strong{color:var(--accent);}
+.about-avatar-wrapper{width:120px;height:120px;margin:0 auto 18px;border-radius:50%;padding:4px;background:conic-gradient(var(--accent),#0ea5e9,var(--accent));}
+#aboutAvatar{width:100%;height:100%;border-radius:50%;border:3px solid #fff;background-size:cover;background-position:center;}
 </style>
 </head>
 <body>
 
-<!-- Loading -->
-<div id="loadingScreen">
-  Loading...
-  <div class="bar-container">
-    <div class="bar" id="loadingBar"></div>
-  </div>
-</div>
-
-<!-- Custom Cursor -->
+<div id="loadingScreen">Loading...
+<div class="bar-container"><div class="bar" id="loadingBar"></div></div></div>
 <div class="cursor"></div>
-
-<!-- Main Container -->
 <div class="container">
-  <div class="avatar-wrapper"><div class="avatar main"></div></div>
-  <h1 id="name"></h1>
-  <p id="tagline"></p>
-  <div id="links"></div>
-  <footer>© 2025 <span id="footer-name"></span></footer>
+<div class="avatar-wrapper"><div class="avatar"></div></div>
+<h1 id="name"></h1>
+<p id="tagline"></p>
+<div id="links"></div>
+<footer>© 2025 <span id="footer-name"></span></footer>
 </div>
 
-<!-- About Overlay -->
-<div class="paper-box" id="aboutBox">
-  <div class="close-trigger"></div>
-  <div class="box-content">
-    <div class="avatar-wrapper"><div class="avatar about"></div></div>
-    <h1 id="about-name"></h1>
-    <p id="about-tagline"></p>
-    <div class="bio-description">
-      Hawrru~! I'm Foruxy, the Silver Catfox~<br>
-      I create Vtuber Discord servers, manage Vtuber communities, and moderate YouTube channels!<br>
-      I also help as a Vtuber Advisor, Counselor, and Helper.<br>
-      I began my journey since February 2025, I’m dedicated to supporting Vtubers and growing communities with creativity and care.<br>
-    </div>
-  </div>
-</div>
+<!-- OVERLAY BOXES -->
+<div class="paper-box" id="aboutBox"><div class="close-trigger"></div>
+<div class="box-content">
+<div class="avatar-wrapper about-avatar-wrapper"><div class="avatar" id="aboutAvatar"></div></div>
+<h1 id="about-name"></h1><p id="about-tagline"></p>
+<div class="bio-description">Hawrru~! I'm Foruxy, the Silver Catfox~<br>
+I create Vtuber Discord servers, manage Vtuber communities, and moderate YouTube channels!<br>
+I also help as a Vtuber Advisor, Counselor, and Helper.<br>
+I began my journey since February 2025, I’m dedicated to supporting Vtubers and growing communities with creativity and care.<br>
+</div></div></div>
 
-<!-- Work Overlay -->
-<div class="paper-box" id="workBox">
-  <div class="close-trigger"></div>
-  <div class="box-content" id="workContent"></div>
-</div>
+<div class="paper-box" id="workBox"><div class="close-trigger"></div>
+<div class="box-content" id="workContent"></div></div>
 
-<!-- Social Overlay -->
-<div class="paper-box" id="socialBox">
-  <div class="close-trigger"></div>
-  <div class="box-content">
-    <h1>Social Media</h1>
-    <div class="bio-description" style="margin-top:12px;">
-      <a href="https://www.instagram.com/foruxy_/" target="_blank" class="link" style="margin-bottom:8px;"><span>📸 Instagram</span></a>
-      <a href="https://x.com/Foruxy" target="_blank" class="link" style="margin-bottom:8px;"><span>✖ Twitter</span></a>
-      <a href="https://www.youtube.com/@Foruxy" target="_blank" class="link" style="margin-bottom:8px;"><span>▶️ Youtube</span></a>
-      <a href="https://discord.com/users/797770498745303092" target="_blank" class="link" style="margin-bottom:8px;"><span>✉ Discord</span></a>
-    </div>
-  </div>
-</div>
+<div class="paper-box" id="socialBox"><div class="close-trigger"></div>
+<div class="box-content">
+<h1>Social Media</h1>
+<div class="bio-description" style="margin-top:12px;">
+<a href="https://www.instagram.com/foruxy_/" target="_blank" class="link" style="margin-bottom:8px;"><span>📸 Instagram</span></a>
+<a href="https://x.com/Foruxy" target="_blank" class="link" style="margin-bottom:8px;"><span>✖ Twitter</span></a>
+<a href="https://www.youtube.com/@Foruxy" target="_blank" class="link" style="margin-bottom:8px;"><span>▶️ Youtube</span></a>
+<a href="https://discord.com/users/797770498745303092" target="_blank" class="link" style="margin-bottom:8px;"><span>✉ Discord</span></a>
+</div></div></div>
 
 <script>
-const CONFIG = {
-  name: "Foruxy",
-  tagline: "Vtuber Talent Manager • Discord Server Manager",
-  links: [
-    {label: "✉ About Me", url:"#about"},
-    {label: "💼 My Work", url:"#work"},
-    {label: "🌐 Social", url:"#social"}
-  ],
-  myWork: [
+const CONFIG={
+  name:"Foruxy",
+  tagline:"Vtuber Talent Manager • Discord Server Manager",
+  avatar:"https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png?ex=694be2bd&is=694a913d&hm=2d4373533966d44de6acad6f1df329d26f45c25d5c8b7b5676dcb0ee8861a844&",
+  aboutAvatar:"https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif?ex=694bc6e5&is=694a7565&hm=28d4ca80a155b0c9f97a525b70ddd1406f4a56d492e7ef4dd8915fa3b08e5708&",
+  links:[{label:"✉ About Me",url:"#about"},{label:"💼 My Work",url:"#work"},{label:"🌐 Social",url:"#social"}],
+  myWork:[
     {image:"https://cdn.discordapp.com/icons/1391655093920727040/aff24dcc07ba0d7913693c536696ee31.png",name:"Yasei Pyon’s Zoological Society",owner:"Yasei Pyon",date:"07 July 2025"},
     {image:"https://cdn.discordapp.com/icons/1431225172614054000/6db71b7db347b180f8ae28997a074631.png",name:"Hidden Peak ❄",owner:"Eseuri Krasu",date:"24 October 2025"},
     {image:"https://cdn.discordapp.com/icons/1416027689554411636/c9379598ef7930896143ec33a8e8b4e3.png",name:"World Of Usagi🐰",owner:"Firany",date:"12 September 2025"},
@@ -292,100 +102,54 @@ const CONFIG = {
   ]
 };
 
-// Set text content
-["name","tagline","footer-name","about-name","about-tagline"].forEach(id=>{
-  document.getElementById(id).textContent = (id==="name"||id==="footer-name") ? CONFIG.name : CONFIG.tagline;
-});
+// Set avatars
+document.querySelector(".container .avatar").style.backgroundImage = `url(${CONFIG.avatar})`;
+document.getElementById("aboutAvatar").style.backgroundImage = `url(${CONFIG.aboutAvatar})`;
 
-// Render links
-const linksContainer = document.getElementById("links");
-CONFIG.links.forEach(item => {
-  const a = document.createElement("a");
-  a.className = "link";
-  a.href = item.url;
-  a.innerHTML = `<span>${item.label}</span>`;
+// Set texts
+["name","tagline","footer-name","about-name","about-tagline"].forEach(id=>
+  document.getElementById(id).textContent = CONFIG[id==="name"||id==="footer-name"?"name":"tagline"]
+);
+
+// Set links
+const linksContainer=document.getElementById("links");
+CONFIG.links.forEach(item=>{
+  const a=document.createElement("a");
+  a.className="link"; a.href=item.url; a.innerHTML=`<span>${item.label}</span>`;
   linksContainer.appendChild(a);
 });
 
-// Render work items
-const workContent = document.getElementById("workContent");
-CONFIG.myWork.forEach(item => {
-  const div = document.createElement("div");
-  div.className = "mywork-item";
-  div.innerHTML = `
-    <img src="${item.image}" alt="Server Discord" class="mywork-image">
-    <div class="mywork-desc">
-      <div class="mywork-name"><strong>Server Name:</strong> ${item.name}</div>
-      <div class="mywork-owner"><strong>Owner:</strong> ${item.owner}</div>
-      <div class="mywork-date"><strong>Creation Date:</strong> ${item.date}</div>
-    </div>`;
+// Set work items
+const workContent=document.getElementById("workContent");
+CONFIG.myWork.forEach(item=>{
+  const div=document.createElement("div");
+  div.className="mywork-item";
+  div.innerHTML=`<img src="${item.image}" alt="Server Discord" class="mywork-image"><div class="mywork-desc"><div class="mywork-name"><strong>Server Name:</strong> ${item.name}</div><div class="mywork-owner"><strong>Owner:</strong> ${item.owner}</div><div class="mywork-date"><strong>Creation Date:</strong> ${item.date}</div></div>`;
   workContent.appendChild(div);
 });
 
 // Cursor animation
-const cursor = document.querySelector(".cursor");
-let mouseX=0, mouseY=0, currentX=0, currentY=0;
-document.addEventListener("mousemove", e => { mouseX = e.clientX; mouseY = e.clientY; });
-function animateCursor() {
-  currentX += (mouseX - currentX) * .15;
-  currentY += (mouseY - currentY) * .15;
-  cursor.style.left = currentX + "px";
-  cursor.style.top = currentY + "px";
-  requestAnimationFrame(animateCursor);
-}
+const cursor=document.querySelector(".cursor");
+let mouseX=0,mouseY=0,currentX=0,currentY=0;
+document.addEventListener("mousemove",e=>{mouseX=e.clientX;mouseY=e.clientY;});
+function animateCursor(){currentX+=(mouseX-currentX)*.15;currentY+=(mouseY-currentY)*.15;cursor.style.left=currentX+"px";cursor.style.top=currentY+"px";requestAnimationFrame(animateCursor);}
 animateCursor();
+document.querySelectorAll(".link").forEach(btn=>{btn.addEventListener("mouseenter",()=>{btn.classList.add("hover");cursor.classList.add("magnify");});btn.addEventListener("mouseleave",()=>{btn.classList.remove("hover");btn.classList.remove("zoom-text");cursor.classList.remove("magnify");});});
 
-// Link hover effects
-document.querySelectorAll(".link").forEach(btn => {
-  btn.addEventListener("mouseenter", () => {
-    btn.classList.add("hover");
-    cursor.classList.add("magnify");
-  });
-  btn.addEventListener("mouseleave", () => {
-    btn.classList.remove("hover");
-    btn.classList.remove("zoom-text");
-    cursor.classList.remove("magnify");
-  });
-});
+// Overlay triggers
+const [aboutBtn,workBtn,socialBtn]=document.querySelectorAll(".link");
+const [aboutBox,workBox,socialBox]=[document.getElementById("aboutBox"),document.getElementById("workBox"),document.getElementById("socialBox")];
+aboutBtn.addEventListener("click",e=>{e.preventDefault();aboutBox.classList.add("active");});
+workBtn.addEventListener("click",e=>{e.preventDefault();workBox.classList.add("active");});
+socialBtn.addEventListener("click",e=>{e.preventDefault();socialBox.classList.add("active");});
+document.querySelectorAll(".close-trigger").forEach(trigger=>{trigger.addEventListener("click",e=>{const box=e.currentTarget.parentElement;box.classList.remove("active");if(box.id==="workBox")workContent.scrollTop=0;});});
+document.querySelectorAll(".box-content").forEach(box=>box.addEventListener("click",e=>e.stopPropagation()));
 
-// Open overlays
-const [aboutBtn, workBtn, socialBtn] = document.querySelectorAll(".link");
-const [aboutBox, workBox, socialBox] = [
-  document.getElementById("aboutBox"),
-  document.getElementById("workBox"),
-  document.getElementById("socialBox")
-];
-aboutBtn.addEventListener("click", e => { e.preventDefault(); aboutBox.classList.add("active"); });
-workBtn.addEventListener("click", e => { e.preventDefault(); workBox.classList.add("active"); });
-socialBtn.addEventListener("click", e => { e.preventDefault(); socialBox.classList.add("active"); });
-
-// Close overlays
-document.querySelectorAll(".close-trigger").forEach(trigger => {
-  trigger.addEventListener("click", e => {
-    const box = e.currentTarget.parentElement;
-    box.classList.remove("active");
-    if(box.id==="workBox") workContent.scrollTop = 0;
-  });
-});
-document.querySelectorAll(".box-content").forEach(box => box.addEventListener("click", e => e.stopPropagation()));
-
-// Loading animation
-const loadingScreen = document.getElementById("loadingScreen");
-const loadingBar = document.getElementById("loadingBar");
-let width = 0, totalTime = 6000, intervalTime = 30, increment = 100 / (totalTime / intervalTime);
-const loadingInterval = setInterval(() => {
-  width += increment;
-  if(width >= 100) width = 100;
-  loadingBar.style.width = width + "%";
-}, intervalTime);
-setTimeout(() => {
-  clearInterval(loadingInterval);
-  loadingScreen.style.opacity = 0;
-  setTimeout(() => {
-    loadingScreen.style.display = "none";
-    document.querySelector(".container").classList.add("show");
-  }, 500);
-}, totalTime);
+// Loading screen
+const loadingScreen=document.getElementById("loadingScreen"),loadingBar=document.getElementById("loadingBar");
+let width=0,totalTime=6000,intervalTime=30,increment=100/(totalTime/intervalTime);
+const loadingInterval=setInterval(()=>{width+=increment;if(width>=100)width=100;loadingBar.style.width=width+"%";},intervalTime);
+setTimeout(()=>{clearInterval(loadingInterval);loadingScreen.style.opacity=0;setTimeout(()=>{loadingScreen.style.display="none";document.querySelector(".container").classList.add("show");},500);},totalTime);
 </script>
 </body>
 </html>
