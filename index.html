@@ -15,7 +15,8 @@
 }
 
 /* GLOBAL */
-*, body, .container, .link, .paper-box {
+*,
+body, .container, .link, .paper-box {
   box-sizing:border-box;
   font-family:"Comic Sans MS","Comic Sans",cursive;
   cursor:none !important;
@@ -35,7 +36,7 @@ body{
   overflow:hidden;
 }
 
-/* LOADING */
+/* LOADING SCREEN */
 #loadingScreen{
   position:fixed;
   inset:0;
@@ -52,41 +53,36 @@ body{
 .bar-container{
   width:60%;
   height:12px;
-  border:2px solid var(--accent);
+  border:2px solid #38bdf8;
   border-radius:6px;
   margin-top:20px;
   overflow:hidden;
 }
-.bar{
-  height:100%;
-  width:0;
-  background:var(--accent);
-}
+.bar{height:100%;width:0;background:#38bdf8}
 
 /* CURSOR */
 .cursor{
   position:fixed;
-  width:14px;
-  height:14px;
+  width:14px;height:14px;
   border-radius:50%;
   background:#fff;
   mix-blend-mode:difference;
   pointer-events:none;
   z-index:9999;
   transform:translate(-50%,-50%);
+  transition:.2s;
 }
 .cursor.magnify{
-  width:48px;
-  height:48px;
+  width:48px;height:48px;
   background:rgba(255,255,255,.15);
   border:2px solid var(--accent);
   backdrop-filter:blur(6px);
 }
 
-/* MAIN */
+/* MAIN MENU (UNCHANGED) */
 .container{
-  max-width:380px;
   width:100%;
+  max-width:380px;
   padding:26px;
   text-align:center;
   background:rgba(2,6,23,.85);
@@ -96,9 +92,9 @@ body{
   box-shadow:0 30px 70px rgba(0,0,0,.8);
   transform:translateY(100px);
   opacity:0;
-  transition:.8s;
+  transition:.8s cubic-bezier(.25,1,.5,1);
 }
-.container.show{transform:none;opacity:1;}
+.container.show{transform:none;opacity:1}
 
 .avatar-wrapper{
   width:120px;height:120px;
@@ -119,83 +115,79 @@ body{
   padding:18px;
   margin-bottom:16px;
   border-radius:18px;
-  background:rgba(15,23,42,.95);
+  background:#0f172a;
   color:#e5e7eb;
   text-decoration:none;
   border:1px solid rgba(255,255,255,.08);
+  transition:.3s;
 }
 .link.hover{
-  transform:translateY(-3px) scale(1.02);
-  box-shadow:0 15px 40px rgba(56,189,248,.35);
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 15px 40px rgba(56,189,248,.4);
 }
 
-/* OVERLAY */
+/* OVERLAY BOX (LARGE VERSION) */
 .paper-box{
   position:fixed;
   inset:0;
+  background:rgba(0,0,0,.55);
   display:flex;
   justify-content:center;
   align-items:center;
-  background:rgba(0,0,0,.5);
   opacity:0;
   pointer-events:none;
   transition:.3s;
+  z-index:2;
 }
-.paper-box.active{opacity:1;pointer-events:auto;}
+.paper-box.active{opacity:1;pointer-events:auto}
 
 .paper-box .box-content{
   background:rgba(2,6,23,.95);
-  border-radius:22px;
-  padding:26px;
-  width:90%;
-  max-width:520px;
-  box-shadow:0 30px 70px rgba(0,0,0,.8);
-  backdrop-filter:blur(16px);
+  border-radius:26px;
+  padding:36px;
+  width:92%;
+  max-width:700px;
+  max-height:85vh;
+  overflow-y:auto;
+  backdrop-filter:blur(18px);
+  box-shadow:0 40px 90px rgba(0,0,0,.9);
   transform:scale(.85);
   transition:.3s;
 }
-.paper-box.active .box-content{transform:scale(1);}
+.paper-box.active .box-content{transform:scale(1)}
 
-.close-trigger{
-  position:absolute;
-  inset:0;
-}
-
-/* ABOUT ME */
-.about-info{
-  text-align:left;
-  margin-top:14px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-.about-row strong{color:var(--accent);}
-.about-bio{font-size:.9rem;line-height:1.5;}
+.close-trigger{position:absolute;inset:0}
 
 /* MY WORK */
-#workContent{
-  max-height:460px;
-  overflow-y:auto;
-  padding-right:8px;
-}
+#workContent{max-height:520px;overflow-y:auto}
 .mywork-item{
   display:flex;
-  gap:16px;
+  gap:20px;
   background:rgba(56,189,248,.1);
   border:2px solid var(--accent);
-  border-radius:16px;
-  padding:14px;
+  border-radius:18px;
+  padding:16px;
   margin-bottom:14px;
 }
 .mywork-image{
-  width:110px;
-  height:110px;
-  border-radius:12px;
+  width:120px;height:120px;
+  border-radius:14px;
   border:2px solid var(--accent);
 }
-.mywork-desc{flex:1;}
-.mywork-name{font-size:1rem;word-break:break-word;}
-.mywork-owner,.mywork-date{font-size:.9rem;}
+.mywork-desc{display:flex;flex-direction:column;gap:6px}
+.mywork-desc strong{color:var(--accent)}
+
+/* SOCIAL ICONS */
+.social-link{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:14px;
+}
+.social-link svg{
+  width:28px;height:28px;
+  fill:var(--accent);
+}
 </style>
 </head>
 
@@ -210,14 +202,10 @@ body{
 
 <div class="container">
   <div class="avatar-wrapper"><div class="avatar"></div></div>
-  <h1>Foruxy</h1>
-  <p>Vtuber Talent Manager • Discord Server Manager</p>
-
-  <a href="#about" class="link">✉ About Me</a>
-  <a href="#work" class="link">💼 My Work</a>
-  <a href="#social" class="link">🌐 Social</a>
-
-  <footer style="margin-top:16px;font-size:.75rem;color:#64748b;">© 2025 Foruxy</footer>
+  <h1 id="name"></h1>
+  <p id="tagline"></p>
+  <div id="links"></div>
+  <footer>© 2025 <span id="footer-name"></span></footer>
 </div>
 
 <!-- ABOUT -->
@@ -227,19 +215,11 @@ body{
     <div class="avatar-wrapper"><div class="avatar"></div></div>
     <h1>Foruxy</h1>
     <p>Vtuber Talent Manager • Discord Server Manager</p>
-
-    <div class="about-info">
-      <div class="about-row"><strong>Nama:</strong> Foruxy</div>
-      <div class="about-row"><strong>Jobdesk:</strong> Advisor, Counselor, Helper For Vtuber</div>
-      <div class="about-row">
-        <strong>Bio:</strong>
-        <div class="about-bio">
-          Hawrru~! I'm Foruxy, the Silver Catfox~<br>
-          I create and manage Vtuber Discord servers and communities.<br>
-          Started my journey in February 2025, dedicated to helping Vtubers grow with creativity and care.
-        </div>
-      </div>
-    </div>
+    <p>
+      Hawrru~! I'm Foruxy, the Silver Catfox~<br>
+      I create & manage Vtuber communities, Discord servers, and YouTube moderation.<br>
+      Active since February 2025 with passion and care.
+    </p>
   </div>
 </div>
 
@@ -254,59 +234,80 @@ body{
   <div class="close-trigger"></div>
   <div class="box-content">
     <h1>Social Media</h1>
-    <a href="https://www.instagram.com/foruxy_/" target="_blank" class="link">📸 Instagram</a>
-    <a href="https://x.com/Foruxy" target="_blank" class="link">✖ Twitter</a>
-    <a href="https://www.youtube.com/@Foruxy" target="_blank" class="link">▶️ Youtube</a>
-    <a href="https://discord.com/users/797770498745303092" target="_blank" class="link">✉ Discord</a>
+
+    <a class="link social-link" href="https://www.instagram.com/foruxy_/" target="_blank">
+      📸 Instagram
+    </a>
+    <a class="link social-link" href="https://x.com/Foruxy" target="_blank">
+      ✖ X (Twitter)
+    </a>
+    <a class="link social-link" href="https://www.youtube.com/@Foruxy" target="_blank">
+      ▶️ YouTube
+    </a>
+    <a class="link social-link" href="https://discord.com/users/797770498745303092" target="_blank">
+      💬 Discord
+    </a>
   </div>
 </div>
 
 <script>
-const workData = [
-  {image:"https://cdn.discordapp.com/icons/1391655093920727040/aff24dcc07ba0d7913693c536696ee31.png",name:"Yasei Pyon’s Zoological Society",owner:"Yasei Pyon",date:"07 July 2025"},
-  {image:"https://cdn.discordapp.com/icons/1431225172614054000/6db71b7db347b180f8ae28997a074631.png",name:"Hidden Peak ❄",owner:"Eseuri Krasu",date:"24 October 2025"},
-  {image:"https://cdn.discordapp.com/icons/1416027689554411636/c9379598ef7930896143ec33a8e8b4e3.png",name:"World Of Usagi🐰",owner:"Firany",date:"12 September 2025"}
-];
+/* CONFIG */
+const CONFIG={
+  name:"Foruxy",
+  tagline:"Vtuber Talent Manager • Discord Server Manager",
+  links:[
+    {label:"✉ About Me",url:"#about"},
+    {label:"💼 My Work",url:"#work"},
+    {label:"🌐 Social",url:"#social"}
+  ],
+  myWork:[
+    {image:"https://cdn.discordapp.com/icons/1391655093920727040/aff24dcc07ba0d7913693c536696ee31.png",name:"Yasei Pyon’s Zoological Society",owner:"Yasei Pyon",date:"07 July 2025"},
+    {image:"https://cdn.discordapp.com/icons/1431225172614054000/6db71b7db347b180f8ae28997a074631.png",name:"Hidden Peak ❄",owner:"Eseuri Krasu",date:"24 October 2025"}
+  ]
+};
 
-const workBox=document.getElementById("workContent");
-workData.forEach(w=>{
-  workBox.innerHTML+=`
+/* INIT */
+name.textContent=CONFIG.name;
+tagline.textContent=CONFIG.tagline;
+footer-name.textContent=CONFIG.name;
+
+/* LINKS */
+CONFIG.links.forEach(i=>{
+  const a=document.createElement("a");
+  a.className="link";
+  a.href=i.url;
+  a.textContent=i.label;
+  links.appendChild(a);
+});
+
+/* WORK */
+CONFIG.myWork.forEach(w=>{
+  workContent.innerHTML+=`
   <div class="mywork-item">
     <img src="${w.image}" class="mywork-image">
     <div class="mywork-desc">
-      <div class="mywork-name"><strong>${w.name}</strong></div>
-      <div class="mywork-owner">Owner: ${w.owner}</div>
-      <div class="mywork-date">Created: ${w.date}</div>
+      <div><strong>Nama:</strong> ${w.name}</div>
+      <div><strong>Owner:</strong> ${w.owner}</div>
+      <div><strong>Date:</strong> ${w.date}</div>
     </div>
   </div>`;
 });
 
-/* OVERLAY LOGIC */
-const links=document.querySelectorAll(".link");
-const aboutBox=document.getElementById("aboutBox");
-const workBoxWrap=document.getElementById("workBox");
-const socialBox=document.getElementById("socialBox");
-
-links[0].onclick=e=>{e.preventDefault();aboutBox.classList.add("active");};
-links[1].onclick=e=>{e.preventDefault();workBoxWrap.classList.add("active");};
-links[2].onclick=e=>{e.preventDefault();socialBox.classList.add("active");};
-
-document.querySelectorAll(".close-trigger").forEach(c=>{
-  c.onclick=()=>c.parentElement.classList.remove("active");
-});
+/* OVERLAY */
+const [about,work,social]=document.querySelectorAll(".link");
+about.onclick=e=>{e.preventDefault();aboutBox.classList.add("active")}
+work.onclick=e=>{e.preventDefault();workBox.classList.add("active")}
+social.onclick=e=>{e.preventDefault();socialBox.classList.add("active")}
+document.querySelectorAll(".close-trigger").forEach(c=>c.onclick=e=>e.target.parentElement.classList.remove("active"));
 
 /* LOADING */
 let w=0;
 const bar=document.getElementById("loadingBar");
-const interval=setInterval(()=>{
-  w+=1;
-  bar.style.width=w+"%";
-  if(w>=100){
-    clearInterval(interval);
-    document.getElementById("loadingScreen").style.display="none";
-    document.querySelector(".container").classList.add("show");
-  }
-},60);
+const iv=setInterval(()=>{w+=1.5;bar.style.width=w+"%";if(w>=100)clearInterval(iv)},30);
+setTimeout(()=>{
+  loadingScreen.style.opacity=0;
+  setTimeout(()=>{loadingScreen.remove();document.querySelector(".container").classList.add("show")},500);
+},6000);
 </script>
 
 </body>
