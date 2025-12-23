@@ -164,63 +164,6 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
   transform: scale(0.8);
   transition: transform 0.3s ease;
 }
-#aboutBox .box-content{
-  display: flex;            /* bikin 2 kolom */
-  gap: 24px;                /* jarak antara foto & deskripsi */
-  max-width: 700px;         /* lebih lebar */
-  padding: 30px;
-  background: rgba(2,6,23,.95);
-  border-radius: 22px;
-  box-shadow: 0 30px 70px rgba(0,0,0,.8);
-  backdrop-filter: blur(16px);
-}
-
-#aboutBox .avatar-wrapper {
-  width: 160px; 
-  height: 160px; 
-  padding: 4px; 
-  border-radius: 12px;       /* ubah jadi kotak dengan rounded kecil */
-  background: conic-gradient(var(--accent),#0ea5e9,var(--accent));
-  flex-shrink: 0;            /* jangan mengecil */
-}
-
-#aboutBox .avatar {
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;       /* kotak */
-  border: 3px solid #fff;
-  background-image: var(--avatar-image);
-  background-size: cover;
-  background-position: center;
-}
-
-#aboutBox .about-text {
-  flex: 1;                    /* ambil sisa ruang untuk teks */
-  color: #e5e7eb;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-#aboutBox .about-text h1 {
-  font-size: 1.7rem;
-  margin-bottom: 4px;
-}
-
-#aboutBox .about-text p {
-  font-size: 0.95rem;
-  margin: 4px 0 12px;
-  color: #94a3b8;
-}
-
-#aboutBox .bio-description {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #e5e7eb;
-  text-align: left;
-  margin-top: 8px;
-}
-
 .paper-box.active .box-content{ transform: scale(1); }
 
 .paper-box .close-trigger{
@@ -301,7 +244,7 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 <!-- OVERLAY BOXES -->
 <div class="paper-box" id="aboutBox">
   <div class="close-trigger"></div>
- <div class="box-content">
+<div class="box-content">
   <div class="avatar-wrapper">
     <div class="avatar"></div>
   </div>
@@ -316,7 +259,6 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
     </div>
   </div>
 </div>
-
 
 
 
