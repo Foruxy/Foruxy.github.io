@@ -63,7 +63,11 @@ body{
   width:0%;
   height:100%;
   background:#38bdf8;
-  transition: width 0.1s linear;
+  animation: load 6s linear forwards; /* Animasi CSS untuk loading bar */
+}
+@keyframes load {
+  0% { width: 0%; }
+  100% { width: 100%; }
 }
 
 /* CURSOR */
@@ -400,8 +404,4 @@ document.querySelectorAll(".close-trigger").forEach(trigger=>{
 });
 document.querySelectorAll(".box-content").forEach(box=> box.addEventListener("click", e=> e.stopPropagation()));
 
-/* LOADING SCREEN 6 DETIK */
-const loadingScreen = document.getElementById("loadingScreen");
-const loadingBar = document.getElementById("loadingBar");
-let width = 0;
-const totalTime = 6000
+/* LOADING SCREEN - DIPERBAIKI DENGAN CSS AN
