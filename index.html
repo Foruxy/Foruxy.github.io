@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 :root{
---background-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif?ex=694bc6e5&is=694a7565&hm=28d4ca80a155b0c9f97a525b70ddd1406f4a56d492e7ef4dd8915fa3b08e5708&");
+--background-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif");
 --avatar-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png");
 --name:"Foruxy";
 --tagline:"Vtuber Talent Manager • Discord Server Manager";
@@ -62,7 +62,7 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-image: url("https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png"); /* Ganti foto di sini */
+  background-image: var(--avatar-image);
   background-size: cover;
   background-position: center;
   border: 3px solid var(--accent);
@@ -151,18 +151,78 @@ const CONFIG={name:"Foruxy",tagline:"Vtuber Talent Manager • Discord Server Ma
 {image:"https://cdn.discordapp.com/icons/1449766831710797826/748c5a036ff163c8bd67989f7a64b42b.png",name:"Kayce Pavilion",owner:"Kayce Lawrence",date:"14 Desember 2025"},
 {image:"https://cdn.discordapp.com/icons/1405524507330084936/a48a0254bb1646c05e2bf2f782a4eb5f.png",name:"𝓚𝓪𝓲 𝓐𝔃𝓾𝓶𝓪 𝓒𝓸𝓶𝓶𝓾𝓷𝓲𝓽𝔂",owner:"Kaikaje",date:"14 Agustus 2025"}]};
 
+// Set nama & tagline
 ["name","tagline","footer-name"].forEach(id=>document.getElementById(id).textContent=CONFIG.name);
-const linksContainer=document.getElementById("links");CONFIG.links.forEach(item=>{const a=document.createElement("a");a.className="link";a.href=item.url;a.innerHTML=`<span>${item.label}</span>`;linksContainer.appendChild(a);});
-const workContent=document.getElementById("workContent");CONFIG.myWork.forEach(item=>{const div=document.createElement("div");div.className="mywork-item";div.innerHTML=`<img src="${item.image}" alt="Server Discord" class="mywork-image"><div class="mywork-desc"><div class="mywork-name"><strong>Server Name:</strong> ${item.name}</div><div class="mywork-owner"><strong>Owner:</strong> ${item.owner}</div><div class="mywork-date"><strong>Creation Date:</strong> ${item.date}</div></div>`;workContent.appendChild(div);});
-const cursor=document.querySelector(".cursor");let mouseX=0,mouseY=0,currentX=0,currentY=0;document.addEventListener("mousemove",e=>{mouseX=e.clientX;mouseY=e.clientY;});function animateCursor(){currentX+=(mouseX-currentX)*.15;currentY+=(mouseY-currentY)*.15;cursor.style.left=currentX+"px";cursor.style.top=currentY+"px";requestAnimationFrame(animateCursor);}animateCursor();
-document.querySelectorAll(".link").forEach(btn=>{btn.addEventListener("mouseenter",()=>{btn.classList.add("hover");cursor.classList.add("magnify");});btn.addEventListener("mouseleave",()=>{btn.classList.remove("hover");btn.classList.remove("zoom-text");cursor.classList.remove("magnify");});});
-const [aboutBtn,workBtn,socialBtn]=document.querySelectorAll(".link");const [aboutBox,workBox,socialBox]=[document.getElementById("aboutBox"),document.getElementById("workBox"),document.getElementById("socialBox")];
+
+// Generate links
+const linksContainer=document.getElementById("links");
+CONFIG.links.forEach(item=>{
+  const a=document.createElement("a");
+  a.className="link";
+  a.href=item.url;
+  a.innerHTML=`<span>${item.label}</span>`;
+  linksContainer.appendChild(a);
+});
+
+// Generate work content
+const workContent=document.getElementById("workContent");
+CONFIG.myWork.forEach(item=>{
+  const div=document.createElement("div");
+  div.className="mywork-item";
+  div.innerHTML=`<img src="${item.image}" alt="Server Discord" class="mywork-image"><div class="mywork-desc"><div class="mywork-name"><strong>Server Name:</strong> ${item.name}</div><div class="mywork-owner"><strong>Owner:</strong> ${item.owner}</div><div class="mywork-date"><strong>Creation Date:</strong> ${item.date}</div></div>`;
+  workContent.appendChild(div);
+});
+
+// Cursor
+const cursor=document.querySelector(".cursor");
+let mouseX=0,mouseY=0,currentX=0,currentY=0;
+document.addEventListener("mousemove",e=>{mouseX=e.clientX;mouseY=e.clientY;});
+function animateCursor(){currentX+=(mouseX-currentX)*.15;currentY+=(mouseY-currentY)*.15;cursor.style.left=currentX+"px";cursor.style.top=currentY+"px";requestAnimationFrame(animateCursor);}
+animateCursor();
+
+// Link hover
+document.querySelectorAll(".link").forEach(btn=>{
+  btn.addEventListener("mouseenter",()=>{btn.classList.add("hover");cursor.classList.add("magnify");});
+  btn.addEventListener("mouseleave",()=>{btn.classList.remove("hover");btn.classList.remove("zoom-text");cursor.classList.remove("magnify");});
+});
+
+// Open boxes
+const [aboutBtn,workBtn,socialBtn]=document.querySelectorAll(".link");
+const [aboutBox,workBox,socialBox]=[document.getElementById("aboutBox"),document.getElementById("workBox"),document.getElementById("socialBox")];
 aboutBtn.addEventListener("click",e=>{e.preventDefault();aboutBox.classList.add("active");});
 workBtn.addEventListener("click",e=>{e.preventDefault();workBox.classList.add("active");});
 socialBtn.addEventListener("click",e=>{e.preventDefault();socialBox.classList.add("active");});
-document.querySelectorAll(".close-trigger").forEach(trigger=>{trigger.addEventListener("click",e=>{const box=e.currentTarget.parentElement;box.classList.remove("active");if(box.id==="workBox")workContent.scrollTop=0;});});
+
+// Close boxes
+document.querySelectorAll(".close-trigger").forEach(trigger=>{
+  trigger.addEventListener("click",e=>{
+    const box=e.currentTarget.parentElement;
+    box.classList.remove("active");
+    if(box.id==="workBox") workContent.scrollTop=0;
+  });
+});
 document.querySelectorAll(".box-content").forEach(box=>box.addEventListener("click",e=>e.stopPropagation()));
-const loadingScreen=document.getElementById("loadingScreen"),loadingBar=document.getElementById("loadingBar");let width=0,totalTime=6000,intervalTime=30,increment=100/(totalTime/intervalTime);const loadingInterval=setInterval(()=>{width+=increment;if(width>=100)width=100;loadingBar.style.width=width+"%";},intervalTime);setTimeout(()=>{clearInterval(loadingInterval);loadingScreen.style.opacity=0;setTimeout(()=>{loadingScreen.style.display="none";document.querySelector(".container").classList.add("show");},500);},totalTime);
+
+// Loading screen
+const loadingScreen=document.getElementById("loadingScreen"),
+      loadingBar=document.getElementById("loadingBar");
+let width=0,totalTime=6000,intervalTime=30,increment=100/(totalTime/intervalTime);
+const loadingInterval=setInterval(()=>{
+  width+=increment;
+  if(width>=100) width=100;
+  loadingBar.style.width=width+"%";
+},intervalTime);
+setTimeout(()=>{
+  clearInterval(loadingInterval);
+  loadingScreen.style.opacity=0;
+  setTimeout(()=>{
+    loadingScreen.style.display="none";
+    document.querySelector(".container").classList.add("show");
+  },500);
+},totalTime);
+
+// Set About Box avatar dynamically (ganti URL di sini)
+document.getElementById("about-avatar").style.backgroundImage = "url('https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png')";
 </script>
 </body>
 </html>
