@@ -28,7 +28,7 @@ h1{margin:0;font-size:1.7rem;font-weight:600;}p{margin:8px 0 26px;font-size:.95r
 .link.zoom-text span{transform:scale(1.2);}
 footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .paper-box{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,.5);z-index:2;opacity:0;pointer-events:none;transition:opacity .3s;}
-.paper-box.active{opacity:1;pointer-events:auto;}
+.paper-box.active{opacity=1;pointer-events:auto;}
 .paper-box .box-content{background:rgba(2,6,23,.95);color:#e5e7eb;border-radius:22px;padding:26px;max-width:600px;width:100%;box-shadow:0 30px 70px rgba(0,0,0,.8);backdrop-filter:blur(16px);transform:scale(.8);transition:transform .3s;}
 .paper-box.active .box-content{transform:scale(1);}
 .paper-box .close-trigger{position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;}
@@ -45,6 +45,7 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .about-box-content .about-avatar{width:120px;height:120px;border-radius:12px;border:3px solid var(--accent);background-size:cover;background-position:center;flex-shrink:0;}
 .about-box-content .about-text{flex:1;color:#e5e7eb;}
 .about-box-content .about-text div{margin-bottom:8px;}
+.work-title{font-size:1.3rem; font-weight: 700; color: var(--accent); margin-top: 30px;}
 </style>
 </head>
 <body>
@@ -72,7 +73,9 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 </div></div>
 
 <div class="paper-box" id="workBox"><div class="close-trigger"></div>
-<div class="box-content" id="workContent"></div></div>
+<div class="box-content" id="workContent">
+  <div class="work-title">Server Discord yang aku kelola:</div>
+</div></div>
 
 <div class="paper-box" id="socialBox"><div class="close-trigger"></div>
 <div class="box-content">
