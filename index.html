@@ -36,8 +36,6 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 #workContent::-webkit-scrollbar{width:0px;}
 #workContent::-webkit-scrollbar-thumb{background-color:var(--accent);border-radius:1px;}
 #workContent::-webkit-scrollbar-track{background:rgba(255,255,255,0.05);border-radius:1px;}
-.mywork-title h2 {font-size: 1.5rem;color: var(--accent);margin-bottom: 10px;}
-.mywork-title p {font-size: 1rem;color: #94a3b8;margin-bottom: 20px;}
 .mywork-item{display:flex;gap:16px;background:rgba(56,189,248,.1);border:2px solid var(--accent);border-radius:16px;padding:12px;align-items:center;margin-bottom:12px;}
 .mywork-image{width:100px;height:100px;object-fit:cover;border-radius:12px;border:2px solid var(--accent);flex-shrink:0;}
 .mywork-desc{display:flex;flex-direction:column;gap:6px;color:#e5e7eb;}
@@ -59,12 +57,9 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 <h1 id="name"></h1>
 <p id="tagline"></p>
 <div id="links"></div>
-<div class="mywork-title"><h2><strong>My Work</strong></h2>
-<p>Server Discord yang aku kelola</p></div>
-<div id="links"></div>
 <footer>© 2025 <span id="footer-name"></span></footer>
 </div>
-  
+
 <!-- OVERLAY BOXES -->
 <div class="paper-box" id="aboutBox"><div class="close-trigger"></div>
 <div class="box-content about-box-content">
@@ -77,8 +72,13 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 </div></div>
 
 <div class="paper-box" id="workBox"><div class="close-trigger"></div>
-<div class="box-content" id="workContent"></div></div>
-
+<div class="box-content" id="workContent">
+  <!-- Teks Penjelasan -->
+  <h1>My Work</h1>
+  <div class="bio-description">
+    Server Discord yang aku kelola.
+  </div>
+</div></div>
 <div class="paper-box" id="socialBox"><div class="close-trigger"></div>
 <div class="box-content">
 <h1>Social Media</h1>
