@@ -62,7 +62,7 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 <div class="paper-box" id="aboutBox"><div class="close-trigger"></div>
 <div class="box-content">
 <div class="avatar-wrapper about-avatar-wrapper"><div class="avatar" id="aboutAvatar"></div></div>
-<h1 id="about-name"></h1>
+<p id="about-tagline"></p>
 <div class="bio-description">Hawrru~! I'm Foruxy, the Silver Catfox~<br>
 I create Vtuber Discord servers, manage Vtuber communities, and moderate YouTube channels!<br>
 I also help as a Vtuber Advisor, Counselor, and Helper.<br>
@@ -107,7 +107,7 @@ document.querySelector(".container .avatar").style.backgroundImage = `url(${CONF
 document.getElementById("aboutAvatar").style.backgroundImage = `url(${CONFIG.aboutAvatar})`;
 
 // Set texts
-["name","tagline","footer-name","about-name","about-tagline"].forEach(id=>
+["name","tagline","footer-name","about-tagline"].forEach(id=>
   document.getElementById(id).textContent = CONFIG[id==="name"||id==="footer-name"?"name":"tagline"]
 );
 
