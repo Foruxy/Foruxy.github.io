@@ -41,8 +41,10 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .mywork-desc{display:flex;flex-direction:column;gap:6px;color:#e5e7eb;}
 .mywork-name,.mywork-owner,.mywork-date{font-size:.8rem;}
 .mywork-name strong,.mywork-owner strong,.mywork-date strong{color:var(--accent);}
-.about-avatar-wrapper{width:120px;height:120px;margin:0 auto 18px;border-radius:50%;padding:4px;background:conic-gradient(var(--accent),#0ea5e9,var(--accent));}
-#aboutAvatar{width:100%;height:100%;border-radius:50%;border:3px solid #fff;background-size:cover;background-position:center;}
+.about-box-content{display:flex;gap:20px;align-items:flex-start;}
+.about-box-content .about-avatar{width:120px;height:120px;border-radius:12px;border:3px solid var(--accent);background-size:cover;background-position:center;flex-shrink:0;}
+.about-box-content .about-text{flex:1;color:#e5e7eb;}
+.about-box-content .about-text div{margin-bottom:8px;}
 </style>
 </head>
 <body>
@@ -60,14 +62,14 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 
 <!-- OVERLAY BOXES -->
 <div class="paper-box" id="aboutBox"><div class="close-trigger"></div>
-<div class="box-content">
-<div class="avatar-wrapper about-avatar-wrapper"><div class="avatar" id="aboutAvatar"></div></div>
-<p id="about-tagline"></p>
-<div class="bio-description">Hawrru~! I'm Foruxy, the Silver Catfox~<br>
-I create Vtuber Discord servers, manage Vtuber communities, and moderate YouTube channels!<br>
-I also help as a Vtuber Advisor, Counselor, and Helper.<br>
-I began my journey since February 2025, I’m dedicated to supporting Vtubers and growing communities with creativity and care.<br>
-</div></div></div>
+<div class="box-content about-box-content">
+  <div class="about-avatar"></div>
+  <div class="about-text">
+    <div class="about-name"></div>
+    <div class="about-race"></div>
+    <div class="about-bio"></div>
+  </div>
+</div></div>
 
 <div class="paper-box" id="workBox"><div class="close-trigger"></div>
 <div class="box-content" id="workContent"></div></div>
@@ -88,6 +90,9 @@ const CONFIG={
   tagline:"Vtuber Talent Manager • Discord Server Manager",
   avatar:"https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png?ex=694be2bd&is=694a913d&hm=2d4373533966d44de6acad6f1df329d26f45c25d5c8b7b5676dcb0ee8861a844&",
   aboutAvatar:"https://cdn.discordapp.com/attachments/799015739973566545/1453160116823003177/image.png?ex=694c7052&is=694b1ed2&hm=e154ccb37f7f82c72dab5af72d0acb400b66f80ea0625909535a1fbe85528413&",
+  aboutName:"Foruxy",
+  aboutRace:"Silver Catfox",
+  aboutBio:"Hawrru~! I'm Foruxy, the Silver Catfox~\nI create Vtuber Discord servers, manage Vtuber communities, and moderate YouTube channels!\nI also help as a Vtuber Advisor, Counselor, and Helper.\nI began my journey since February 2025, I’m dedicated to supporting Vtubers and growing communities with creativity and care.",
   links:[{label:"✉ About Me",url:"#about"},{label:"💼 My Work",url:"#work"},{label:"🌐 Social",url:"#social"}],
   myWork:[
     {image:"https://cdn.discordapp.com/icons/1391655093920727040/aff24dcc07ba0d7913693c536696ee31.png",name:"Yasei Pyon’s Zoological Society",owner:"Yasei Pyon",date:"07 July 2025"},
@@ -104,12 +109,17 @@ const CONFIG={
 
 // Set avatars
 document.querySelector(".container .avatar").style.backgroundImage = `url(${CONFIG.avatar})`;
-document.getElementById("aboutAvatar").style.backgroundImage = `url(${CONFIG.aboutAvatar})`;
+document.querySelector(".about-avatar").style.backgroundImage = `url(${CONFIG.aboutAvatar})`;
 
 // Set texts
-["name","tagline","footer-name","about-tagline"].forEach(id=>
-  document.getElementById(id).textContent = CONFIG[id==="name"||id==="footer-name"?"name":"tagline"]
-);
+document.getElementById("name").textContent = CONFIG.name;
+document.getElementById("tagline").textContent = CONFIG.tagline;
+document.getElementById("footer-name").textContent = CONFIG.name;
+
+// About Me texts
+document.querySelector(".about-name").textContent = `Nama: ${CONFIG.aboutName}`;
+document.querySelector(".about-race").textContent = `Ras: ${CONFIG.aboutRace}`;
+document.querySelector(".about-bio").innerHTML = CONFIG.aboutBio.replace(/\n/g,"<br>");
 
 // Set links
 const linksContainer=document.getElementById("links");
