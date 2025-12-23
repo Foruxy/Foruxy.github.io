@@ -417,8 +417,21 @@ const increment = 100 / (totalTime / intervalTime);
 
 const loadingInterval = setInterval(()=>{
   width += increment;
-  if(width >= 100) width = 100;
-  loadingBar.style.width = width + "%";
+
+  if(width >= 100){
+    width = 100;
+    loadingBar.style.width = "100%";
+
+    clearInterval(loadingInterval);
+
+    loadingScreen.style.opacity = 0;
+    setTimeout(()=>{
+      loadingScreen.style.display = "none";
+      document.querySelector(".container").classList.add("show");
+    }, 500);
+  } else {
+    loadingBar.style.width = width + "%";
+  }
 }, intervalTime);
 
 setTimeout(()=>{
