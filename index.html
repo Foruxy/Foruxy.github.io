@@ -147,34 +147,70 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 
 /* PAPER BOX */
 .paper-box{
-  position:fixed; top:0; left:0; width:100%; height:100%;
-  display:flex; justify-content:center; align-items:center;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   background: rgba(0,0,0,0.5);
-  z-index:2; opacity:0; pointer-events:none;
+  z-index:2;
+  opacity:0;
+  pointer-events:none;
   transition: opacity 0.3s ease;
 }
-.paper-box.active{ opacity:1; pointer-events:auto; }
 
-.paper-box .box-content{
-  background:rgba(2,6,23,.95); color:#e5e7eb;
-  border-radius:22px; padding:26px;
-  max-width:410px; width:100%;
-  box-shadow:0 30px 70px rgba(0,0,0,.8);
-  backdrop-filter:blur(16px);
-  transform: scale(0.8);
-  transition: transform 0.3s ease;
+.paper-box.active{ 
+  opacity:1; 
+  pointer-events:auto; 
 }
-.paper-box.active .box-content{ transform: scale(1); }
 
-.paper-box .close-trigger{
-  position:absolute; top:0; left:0; width:100%; height:100%; cursor:pointer;
+/* ===== ABOUT ME STYLE ===== */
+.about-content {
+  text-align: center;
+}
+
+.about-text {
+  margin-top: 16px;
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #e5e7eb;
+}
+
+.about-text p {
+  margin-bottom: 10px;
+}
+
+.about-text strong {
+  color: var(--accent);
+}
+
+.about-highlight {
+  background: rgba(56,189,248,0.12);
+  border-left: 4px solid var(--accent);
+  padding: 10px 12px;
+  border-radius: 8px;
 }
 
 /* MY WORK STYLING */
 #workContent{
-  max-height: 400px; /* tinggi untuk 3 item */
+  max-height: 560px; /* tinggi untuk 3 item */
   overflow-y: auto;
   padding-right: 8px;
+}
+  .mywork-name{
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+/* RESPONSIVE UNTUK HP */
+@media (max-width: 600px) {
+  #workBox .box-content{
+    max-width: 92%;
+  }
 }
 #workContent::-webkit-scrollbar {
   width: 6px;
@@ -242,20 +278,35 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 </div>
 
 <!-- OVERLAY BOXES -->
-<div class="paper-box" id="aboutBox">
-  <div class="close-trigger"></div>
-  <div class="box-content">
-    <div class="avatar-wrapper"><div class="avatar"></div></div>
-    <h1 id="about-name"></h1>
-    <p id="about-tagline"></p>
-    <div class="bio-description">
-      Hawrru~! I'm Foruxy, the Silver Catfox~
-      I create Vtuber Discord servers, manage Vtuber communities, and moderate YouTube channels!
-      I also help as a Vtuber Advisor, Counselor, and Helper.
-      I began my journey since February 2025, I’m dedicated to supporting Vtubers and growing communities with creativity and care.
-    </div>
+<div class="box-content about-content">
+  <div class="avatar-wrapper">
+    <div class="avatar"></div>
+  </div>
+
+  <h1 id="about-name"></h1>
+  <p id="about-tagline"></p>
+
+  <div class="about-text">
+    <p>Hawrru~! I'm <strong>Foruxy</strong>, the Silver Catfox~</p>
+
+    <p>
+      I create <strong>Vtuber Discord servers</strong>, manage
+      <strong>Vtuber communities</strong>, and moderate
+      <strong>YouTube channels</strong>.
+    </p>
+
+    <p>
+      I also help as a <strong>Vtuber Advisor</strong>,
+      <strong>Counselor</strong>, and <strong>Helper</strong>.
+    </p>
+
+    <p class="about-highlight">
+      ✨ Started since <strong>February 2025</strong>, I’m dedicated to
+      supporting Vtubers and growing communities with creativity and care.
+    </p>
   </div>
 </div>
+
 
 <div class="paper-box" id="workBox">
   <div class="close-trigger"></div>
