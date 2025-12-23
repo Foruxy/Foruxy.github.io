@@ -5,14 +5,19 @@
 <title>Foruxy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-:root {
-  --bg:url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif");
-  --avatar:url("https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png");
-  --name:"Foruxy"; --tag:"Vtuber Talent Manager • Discord Server Manager";
+:root{
+  --main-avatar:url("https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png");
+  --about-avatar:url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif");
   --accent:#38bdf8;
 }
 *{box-sizing:border-box;font-family:"Comic Sans MS","Comic Sans",cursive;cursor:none;margin:0;padding:0;}
-body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--bg);background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;color:#e5e7eb;overflow:hidden;}
+body{min-height:100vh;position:relative;display:flex;justify-content:center;align-items:center;color:#e5e7eb;overflow:hidden;}
+body::before{
+  content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:url('https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif') center/cover no-repeat;z-index:-2;
+}
+body::after{
+  content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:-1;
+}
 #loadingScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:#020617;display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--accent);font-size:2rem;z-index:99999;transition:opacity .5s;}
 #loadingScreen .bar-container{width:60%;height:12px;border:2px solid var(--accent);border-radius:6px;margin-top:20px;overflow:hidden;}
 #loadingScreen .bar{width:0;height:100%;background:var(--accent);transition:width .1s linear;}
@@ -21,7 +26,9 @@ body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)
 .container{max-width:500px;padding:30px;text-align:center;background:rgba(2,6,23,.85);backdrop-filter:blur(16px);border-radius:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px rgba(0,0,0,.8);transform:translateY(100px);opacity:0;transition:transform .8s cubic-bezier(0.25,1,0.5,1),opacity .8s;}
 .container.show{transform:translateY(0);opacity:1;}
 .avatar-wrapper{width:100px;height:100px;margin:0 auto 18px;border-radius:50%;padding:4px;background:conic-gradient(var(--accent),#0ea5e9,var(--accent));}
-.avatar{width:100%;height:100%;border-radius:50%;border:3px solid #fff;background-image:var(--avatar);background-size:cover;background-position:center;}
+.avatar{width:100%;height:100%;border-radius:50%;border:3px solid #fff;background-size:cover;background-position:center;}
+.avatar.main{background-image:var(--main-avatar);}
+.avatar.about{background-image:var(--about-avatar);}
 h1{margin:0;font-size:1.7rem;font-weight:600;}p{margin:8px 0 26px;font-size:.95rem;color:#94a3b8;}
 .bio-description{font-size:.9rem;line-height:1.4;color:#e5e7eb;margin-top:12px;text-align:left;}
 .link{display:block;padding:18px;margin-bottom:16px;border-radius:18px;background:rgba(15,23,42,.95);color:#e5e7eb;text-decoration:none;border:1px solid rgba(255,255,255,.08);transform:translateY(0) scale(1);transition:transform .3s,box-shadow .3s;position:relative;cursor:pointer;}
@@ -46,7 +53,7 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 <div id="loadingScreen">Loading...<div class="bar-container"><div class="bar" id="loadingBar"></div></div></div>
 <div class="cursor"></div>
 <div class="container">
-  <div class="avatar-wrapper"><div class="avatar"></div></div>
+  <div class="avatar-wrapper"><div class="avatar main"></div></div>
   <h1 id="name"></h1>
   <p id="tagline"></p>
   <div id="links"></div>
@@ -55,7 +62,7 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 
 <div class="paper-box" id="aboutBox"><div class="close-trigger"></div>
   <div class="box-content">
-    <div class="avatar-wrapper"><div class="avatar"></div></div>
+    <div class="avatar-wrapper"><div class="avatar about"></div></div>
     <h1 id="about-name"></h1><p id="about-tagline"></p>
     <div class="bio-description">
       Hawrru~! I'm Foruxy, the Silver Catfox~<br>
@@ -95,20 +102,32 @@ const CONFIG={
     {image:"https://cdn.discordapp.com/icons/1405524507330084936/a48a0254bb1646c05e2bf2f782a4eb5f.png",name:"𝓚𝓪𝓲 𝓐𝔃𝓾𝓶𝓪 𝓒𝓸𝓶𝓶𝓾𝓷𝓲𝓽𝔂",owner:"Kaikaje",date:"14 Agustus 2025"}
   ]
 };
+
 ["name","tagline","footer-name","about-name","about-tagline"].forEach(id=>document.getElementById(id).textContent=CONFIG[id.split("-")[0]]||CONFIG.tagline);
+
 const linksContainer=document.getElementById("links");
 CONFIG.links.forEach(item=>{const a=document.createElement("a");a.className="link";a.href=item.url;a.innerHTML=`<span>${item.label}</span>`;linksContainer.appendChild(a);});
+
 const workContent=document.getElementById("workContent");
 CONFIG.myWork.forEach(item=>{const div=document.createElement("div");div.className="mywork-item";div.innerHTML=`<img src="${item.image}" class="mywork-image"><div class="mywork-desc"><div class="mywork-name"><strong>Server Name:</strong> ${item.name}</div><div class="mywork-owner"><strong>Owner:</strong> ${item.owner}</div><div class="mywork-date"><strong>Creation Date:</strong> ${item.date}</div></div>`;workContent.appendChild(div);});
-const cursor=document.querySelector(".cursor");let mouseX=0,mouseY=0,currentX=0,currentY=0;document.addEventListener("mousemove",e=>{mouseX=e.clientX;mouseY=e.clientY;});function animateCursor(){currentX+=(mouseX-currentX)*0.15;currentY+=(mouseY-currentY)*0.15;cursor.style.left=currentX+"px";cursor.style.top=currentY+"px";requestAnimationFrame(animateCursor);}animateCursor();
+
+const cursor=document.querySelector(".cursor");let mouseX=0,mouseY=0,currentX=0,currentY=0;
+document.addEventListener("mousemove",e=>{mouseX=e.clientX;mouseY=e.clientY;});
+function animateCursor(){currentX+=(mouseX-currentX)*0.15;currentY+=(mouseY-currentY)*0.15;cursor.style.left=currentX+"px";cursor.style.top=currentY+"px";requestAnimationFrame(animateCursor);}animateCursor();
+
 document.querySelectorAll(".link").forEach(btn=>{btn.addEventListener("mouseenter",()=>{btn.classList.add("hover");cursor.classList.add("magnify");});btn.addEventListener("mouseleave",()=>{btn.classList.remove("hover");cursor.classList.remove("magnify");});});
-const aboutBtn=document.querySelectorAll(".link")[0],workBtn=document.querySelectorAll(".link")[1],socialBtn=document.querySelectorAll(".link")[2];const aboutBox=document.getElementById("aboutBox"),workBox=document.getElementById("workBox"),socialBox=document.getElementById("socialBox");
+
+const aboutBtn=document.querySelectorAll(".link")[0],workBtn=document.querySelectorAll(".link")[1],socialBtn=document.querySelectorAll(".link")[2];
+const aboutBox=document.getElementById("aboutBox"),workBox=document.getElementById("workBox"),socialBox=document.getElementById("socialBox");
 aboutBtn.addEventListener("click",e=>{e.preventDefault();aboutBox.classList.add("active");});
 workBtn.addEventListener("click",e=>{e.preventDefault();workBox.classList.add("active");});
 socialBtn.addEventListener("click",e=>{e.preventDefault();socialBox.classList.add("active");});
+
 document.querySelectorAll(".close-trigger").forEach(trigger=>{trigger.addEventListener("click",e=>{const box=e.currentTarget.parentElement;box.classList.remove("active");if(box.id==="workBox")workContent.scrollTop=0;});});
 document.querySelectorAll(".box-content").forEach(box=>box.addEventListener("click",e=>e.stopPropagation()));
-const loadingScreen=document.getElementById("loadingScreen"),loadingBar=document.getElementById("loadingBar");let width=0;const totalTime=6000,intervalTime=30,increment=100/(totalTime/intervalTime);const loadingInterval=setInterval(()=>{width+=increment;if(width>=100)width=100;loadingBar.style.width=width+"%";},intervalTime);
+
+const loadingScreen=document.getElementById("loadingScreen"),loadingBar=document.getElementById("loadingBar");let width=0;const totalTime=6000,intervalTime=30,increment=100/(totalTime/intervalTime);
+const loadingInterval=setInterval(()=>{width+=increment;if(width>=100)width=100;loadingBar.style.width=width+"%";},intervalTime);
 setTimeout(()=>{clearInterval(loadingInterval);loadingScreen.style.opacity=0;setTimeout(()=>{loadingScreen.style.display="none";document.querySelector(".container").classList.add("show");},500);},totalTime);
 </script>
 </body>
