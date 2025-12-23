@@ -7,8 +7,10 @@
 <style>
 :root{
 --background-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif?ex=694bc6e5&is=694a7565&hm=28d4ca80a155b0c9f97a525b70ddd1406f4a56d492e7ef4dd8915fa3b08e5708&");
---avatar-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png?ex=694be2bd&is=694a913d&hm=2d4373533966d44de6acad6f1df329d26f45c25d5c8b7b5676dcb0ee8861a844&");
---name:"Foruxy";--tagline:"Vtuber Talent Manager • Discord Server Manager";--accent:#38bdf8;
+--avatar-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png");
+--name:"Foruxy";
+--tagline:"Vtuber Talent Manager • Discord Server Manager";
+--accent:#38bdf8;
 }
 *,body,.container,.link,.paper-box{box-sizing:border-box;font-family:"Comic Sans MS","Comic Sans",cursive;cursor:none!important;margin:0;padding:0;}
 body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--background-image);background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;color:#e5e7eb;overflow:hidden;}
@@ -21,7 +23,9 @@ body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)
 .container.show{transform:translateY(0);opacity:1;}
 .avatar-wrapper{width:100px;height:100px;margin:0 auto 18px;border-radius:50%;padding:4px;background:conic-gradient(var(--accent),#0ea5e9,var(--accent));}
 .avatar{width:100%;height:100%;border-radius:50%;border:3px solid #fff;background-image:var(--avatar-image);background-size:cover;background-position:center;}
-h1{margin:0;font-size:1.7rem;font-weight:600;}p{margin:8px 0 26px;font-size:.95rem;color:#94a3b8;}.bio-description{font-size:.9rem;line-height:1.4;color:#e5e7eb;margin-top:12px;text-align:left;}
+h1{margin:0;font-size:1.7rem;font-weight:600;}
+p{margin:8px 0 26px;font-size:.95rem;color:#94a3b8;}
+.bio-description{font-size:.9rem;line-height:1.4;color:#e5e7eb;margin-top:12px;text-align:left;}
 .link{display:block;padding:18px;margin-bottom:16px;border-radius:18px;background:rgba(15,23,42,.95);color:#e5e7eb;text-decoration:none;border:1px solid rgba(255,255,255,.08);transform:translateY(0) scale(1);transition:transform .3s,box-shadow .3s;position:relative;cursor:pointer;}
 .link.hover{transform:translateY(-3px) scale(1.02);box-shadow:0 15px 40px rgba(56,189,248,.35);}
 .link span{display:inline-block;font-weight:500;transition:transform .3s;}
@@ -41,6 +45,52 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .mywork-desc{display:flex;flex-direction:column;gap:6px;color:#e5e7eb;}
 .mywork-name,.mywork-owner,.mywork-date{font-size:.8rem;}
 .mywork-name strong,.mywork-owner strong,.mywork-date strong{color:var(--accent);}
+
+/* About Box Custom */
+.about-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.about-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-image: url("https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png"); /* Ganti foto di sini */
+  background-size: cover;
+  background-position: center;
+  border: 3px solid var(--accent);
+  flex-shrink: 0;
+}
+
+.about-text h1 {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.about-text p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+}
+
+.about-text .bio-description {
+  margin-top: 10px;
+  line-height: 1.4;
+  color: #e5e7eb;
+  text-align: left;
+}
+
+/* Responsive for mobile */
+@media(max-width:480px){
+  .about-wrapper{flex-direction:column;align-items:center;text-align:center;}
+  .about-text{width:100%;}
+}
 </style>
 </head>
 <body>
@@ -57,15 +107,24 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 </div>
 
 <!-- OVERLAY BOXES -->
-<div class="paper-box" id="aboutBox"><div class="close-trigger"></div>
-<div class="box-content">
-<div class="avatar-wrapper"><div class="avatar"></div></div>
-<h1 id="about-name"></h1><p id="about-tagline"></p>
-<div class="bio-description">Hawrru~! I'm Foruxy, the Silver Catfox~<br>
-I create Vtuber Discord servers, manage Vtuber communities, and moderate YouTube channels!<br>
-I also help as a Vtuber Advisor, Counselor, and Helper.<br>
-I began my journey since February 2025, I’m dedicated to supporting Vtubers and growing communities with creativity and care.<br>
-</div></div></div>
+<div class="paper-box" id="aboutBox">
+  <div class="close-trigger"></div>
+  <div class="box-content about-content">
+    <div class="about-wrapper">
+      <div class="about-avatar" id="about-avatar"></div>
+      <div class="about-text">
+        <h1 id="about-name">Foruxy</h1>
+        <p id="about-race"><strong>Ras:</strong> Silver Catfox</p>
+        <p id="about-bio" class="bio-description">
+          Hawrru~! I'm Foruxy, the Silver Catfox~<br>
+          I create Vtuber Discord servers, manage Vtuber communities, and moderate YouTube channels!<br>
+          I also help as a Vtuber Advisor, Counselor, and Helper.<br>
+          I began my journey since February 2025, I’m dedicated to supporting Vtubers and growing communities with creativity and care.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="paper-box" id="workBox"><div class="close-trigger"></div>
 <div class="box-content" id="workContent"></div></div>
@@ -91,7 +150,8 @@ const CONFIG={name:"Foruxy",tagline:"Vtuber Talent Manager • Discord Server Ma
 {image:"https://cdn.discordapp.com/icons/1449407408081342526/51e73f36e5b8c60814ad27e1ddb9ab7e.png",name:"Amaryn Pastry Shop🎂",owner:"Amaryn",date:"21 Agustus 2025"},
 {image:"https://cdn.discordapp.com/icons/1449766831710797826/748c5a036ff163c8bd67989f7a64b42b.png",name:"Kayce Pavilion",owner:"Kayce Lawrence",date:"14 Desember 2025"},
 {image:"https://cdn.discordapp.com/icons/1405524507330084936/a48a0254bb1646c05e2bf2f782a4eb5f.png",name:"𝓚𝓪𝓲 𝓐𝔃𝓾𝓶𝓪 𝓒𝓸𝓶𝓶𝓾𝓷𝓲𝓽𝔂",owner:"Kaikaje",date:"14 Agustus 2025"}]};
-["name","tagline","footer-name","about-name","about-tagline"].forEach(id=>document.getElementById(id).textContent=CONFIG[id==="name"||id==="footer-name"?"name":"tagline"]);
+
+["name","tagline","footer-name"].forEach(id=>document.getElementById(id).textContent=CONFIG.name);
 const linksContainer=document.getElementById("links");CONFIG.links.forEach(item=>{const a=document.createElement("a");a.className="link";a.href=item.url;a.innerHTML=`<span>${item.label}</span>`;linksContainer.appendChild(a);});
 const workContent=document.getElementById("workContent");CONFIG.myWork.forEach(item=>{const div=document.createElement("div");div.className="mywork-item";div.innerHTML=`<img src="${item.image}" alt="Server Discord" class="mywork-image"><div class="mywork-desc"><div class="mywork-name"><strong>Server Name:</strong> ${item.name}</div><div class="mywork-owner"><strong>Owner:</strong> ${item.owner}</div><div class="mywork-date"><strong>Creation Date:</strong> ${item.date}</div></div>`;workContent.appendChild(div);});
 const cursor=document.querySelector(".cursor");let mouseX=0,mouseY=0,currentX=0,currentY=0;document.addEventListener("mousemove",e=>{mouseX=e.clientX;mouseY=e.clientY;});function animateCursor(){currentX+=(mouseX-currentX)*.15;currentY+=(mouseY-currentY)*.15;cursor.style.left=currentX+"px";cursor.style.top=currentY+"px";requestAnimationFrame(animateCursor);}animateCursor();
