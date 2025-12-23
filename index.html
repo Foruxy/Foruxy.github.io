@@ -9,21 +9,23 @@
 :root {
   --background-image: url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif");
   --avatar-image: url("https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png");
+  --name: "Foruxy";
+  --tagline: "Vtuber Talent Manager • Discord Server Manager";
   --accent: #38bdf8;
 }
 
 /* GLOBAL */
-*{
+*, body, .container, .link, .paper-box {
   box-sizing:border-box;
   font-family:"Comic Sans MS","Comic Sans",cursive;
-  cursor:none;
+  cursor:none !important;
   margin:0;
   padding:0;
 }
 
 body{
   min-height:100vh;
-  background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--background-image);
+  background: linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), var(--background-image);
   background-size:cover;
   background-position:center;
   display:flex;
@@ -33,13 +35,41 @@ body{
   overflow:hidden;
 }
 
+/* LOADING */
+#loadingScreen{
+  position:fixed;
+  inset:0;
+  background:#020617;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:#38bdf8;
+  font-size:2rem;
+  z-index:99999;
+  transition:.5s;
+}
+.bar-container{
+  width:60%;
+  height:12px;
+  border:2px solid var(--accent);
+  border-radius:6px;
+  margin-top:20px;
+  overflow:hidden;
+}
+.bar{
+  height:100%;
+  width:0;
+  background:var(--accent);
+}
+
 /* CURSOR */
 .cursor{
   position:fixed;
   width:14px;
   height:14px;
   border-radius:50%;
-  background:rgba(255,255,255,.9);
+  background:#fff;
   mix-blend-mode:difference;
   pointer-events:none;
   z-index:9999;
@@ -53,7 +83,7 @@ body{
   backdrop-filter:blur(6px);
 }
 
-/* MAIN CARD */
+/* MAIN */
 .container{
   max-width:380px;
   width:100%;
@@ -64,31 +94,24 @@ body{
   border-radius:22px;
   border:1px solid rgba(255,255,255,.08);
   box-shadow:0 30px 70px rgba(0,0,0,.8);
-  opacity:0;
   transform:translateY(100px);
+  opacity:0;
   transition:.8s;
 }
-.container.show{
-  opacity:1;
-  transform:translateY(0);
-}
+.container.show{transform:none;opacity:1;}
 
 .avatar-wrapper{
-  width:120px;
-  height:120px;
+  width:120px;height:120px;
   margin:0 auto 18px;
-  border-radius:50%;
   padding:4px;
+  border-radius:50%;
   background:conic-gradient(var(--accent),#0ea5e9,var(--accent));
 }
 .avatar{
-  width:100%;
-  height:100%;
+  width:100%;height:100%;
   border-radius:50%;
   border:3px solid #fff;
-  background-image:var(--avatar-image);
-  background-size:cover;
-  background-position:center;
+  background:var(--avatar-image) center/cover;
 }
 
 .link{
@@ -97,107 +120,91 @@ body{
   margin-bottom:16px;
   border-radius:18px;
   background:rgba(15,23,42,.95);
-  border:1px solid rgba(255,255,255,.08);
-  text-decoration:none;
   color:#e5e7eb;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.08);
 }
 .link.hover{
   transform:translateY(-3px) scale(1.02);
   box-shadow:0 15px 40px rgba(56,189,248,.35);
 }
 
-/* OVERLAY GLOBAL */
+/* OVERLAY */
 .paper-box{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.5);
   display:flex;
   justify-content:center;
   align-items:center;
+  background:rgba(0,0,0,.5);
   opacity:0;
   pointer-events:none;
   transition:.3s;
 }
-.paper-box.active{
-  opacity:1;
-  pointer-events:auto;
-}
+.paper-box.active{opacity:1;pointer-events:auto;}
 
 .paper-box .box-content{
   background:rgba(2,6,23,.95);
-  color:#e5e7eb;
   border-radius:22px;
-  padding:30px;
-  max-width:650px;
-  width:92%;
+  padding:26px;
+  width:90%;
+  max-width:520px;
   box-shadow:0 30px 70px rgba(0,0,0,.8);
   backdrop-filter:blur(16px);
   transform:scale(.85);
   transition:.3s;
 }
-.paper-box.active .box-content{
-  transform:scale(1);
-}
+.paper-box.active .box-content{transform:scale(1);}
 
 .close-trigger{
   position:absolute;
   inset:0;
 }
 
-/* ABOUT FINAL */
-#aboutBox .box-content{
-  max-width:680px;
-}
-#aboutBox .bio-description{
-  margin-top:18px;
-  font-size:.95rem;
-  line-height:1.7;
+/* ABOUT ME */
+.about-info{
   text-align:left;
+  margin-top:14px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
-.about-divider{
-  height:1px;
-  background:linear-gradient(to right,transparent,var(--accent),transparent);
-  margin:18px 0;
-}
+.about-row strong{color:var(--accent);}
+.about-bio{font-size:.9rem;line-height:1.5;}
 
-/* MY WORK FINAL */
+/* MY WORK */
 #workContent{
-  max-height:440px;
+  max-height:460px;
   overflow-y:auto;
-  padding-right:6px;
+  padding-right:8px;
 }
-
 .mywork-item{
   display:flex;
   gap:16px;
-  width:100%;
-  background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(15,23,42,.95));
+  background:rgba(56,189,248,.1);
   border:2px solid var(--accent);
-  border-radius:18px;
+  border-radius:16px;
   padding:14px;
   margin-bottom:14px;
 }
-
 .mywork-image{
-  width:90px;
-  height:90px;
+  width:110px;
+  height:110px;
   border-radius:12px;
   border:2px solid var(--accent);
-  object-fit:cover;
-  flex-shrink:0;
 }
-
-.mywork-desc{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  word-break:break-word;
-}
-
+.mywork-desc{flex:1;}
+.mywork-name{font-size:1rem;word-break:break-word;}
+.mywork-owner,.mywork-date{font-size:.9rem;}
 </style>
 </head>
 
 <body>
+
+<div id="loadingScreen">
+  Loading...
+  <div class="bar-container"><div class="bar" id="loadingBar"></div></div>
+</div>
 
 <div class="cursor"></div>
 
@@ -206,36 +213,101 @@ body{
   <h1>Foruxy</h1>
   <p>Vtuber Talent Manager • Discord Server Manager</p>
 
-  <a href="#" class="link" onclick="openBox('aboutBox')">✉ About Me</a>
-  <a href="#" class="link" onclick="openBox('workBox')">💼 My Work</a>
-  <a href="#" class="link" onclick="openBox('socialBox')">🌐 Social</a>
+  <a href="#about" class="link">✉ About Me</a>
+  <a href="#work" class="link">💼 My Work</a>
+  <a href="#social" class="link">🌐 Social</a>
 
-  <footer style="font-size:.75rem;color:#64748b;">© 2025 Foruxy</footer>
+  <footer style="margin-top:16px;font-size:.75rem;color:#64748b;">© 2025 Foruxy</footer>
 </div>
 
 <!-- ABOUT -->
 <div class="paper-box" id="aboutBox">
-  <div class="close-trigger" onclick="closeBox('aboutBox')"></div>
+  <div class="close-trigger"></div>
   <div class="box-content">
     <div class="avatar-wrapper"><div class="avatar"></div></div>
     <h1>Foruxy</h1>
     <p>Vtuber Talent Manager • Discord Server Manager</p>
-    <div class="about-divider"></div>
-    <div class="bio-description">
-      Hawrru~! I'm Foruxy, the Silver Catfox~  
-      I create and manage Vtuber Discord communities, moderate YouTube channels,  
-      and help as a Vtuber Advisor & Counselor.  
-      Since February 2025, I’ve been supporting creators with creativity and care.
+
+    <div class="about-info">
+      <div class="about-row"><strong>Nama:</strong> Foruxy</div>
+      <div class="about-row"><strong>Jobdesk:</strong> Advisor, Counselor, Helper For Vtuber</div>
+      <div class="about-row">
+        <strong>Bio:</strong>
+        <div class="about-bio">
+          Hawrru~! I'm Foruxy, the Silver Catfox~<br>
+          I create and manage Vtuber Discord servers and communities.<br>
+          Started my journey in February 2025, dedicated to helping Vtubers grow with creativity and care.
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- MY WORK -->
+<!-- WORK -->
 <div class="paper-box" id="workBox">
-  <div class="close-trigger" onclick="closeBox('workBox')"></div>
-  <div class="box-content" id="workContent">
-    <div class="mywork-item">
-      <img src="https://cdn.discordapp.com/icons/1391655093920727040/aff24dcc07ba0d7913693c536696ee31.png" class="mywork-image">
-      <div class="mywork-desc">
-        <strong>Yasei Pyon’s Zoological Society</strong>
-        Owner: Yasei Pyon<br>Dibuat: 07 July 2025
+  <div class="close-trigger"></div>
+  <div class="box-content" id="workContent"></div>
+</div>
+
+<!-- SOCIAL -->
+<div class="paper-box" id="socialBox">
+  <div class="close-trigger"></div>
+  <div class="box-content">
+    <h1>Social Media</h1>
+    <a href="https://www.instagram.com/foruxy_/" target="_blank" class="link">📸 Instagram</a>
+    <a href="https://x.com/Foruxy" target="_blank" class="link">✖ Twitter</a>
+    <a href="https://www.youtube.com/@Foruxy" target="_blank" class="link">▶️ Youtube</a>
+    <a href="https://discord.com/users/797770498745303092" target="_blank" class="link">✉ Discord</a>
+  </div>
+</div>
+
+<script>
+const workData = [
+  {image:"https://cdn.discordapp.com/icons/1391655093920727040/aff24dcc07ba0d7913693c536696ee31.png",name:"Yasei Pyon’s Zoological Society",owner:"Yasei Pyon",date:"07 July 2025"},
+  {image:"https://cdn.discordapp.com/icons/1431225172614054000/6db71b7db347b180f8ae28997a074631.png",name:"Hidden Peak ❄",owner:"Eseuri Krasu",date:"24 October 2025"},
+  {image:"https://cdn.discordapp.com/icons/1416027689554411636/c9379598ef7930896143ec33a8e8b4e3.png",name:"World Of Usagi🐰",owner:"Firany",date:"12 September 2025"}
+];
+
+const workBox=document.getElementById("workContent");
+workData.forEach(w=>{
+  workBox.innerHTML+=`
+  <div class="mywork-item">
+    <img src="${w.image}" class="mywork-image">
+    <div class="mywork-desc">
+      <div class="mywork-name"><strong>${w.name}</strong></div>
+      <div class="mywork-owner">Owner: ${w.owner}</div>
+      <div class="mywork-date">Created: ${w.date}</div>
+    </div>
+  </div>`;
+});
+
+/* OVERLAY LOGIC */
+const links=document.querySelectorAll(".link");
+const aboutBox=document.getElementById("aboutBox");
+const workBoxWrap=document.getElementById("workBox");
+const socialBox=document.getElementById("socialBox");
+
+links[0].onclick=e=>{e.preventDefault();aboutBox.classList.add("active");};
+links[1].onclick=e=>{e.preventDefault();workBoxWrap.classList.add("active");};
+links[2].onclick=e=>{e.preventDefault();socialBox.classList.add("active");};
+
+document.querySelectorAll(".close-trigger").forEach(c=>{
+  c.onclick=()=>c.parentElement.classList.remove("active");
+});
+
+/* LOADING */
+let w=0;
+const bar=document.getElementById("loadingBar");
+const interval=setInterval(()=>{
+  w+=1;
+  bar.style.width=w+"%";
+  if(w>=100){
+    clearInterval(interval);
+    document.getElementById("loadingScreen").style.display="none";
+    document.querySelector(".container").classList.add("show");
+  }
+},60);
+</script>
+
+</body>
+</html>
