@@ -182,7 +182,20 @@ footer{margin-top:14px;font-size:.7rem;color:#64748b;}
 
 <script>
 // CONFIG
-const CONFIG = { /* Same as your original config */ };
+const CONFIG = {
+  name: "Foruxy",
+  tagline: "Vtuber Talent Manager • Discord Server Manager",
+  links: [
+    { label: "✉ About Me", url: "#about" },
+    { label: "💼 My Work", url: "#work" },
+    { label: "🌐 Social", url: "#social" }
+  ],
+  myWork: [
+    { image: "https://cdn.discordapp.com/icons/1391655093920727040/aff24dcc07ba0d7913693c536696ee31.png", name: "Yasei Pyon’s Zoological Society", owner: "Yasei Pyon", date: "07 July 2025" },
+    { image: "https://cdn.discordapp.com/icons/1431225172614054000/6db71b7db347b180f8ae28997a074631.png", name: "Hidden Peak ❄", owner: "Eseuri Krasu", date: "24 October 2025" },
+    { image: "https://cdn.discordapp.com/icons/1416027689554411636/c9379598ef7930896143ec33a8e8b4e3.png", name: "World Of Usagi🐰", owner: "Firany", date: "12 September 2025" }
+  ]
+};
 
 // SETUP
 document.getElementById("name").textContent = CONFIG.name;
@@ -240,21 +253,25 @@ document.querySelectorAll(".close-trigger").forEach(trigger=>trigger.addEventLis
 }));
 document.querySelectorAll(".box-content").forEach(box=> box.addEventListener("click", e=> e.stopPropagation()));
 
-// LOADING SCREEN
+// LOADING SCREEN FIXED
 const loadingScreen = document.getElementById("loadingScreen");
 const loadingBar = document.getElementById("loadingBar");
-let width=0;
-const intervalTime=20;
-const increment=1;
-const loadingInterval=setInterval(()=>{
-  width+=increment; if(width>100) width=100;
-  loadingBar.style.width = width+"%";
-}, intervalTime);
-window.onload = ()=>{
+let width = 0;
+const loadingInterval = setInterval(() => {
+  width += 1;
+  if (width > 100) width = 100;
+  loadingBar.style.width = width + "%";
+}, 20);
+
+window.addEventListener("load", () => {
   clearInterval(loadingInterval);
-  loadingScreen.style.opacity=0;
-  setTimeout(()=>{ loadingScreen.style.display="none"; document.querySelector(".container").classList.add("show"); },500);
-};
+  loadingBar.style.width = "100%";
+  loadingScreen.style.opacity = 0;
+  setTimeout(() => {
+    loadingScreen.style.display = "none";
+    document.querySelector(".container").classList.add("show");
+  }, 500);
+});
 </script>
 
 </body>
