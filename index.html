@@ -8,10 +8,11 @@
 <style>
 :root{
   --background-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif");
+  --avatar-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1453160116823003177/image.png");
   --accent:#38bdf8;
 }
 
-*{
+*,body,.container,.link,.paper-box{
   box-sizing:border-box;
   font-family:"Comic Sans MS","Comic Sans",cursive;
   cursor:none!important;
@@ -32,6 +33,59 @@ body{
   overflow:hidden;
 }
 
+/* ===== LOADING ===== */
+#loadingScreen{
+  position:fixed;
+  inset:0;
+  background:#020617;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:var(--accent);
+  font-size:1.6rem;
+  z-index:99999;
+  transition:opacity .5s;
+}
+#loadingScreen .bar-container{
+  width:260px;
+  height:8px;
+  border:2px solid var(--accent);
+  border-radius:6px;
+  margin-top:16px;
+  overflow:hidden;
+}
+#loadingScreen .bar{
+  width:0%;
+  height:100%;
+  background:var(--accent);
+}
+.loading-text{
+  animation:slowBlink 2.8s infinite;
+}
+
+/* ===== CURSOR ===== */
+.cursor{
+  position:fixed;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:rgba(255,255,255,.9);
+  mix-blend-mode:difference;
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:.2s;
+}
+.cursor.magnify{
+  width:48px;
+  height:48px;
+  background:rgba(255,255,255,.15);
+  border:2px solid var(--accent);
+  backdrop-filter:blur(6px);
+}
+
+/* ===== MAIN CARD ===== */
 .container{
   width:100%;
   max-width:500px;
@@ -41,30 +95,33 @@ body{
   backdrop-filter:blur(16px);
   border-radius:20px;
   box-shadow:0 30px 70px rgba(0,0,0,.8);
-  opacity:0;
   transform:translateY(100px);
-  transition:.8s;
+  opacity:0;
+  transition:.8s cubic-bezier(.25,1,.5,1);
 }
-
 .container.show{
-  opacity:1;
   transform:translateY(0);
+  opacity:1;
 }
 
 /* ===== AVATAR ===== */
 .avatar-wrapper{
-  width:110px;
-  height:110px;
+  width:100px;
+  height:100px;
   margin:0 auto 18px;
-  padding:5px;
+  padding:4px;
 }
-
 .avatar{
   width:100%;
   height:100%;
+  background-image:var(--avatar-image);
   background-size:cover;
   background-position:center;
 }
+
+/* ===== TEXT ===== */
+h1{font-size:1.7rem;font-weight:600;}
+p{margin:8px 0 26px;font-size:.95rem;color:#94a3b8;}
 
 /* ===== LINKS ===== */
 .link{
@@ -75,92 +132,119 @@ body{
   background:rgba(15,23,42,.95);
   color:#e5e7eb;
   text-decoration:none;
+  border:1px solid rgba(255,255,255,.08);
   transition:.3s;
 }
-
-.link:hover{
-  transform:translateY(-3px) scale(1.03);
+.link.hover{
+  transform:translateY(-3px) scale(1.02);
   box-shadow:0 15px 40px rgba(56,189,248,.35);
+}
+.link span{
+  font-weight:500;
 }
 
 /* ===== OVERLAY ===== */
 .paper-box{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.5);
   display:flex;
   justify-content:center;
   align-items:center;
+  background:rgba(0,0,0,.5);
+  z-index:2;
   opacity:0;
   pointer-events:none;
   transition:.3s;
 }
-
 .paper-box.active{
   opacity:1;
   pointer-events:auto;
 }
-
 .box-content{
   background:rgba(2,6,23,.95);
+  color:#e5e7eb;
+  border-radius:22px;
   padding:26px;
-  border-radius:20px;
   max-width:640px;
-  width:90%;
+  width:100%;
+  box-shadow:0 30px 70px rgba(0,0,0,.8);
+  backdrop-filter:blur(16px);
+  transform:scale(.8);
+  transition:.3s;
+}
+.paper-box.active .box-content{
+  transform:scale(1);
+}
+.close-trigger{
+  position:absolute;
+  inset:0;
 }
 
+/* ===== ABOUT ===== */
 .about-box-content{
   display:flex;
   gap:20px;
 }
-
 .about-avatar{
   width:120px;
   height:120px;
   background-size:cover;
   background-position:center;
-  flex-shrink:0;
 }
 
-/* ===== MY WORK ===== */
+/* ===== WORK ===== */
+#workContent{
+  max-height:540px;
+  overflow-y:auto;
+}
 .mywork-item{
   display:flex;
-  gap:14px;
+  gap:16px;
   padding:12px;
   margin-bottom:12px;
   align-items:center;
 }
-
 .mywork-image{
   width:100px;
   height:100px;
   object-fit:cover;
 }
 
+/* ===== FOOTER ===== */
 footer{
+  margin-top:18px;
   font-size:.75rem;
   color:#64748b;
-  margin-top:16px;
+}
+
+@keyframes slowBlink{
+  0%{opacity:1}
+  50%{opacity:.4}
+  100%{opacity:1}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <div class="avatar-wrapper">
-    <div class="avatar"></div>
-  </div>
+<div id="loadingScreen">
+  <div class="loading-text">Loading...</div>
+  <div class="bar-container"><div class="bar" id="loadingBar"></div></div>
+</div>
 
+<div class="cursor"></div>
+
+<div class="container">
+  <div class="avatar-wrapper"><div class="avatar"></div></div>
   <h1 id="name"></h1>
   <p id="tagline"></p>
-
   <div id="links"></div>
   <footer>© 2025 <span id="footer-name"></span></footer>
 </div>
 
 <!-- ABOUT -->
 <div class="paper-box" id="aboutBox">
+  <div class="close-trigger"></div>
   <div class="box-content about-box-content">
     <div class="about-avatar"></div>
     <div>
@@ -173,27 +257,28 @@ footer{
 
 <!-- WORK -->
 <div class="paper-box" id="workBox">
+  <div class="close-trigger"></div>
   <div class="box-content" id="workContent">
-    <h2>My Work</h2>
+    <h1>My Work</h1>
   </div>
 </div>
 
 <script>
 const CONFIG={
   name:"Foruxy",
-  tagline:"Your Partner for VTuber Servers",
-  avatar:"https://cdn.discordapp.com/attachments/799015739973566545/1453160116823003177/image.png",
+  tagline:"Your Partner for VTuber Servers, Moderation, and Management",
+
   aboutAvatar:"https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png",
 
   borderSettings:{
-    mainAvatar:{ color:"#38bdf8", size:4, radius:"50%" },
-    aboutAvatar:{ color:"#facc15", size:3, radius:"14px" },
-    myWork:{ color:"#ff7a18", size:2, radius:"16px" }
+    mainAvatar:{color:"#38bdf8",size:4,radius:"50%"},
+    aboutAvatar:{color:"#facc15",size:3,radius:"14px"},
+    myWork:{color:"#ff7a18",size:2,radius:"16px"}
   },
 
   links:[
-    {label:"✉ About Me", box:"aboutBox"},
-    {label:"💼 My Work", box:"workBox"}
+    {label:"✉ About Me",box:"aboutBox"},
+    {label:"💼 My Work",box:"workBox"}
   ],
 
   myWork:[
@@ -201,60 +286,78 @@ const CONFIG={
   ]
 };
 
-/* ===== BASIC DATA ===== */
-document.getElementById("name").textContent=CONFIG.name;
-document.getElementById("tagline").textContent=CONFIG.tagline;
-document.getElementById("footer-name").textContent=CONFIG.name;
-
-document.querySelector(".avatar").style.backgroundImage=`url(${CONFIG.avatar})`;
-document.querySelector(".about-avatar").style.backgroundImage=`url(${CONFIG.aboutAvatar})`;
+/* ===== BASIC ===== */
+name.textContent=CONFIG.name;
+tagline.textContent=CONFIG.tagline;
+footer-name.textContent=CONFIG.name;
 
 /* ===== APPLY BORDER SETTINGS ===== */
 const bs=CONFIG.borderSettings;
 
-// Main avatar
-const wrap=document.querySelector(".avatar-wrapper");
-wrap.style.border=`${bs.mainAvatar.size}px solid ${bs.mainAvatar.color}`;
-wrap.style.borderRadius=bs.mainAvatar.radius;
+document.querySelector(".avatar-wrapper").style.border=
+`${bs.mainAvatar.size}px solid ${bs.mainAvatar.color}`;
+document.querySelector(".avatar-wrapper").style.borderRadius=bs.mainAvatar.radius;
 document.querySelector(".avatar").style.borderRadius=bs.mainAvatar.radius;
 
-// About avatar
 const about=document.querySelector(".about-avatar");
+about.style.backgroundImage=`url(${CONFIG.aboutAvatar})`;
 about.style.border=`${bs.aboutAvatar.size}px solid ${bs.aboutAvatar.color}`;
 about.style.borderRadius=bs.aboutAvatar.radius;
 
-// Links
-const links=document.getElementById("links");
+/* ===== LINKS ===== */
+links.innerHTML="";
 CONFIG.links.forEach(l=>{
   const a=document.createElement("a");
   a.className="link";
-  a.textContent=l.label;
+  a.innerHTML=`<span>${l.label}</span>`;
   a.onclick=()=>document.getElementById(l.box).classList.add("active");
   links.appendChild(a);
 });
 
-// My work
-const work=document.getElementById("workContent");
+/* ===== WORK ===== */
 CONFIG.myWork.forEach(w=>{
   const div=document.createElement("div");
   div.className="mywork-item";
   div.style.border=`${bs.myWork.size}px solid ${bs.myWork.color}`;
   div.style.borderRadius=bs.myWork.radius;
-
-  div.innerHTML=`
-    <img src="${w.image}" class="mywork-image">
-    <div>${w.name}</div>
-  `;
-  div.querySelector("img").style.borderRadius=bs.myWork.radius;
-  div.querySelector("img").style.border=`${bs.myWork.size}px solid ${bs.myWork.color}`;
-  work.appendChild(div);
+  div.innerHTML=`<img class="mywork-image" src="${w.image}"><div>${w.name}</div>`;
+  const img=div.querySelector("img");
+  img.style.border=`${bs.myWork.size}px solid ${bs.myWork.color}`;
+  img.style.borderRadius=bs.myWork.radius;
+  workContent.appendChild(div);
 });
 
-document.querySelectorAll(".paper-box").forEach(b=>{
-  b.onclick=()=>b.classList.remove("active");
+/* ===== CLOSE ===== */
+document.querySelectorAll(".close-trigger").forEach(c=>{
+  c.onclick=e=>e.target.parentElement.classList.remove("active");
 });
 
-document.querySelector(".container").classList.add("show");
+/* ===== CURSOR ===== */
+const cursor=document.querySelector(".cursor");
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;});
+(function anim(){
+  cx+=(mx-cx)*.15; cy+=(my-cy)*.15;
+  cursor.style.left=cx+"px";
+  cursor.style.top=cy+"px";
+  requestAnimationFrame(anim);
+})();
+
+/* ===== LOADING ===== */
+const bar=document.getElementById("loadingBar");
+let w=0;
+const i=setInterval(()=>{
+  w+=1;
+  bar.style.width=w+"%";
+  if(w>=100){
+    clearInterval(i);
+    loadingScreen.style.opacity=0;
+    setTimeout(()=>{
+      loadingScreen.remove();
+      document.querySelector(".container").classList.add("show");
+    },500);
+  }
+},30);
 </script>
 
 </body>
