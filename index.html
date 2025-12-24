@@ -32,6 +32,7 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .paper-box .box-content{background:rgba(2,6,23,.95);color:#e5e7eb;border-radius:22px;padding:26px;max-width:600px;width:100%;box-shadow:0 30px 70px rgba(0,0,0,.8);backdrop-filter:blur(16px);transform:scale(.8);transition:transform .3s;}
 .paper-box.active .box-content{transform:scale(1);}
 .paper-box .close-trigger{position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;}
+.space {margin-top: 20px;}
 #workContent{max-height:600px;overflow-y:auto;padding-right:20px;margin:80px auto;}
 #workContent::-webkit-scrollbar{width:0px;}
 #workContent::-webkit-scrollbar-thumb{background-color:var(--accent);border-radius:1px;}
@@ -45,6 +46,8 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .about-box-content .about-avatar{width:120px;height:120px;border-radius:12px;border:3px solid var(--accent);background-size:cover;background-position:center;flex-shrink:0;}
 .about-box-content .about-text{flex:1;color:#e5e7eb;}
 .about-box-content .about-text div{margin-bottom:8px;}
+.bio-description .about-bio p {font-size:.8rem;}
+
 </style>
 </head>
 <body>
@@ -72,8 +75,14 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 </div></div>
 
 <div class="paper-box" id="workBox"><div class="close-trigger"></div>
-<div class="box-content" id="workContent"></div></div>
-
+<div class="box-content" id="workContent">
+  <!-- Teks Penjelasan -->
+  <h1>My Work</h1>
+  <div class="bio-description">
+    Server Discord yang aku kelola.
+  </div>
+  <div class="space"></div>
+</div></div>
 <div class="paper-box" id="socialBox"><div class="close-trigger"></div>
 <div class="box-content">
 <h1>Social Media</h1>
@@ -92,7 +101,7 @@ const CONFIG={
   aboutAvatar:"https://cdn.discordapp.com/attachments/799015739973566545/1453160116823003177/image.png?ex=694c7052&is=694b1ed2&hm=e154ccb37f7f82c72dab5af72d0acb400b66f80ea0625909535a1fbe85528413&",
   aboutName:"Foruxy",
   aboutRace:"Silver Catfox",
-  aboutBio:"Hawrru~! I'm Foruxy, the Silver Catfox~\nI create Vtuber Discord servers, manage Vtuber communities, and moderate YouTube channels!\nI also help as a Vtuber Advisor, Counselor, and Helper.\nI began my journey since February 2025, I’m dedicated to supporting Vtubers and growing communities with creativity and care.",
+  aboutBio:"Hawrru~ ! I'm Foruxy, the Silver Catfox~\nI create Vtuber Discord servers, manage Vtuber communities, and moderate YouTube channels!\nI also help as a Vtuber Advisor, Counselor, and Helper.\nI began my journey since February 2025, I’m dedicated to supporting Vtubers and growing communities with creativity and care.",
   links:[{label:"✉ About Me",url:"#about"},{label:"💼 My Work",url:"#work"},{label:"🌐 Social",url:"#social"}],
   myWork:[
     {image:"https://cdn.discordapp.com/icons/1391655093920727040/aff24dcc07ba0d7913693c536696ee31.png",name:"Yasei Pyon’s Zoological Society",owner:"Yasei Pyon",date:"07 July 2025"},
@@ -118,8 +127,8 @@ document.getElementById("footer-name").textContent = CONFIG.name;
 
 // About Me texts
 document.querySelector(".about-name").textContent = `Nama: ${CONFIG.aboutName}`;
-document.querySelector(".about-race").textContent = `Ras: ${CONFIG.aboutRace}`;
-document.querySelector(".about-bio").innerHTML = CONFIG.aboutBio.replace(/\n/g,"<br>");
+document.querySelector(".about-race").textContent = `Race: ${CONFIG.aboutRace}`;
+document.querySelector(".about-bio").innerHTML = `Bio: ${CONFIG.aboutBio.replace(/\n/g,"<br>")}`;
 
 // Set links
 const linksContainer=document.getElementById("links");
