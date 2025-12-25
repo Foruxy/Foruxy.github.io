@@ -166,20 +166,6 @@ CONFIG.links.forEach(item=>{
   linksContainer.appendChild(a);
 });
   
-// Set social media dengan icon
-const socialBoxContent = document.querySelector("#socialBox .bio-description");
-socialBoxContent.innerHTML = ""; // kosongkan dulu
-
-CONFIG.social.forEach(item => {
-  const a = document.createElement("a");
-  a.className = "link";
-  a.href = item.url;
-  a.target = "_blank";
-  a.style.marginBottom = "8px";
-  a.innerHTML = `<img src="${item.icon}" alt="${item.name}" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;"> <span>${item.name}</span>`;
-  socialBoxContent.appendChild(a);
-});
-
 // Set work items
 const workContent=document.getElementById("workContent");
 CONFIG.myWork.forEach(item=>{
