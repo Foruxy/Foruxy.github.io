@@ -115,7 +115,7 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 </div></div></div>
 
 <script>
-const CONFIG={
+const CONFIG = {
   name:"Foruxy Puppetaru",
   tagline:"Your Partner for VTuber Servers, Moderation, and Management",
   avatar:"https://cdn.discordapp.com/attachments/799015739973566545/1453160116823003177/image.png?ex=694d1912&is=694bc792&hm=fcfcc7ab2ef5677ff943c32548a02ceb46195f196d2ab23912efd52fb7dac490&",
@@ -127,22 +127,16 @@ const CONFIG={
   myWork:[
     {image:"https://cdn.discordapp.com/icons/1391655093920727040/aff24dcc07ba0d7913693c536696ee31.png",name:"Yasei Pyon’s Zoological Society",owner:"Yasei Pyon",date:"07 July 2025"},
     {image:"https://cdn.discordapp.com/icons/1431225172614054000/6db71b7db347b180f8ae28997a074631.png",name:"Hidden Peak ❄",owner:"Eseuri Krasu",date:"24 October 2025"},
-    {image:"https://cdn.discordapp.com/icons/1416027689554411636/c9379598ef7930896143ec33a8e8b4e3.png",name:"World Of Usagi🐰",owner:"Firany UM",date:"12 September 2025"},
-    {image:"https://cdn.discordapp.com/icons/1449052821193232419/30f98d369cedebe200d852fce8323e63.png",name:"Kira's Aquarium🐟",owner:"Kira Maguro",date:"12 Desember 2025"},
-    {image:"https://cdn.discordapp.com/icons/1437694080497877104/51b342307e2971b2c9a642166d6858ff.png",name:"(Private) Clanen's Fluffytopia🍭",owner:"Clara Nefia",date:"11 Juni 2025"},
-    {image:"https://cdn.discordapp.com/icons/1449407408081342526/51e73f36e5b8c60814ad27e1ddb9ab7e.png",name:"Amaryn Pastry Shop🎂",owner:"Amaryn",date:"21 Agustus 2025"},
-    {image:"https://cdn.discordapp.com/icons/1449766831710797826/748c5a036ff163c8bd67989f7a64b42b.png",name:"Kayce Pavilion",owner:"Kayce Lawrence",date:"14 Desember 2025"},
-    {image:"https://cdn.discordapp.com/icons/1405524507330084936/a48a0254bb1646c05e2bf2f782a4eb5f.png",name:"[ 𝓚.𝓐.𝓒 ] 𝓚𝓪𝓲 𝓐𝔃𝓾𝓶𝓪 𝓒𝓸𝓶𝓶𝓾𝓷𝓲𝓽𝔂",owner:"Kaikaje",date:"14 Agustus 2025"},
-    {image:"https://cdn.discordapp.com/icons/792733470958551040/ffd45bb32ecb865a6851ebcfa8c39eaa.png",name:"Fowl Base",owner:"Foruxy",date:"27 Desember 2020"}
+    // ...
   ],
-  CONFIG.social = [
+  social: [
     {name:"Instagram", url:"https://www.instagram.com/foruxy_/", icon:"https://example.com/instagram-icon.png"},
     {name:"Twitter", url:"https://x.com/Foruxy", icon:"https://www.gstatic.com/youtube/img/watch/social_media/twitter_1x.png"},
     {name:"Youtube", url:"https://www.youtube.com/@Foruxy", icon:"https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png"},
     {name:"Discord", url:"https://discord.com/users/797770498745303092", icon:"https://www.gstatic.com/youtube/img/watch/social_media/discord_1x.png"}
   ]
-  
 };
+
 
 // Set avatars
 document.querySelector(".container .avatar").style.backgroundImage = `url(${CONFIG.avatar})`;
@@ -166,6 +160,20 @@ CONFIG.links.forEach(item=>{
   linksContainer.appendChild(a);
 });
   
+// Set social media dengan icon
+const socialBoxContent = document.querySelector("#socialBox .bio-description");
+socialBoxContent.innerHTML = ""; // kosongkan dulu
+
+CONFIG.social.forEach(item => {
+  const a = document.createElement("a");
+  a.className = "link";
+  a.href = item.url;
+  a.target = "_blank";
+  a.style.marginBottom = "8px";
+  a.innerHTML = `<img src="${item.icon}" alt="${item.name}" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;"> <span>${item.name}</span>`;
+  socialBoxContent.appendChild(a);
+});
+
 // Set work items
 const workContent=document.getElementById("workContent");
 CONFIG.myWork.forEach(item=>{
