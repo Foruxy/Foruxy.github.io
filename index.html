@@ -135,6 +135,13 @@ const CONFIG={
     {image:"https://cdn.discordapp.com/icons/1405524507330084936/a48a0254bb1646c05e2bf2f782a4eb5f.png",name:"[ 𝓚.𝓐.𝓒 ] 𝓚𝓪𝓲 𝓐𝔃𝓾𝓶𝓪 𝓒𝓸𝓶𝓶𝓾𝓷𝓲𝓽𝔂",owner:"Kaikaje",date:"14 Agustus 2025"},
     {image:"https://cdn.discordapp.com/icons/792733470958551040/ffd45bb32ecb865a6851ebcfa8c39eaa.png",name:"Fowl Base",owner:"Foruxy",date:"27 Desember 2020"}
   ]
+  CONFIG.social = [
+    {name:"Instagram", url:"https://www.instagram.com/foruxy_/", icon:"https://example.com/instagram-icon.png"},
+    {name:"Twitter", url:"https://x.com/Foruxy", icon:"https://www.gstatic.com/youtube/img/watch/social_media/twitter_1x.png"},
+    {name:"Youtube", url:"https://www.youtube.com/@Foruxy", icon:"https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png"},
+    {name:"Discord", url:"https://discord.com/users/797770498745303092", icon:"https://www.gstatic.com/youtube/img/watch/social_media/discord_1x.png"}
+  ];
+  
 };
 
 // Set avatars
@@ -157,6 +164,20 @@ CONFIG.links.forEach(item=>{
   const a=document.createElement("a");
   a.className="link"; a.href=item.url; a.innerHTML=`<span>${item.label}</span>`;
   linksContainer.appendChild(a);
+});
+  
+// Set social media dengan icon
+const socialBoxContent = document.querySelector("#socialBox .bio-description");
+socialBoxContent.innerHTML = ""; // kosongkan dulu
+
+CONFIG.social.forEach(item => {
+  const a = document.createElement("a");
+  a.className = "link";
+  a.href = item.url;
+  a.target = "_blank";
+  a.style.marginBottom = "8px";
+  a.innerHTML = `<img src="${item.icon}" alt="${item.name}" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;"> <span>${item.name}</span>`;
+  socialBoxContent.appendChild(a);
 });
 
 // Set work items
