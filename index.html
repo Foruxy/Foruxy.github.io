@@ -19,6 +19,10 @@
 
   --mywork-image-outline-color:#34d399; /* Warna outline gambar di My Work */
   --mywork-image-outline-width:2px;     /* Ketebalan outline gambar di My Work */
+  
+  --mywork-image-outline-color: #34d399;  /* warna outline gambar */
+  --mywork-image-outline-width: 2px;      /* ketebalan outline gambar */
+
 }
 *,body,.container,.link,.paper-box{box-sizing:border-box;font-family:"Comic Sans MS","Comic Sans",cursive;cursor:none!important;margin:0;padding:0;}
 body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--background-image);background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;color:#e5e7eb;overflow:hidden;}
@@ -49,7 +53,7 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 #workContent::-webkit-scrollbar{width:0px;}
 #workContent::-webkit-scrollbar-thumb{background-color:var(--accent);border-radius:1px;}
 #workContent::-webkit-scrollbar-track{background:rgba(255,255,255,0.05);border-radius:1px;}
-.mywork-item{display:flex;gap:16px;background:rgba(56,189,248,.1);border:2px solid #ff7a18;border-radius:16px;padding:12px;align-items:center;margin-bottom:12px;}
+.mywork-item{display:flex;gap:16px;background: var(--mywork-background);border:2px solid var(--mywork-border-color);border-radius:16px;padding:12px;align-items:center;margin-bottom:12px;}
 .mywork-image{width:100px;height:100px;object-fit:cover;border-radius:12px;border:var(--mywork-image-outline-width) solid var(--mywork-image-outline-color);flex-shrink:0;}.mywork-desc{display:flex;flex-direction:column;gap:6px;color:#e5e7eb;}
 .mywork-name,.mywork-owner,.mywork-date{font-size:.9rem;}
 .mywork-name strong,.mywork-owner strong,.mywork-date strong{color:var(--accent);}
