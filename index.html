@@ -7,7 +7,7 @@
 <style>
 :root{
   --background-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif?ex=694dc125&is=694c6fa5&hm=7088a62c188b7a2dfefc61a8528999cfdfc782ff8b1cb91c6bf3c1080f3773f4&");
-  --avatar-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1453160116823003177/image.png");
+  --avatar-image-background:url("https://cdn.discordapp.com/attachments/799015739973566545/1453160116823003177/image.png");
   --accent:#38bdf8;
 
   /* Variabel baru untuk outline */
@@ -17,10 +17,10 @@
   --about-avatar-outline-color:#f87171; /* Warna outline avatar di About */
   --about-avatar-outline-width:3px;     /* Ketebalan outline avatar di About */
 
-  --mywork-image-outline-color:#454747; /* Warna outline gambar di My Work */
+  --mywork-image-outline-color:#f1f0f5; /* Warna outline gambar di My Work */
   --mywork-image-outline-width:2px;     /* Ketebalan outline gambar di My Work */
   
-  --mywork-border-color: #e9f0ef;  /* warna outline box */
+  --mywork-border-color: #8a898c;  /* warna outline box */
   --mywork-box-outline-width: 2px; /* ketebalan outline box */
 
 }
@@ -35,7 +35,7 @@ body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)
 .container{width:100%;max-width:500px;padding:30px;text-align:center;background:rgba(2,6,23,.85);backdrop-filter:blur(16px);border-radius:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px rgba(0,0,0,.8);position:relative;z-index:1;transform:translateY(100px);opacity:0;transition:transform .8s cubic-bezier(.25,1,.5,1),opacity .8s;}
 .container.show{transform:translateY(0);opacity:1;}
 .avatar-wrapper{width:100px;height:100px;margin:0 auto 18px;border-radius:50%;padding:var(--avatar-outline-width);background:conic-gradient(var(--avatar-outline-color), #0ea5e9, var(--avatar-outline-color));}
-.avatar{width:100%;height:100%;border-radius:50%;border:var(--avatar-outline-width) solid #fff;background-image:var(--avatar-image);background-size:cover;background-position:center;}
+.avatar{width:100%;height:100%;border-radius:50%;border:var(--avatar-outline-width) solid #fff;background-image:var(--avatar-image-background);background-size:cover;background-position:center;}
 h1{margin:0;font-size:1.7rem;font-weight:600;}p{margin:8px 0 26px;font-size:.95rem;color:#94a3b8;}.bio-description{font-size:.9rem;line-height:1.4;color:#e5e7eb;margin-top:12px;text-align:left;}
 .link{display:block;padding:18px;margin-bottom:16px;border-radius:18px;background:rgba(15,23,42,.95);color:#e5e7eb;text-decoration:none;border:1px solid rgba(255,255,255,.08);transform:translateY(0) scale(1);transition:transform .3s,box-shadow .3s;position:relative;cursor:pointer;}
 .link.hover{transform:translateY(-3px) scale(1.02);box-shadow:0 15px 40px rgba(56,189,248,.35);}
@@ -115,11 +115,11 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 
 <script>
 const CONFIG={
-  name:"Foruxy",
+  name:"Foruxy Puppetaru",
   tagline:"Your Partner for VTuber Servers, Moderation, and Management",
   avatar:"https://cdn.discordapp.com/attachments/799015739973566545/1453160116823003177/image.png?ex=694d1912&is=694bc792&hm=fcfcc7ab2ef5677ff943c32548a02ceb46195f196d2ab23912efd52fb7dac490&",
   aboutAvatar:"https://cdn.discordapp.com/attachments/799015739973566545/1453008094337568899/Uno.png?ex=694d343d&is=694be2bd&hm=53ef8bb95657005cce648328c13de99d292f9eacbb90dcef4f57939d550ff8ef&",
-  aboutName:"Foruxy",
+  aboutName:"Foruxy Puppetaru",
   aboutRace:"Silver Catfox",
   aboutBio:"Hawrru~! I'm Foruxy, the Silver Catfox!\n I create Discord servers for VTubers, manage VTuber communities, and moderate YouTube channels.\n I also support as a VTuber Advisor, Counselor, and Helper.\n Since February 2025, I’ve been dedicated to helping VTubers grow their communities with creativity and care.",
   links:[{label:"✉ About Me",url:"#about"},{label:"💼 My Work",url:"#work"},{label:"🌐 Social",url:"#social"}],
