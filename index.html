@@ -6,13 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 :root{
---background-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif?ex=694dc125&is=694c6fa5&hm=7088a62c188b7a2dfefc61a8528999cfdfc782ff8b1cb91c6bf3c1080f3773f4&");
---avatar-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1453160116823003177/image.png?ex=694d1912&is=694bc792&hm=fcfcc7ab2ef5677ff943c32548a02ceb46195f196d2ab23912efd52fb7dac490&");
---accent:#38bdf8;
---border-avatar-main: 3px solid #fff;
---border-avatar-about: 3px solid #F5F2F2;
---border-avatar-work: 2px solid #EEEEEE;
---border-my-work:2px solid #ff7a18;
+  --background-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1452978199649714289/Muffet.gif");
+  --avatar-image:url("https://cdn.discordapp.com/attachments/799015739973566545/1453160116823003177/image.png");
+  --accent:#38bdf8;
+
+  /* Variabel baru untuk outline */
+  --avatar-outline-color:#38bdf8;      /* Warna outline avatar utama */
+  --avatar-outline-width:4px;          /* Ketebalan outline avatar utama */
+  
+  --about-avatar-outline-color:#f87171; /* Warna outline avatar di About */
+  --about-avatar-outline-width:3px;     /* Ketebalan outline avatar di About */
+
+  --mywork-image-outline-color:#34d399; /* Warna outline gambar di My Work */
+  --mywork-image-outline-width:2px;     /* Ketebalan outline gambar di My Work */
 }
 *,body,.container,.link,.paper-box{box-sizing:border-box;font-family:"Comic Sans MS","Comic Sans",cursive;cursor:none!important;margin:0;padding:0;}
 body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--background-image);background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;color:#e5e7eb;overflow:hidden;}
@@ -24,10 +30,8 @@ body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)
 .cursor.magnify{width:48px;height:48px;background:rgba(255,255,255,.15);border:2px solid var(--accent);backdrop-filter:blur(6px);}
 .container{width:100%;max-width:500px;padding:30px;text-align:center;background:rgba(2,6,23,.85);backdrop-filter:blur(16px);border-radius:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px rgba(0,0,0,.8);position:relative;z-index:1;transform:translateY(100px);opacity:0;transition:transform .8s cubic-bezier(.25,1,.5,1),opacity .8s;}
 .container.show{transform:translateY(0);opacity:1;}
-.avatar-wrapper{width:100px;height:100px;margin:0 auto 18px;border-radius:50%;padding:4px;background:conic-gradient(var(--accent),#0ea5e9,var(--accent));}
-.avatar {width:100%;height:100%;border-radius:50%;border: var(--border-avatar-main);background-image:var(--avatar-image);background-size:cover;background-position:center;}
-.about-avatar {width:120px;height:120px;border-radius:12px;border: var(--border-avatar-about);background-size:cover;background-position:center;}
-.mywork-image {width:100px;height:100px;object-fit:cover;border-radius:12px;border: var(--border-my-work);flex-shrink:0;}
+.avatar-wrapper{width:100px;height:100px;margin:0 auto 18px;border-radius:50%;padding:var(--avatar-outline-width);background:conic-gradient(var(--avatar-outline-color), #0ea5e9, var(--avatar-outline-color));}
+.avatar{width:100%;height:100%;border-radius:50%;border:var(--avatar-outline-width) solid #fff; /* Bisa diganti kalau mau mengikuti variable */background-image:var(--avatar-image);background-size:cover;background-position:center;}
 h1{margin:0;font-size:1.7rem;font-weight:600;}p{margin:8px 0 26px;font-size:.95rem;color:#94a3b8;}.bio-description{font-size:.9rem;line-height:1.4;color:#e5e7eb;margin-top:12px;text-align:left;}
 .link{display:block;padding:18px;margin-bottom:16px;border-radius:18px;background:rgba(15,23,42,.95);color:#e5e7eb;text-decoration:none;border:1px solid rgba(255,255,255,.08);transform:translateY(0) scale(1);transition:transform .3s,box-shadow .3s;position:relative;cursor:pointer;}
 .link.hover{transform:translateY(-3px) scale(1.02);box-shadow:0 15px 40px rgba(56,189,248,.35);}
@@ -45,13 +49,12 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 #workContent::-webkit-scrollbar{width:0px;}
 #workContent::-webkit-scrollbar-thumb{background-color:var(--accent);border-radius:1px;}
 #workContent::-webkit-scrollbar-track{background:rgba(255,255,255,0.05);border-radius:1px;}
-.mywork-item{display:flex;gap:16px;background:rgba(56,189,248,.1);border: var(--border-avatar-about);border-radius:16px;padding:12px;align-items:center;margin-bottom:12px;}
-.mywork-image{width:100px;height:100px;object-fit:cover;border-radius:12px;border:2px solid var(--accent);flex-shrink:0;}
-.mywork-desc{display:flex;flex-direction:column;gap:6px;color:#e5e7eb;}
+.mywork-item{display:flex;gap:16px;background:rgba(56,189,248,.1);border:2px solid #ff7a18;border-radius:16px;padding:12px;align-items:center;margin-bottom:12px;}
+.mywork-image{width:100px;height:100px;object-fit:cover;border-radius:12px;border:var(--mywork-image-outline-width) solid var(--mywork-image-outline-color);flex-shrink:0;}.mywork-desc{display:flex;flex-direction:column;gap:6px;color:#e5e7eb;}
 .mywork-name,.mywork-owner,.mywork-date{font-size:.9rem;}
 .mywork-name strong,.mywork-owner strong,.mywork-date strong{color:var(--accent);}
 .about-box-content{display:flex;gap:20px;align-items:flex-start;}
-.about-box-content .about-avatar{width:120px;height:120px;border-radius:12px;border:3px solid var(--accent);background-size:cover;background-position:center;flex-shrink:0;}
+.about-box-content .about-avatar{width:120px;height:120px;border-radius:12px;border:var(--about-avatar-outline-width) solid var(--about-avatar-outline-color);background-size:cover;background-position:center;flex-shrink:0;}
 .about-box-content .about-text{flex:1;color:#e5e7eb;}
 .about-box-content .about-text div{margin-bottom:8px;}
 .bio-description .about-bio p {font-size:.8rem;}
