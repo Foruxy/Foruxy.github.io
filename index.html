@@ -91,17 +91,41 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 50%  { opacity: 0.4; }
 100% { opacity: 1; }
 }
-strong {
-  font-family: "Jersey 25", cursive !important;
-  font-weight: normal; /* Jersey 25 tidak punya bold */
+/* ===== ABOUT BOX: LABEL SAJA JERSEY 25 ===== */
+
+/* Pastikan teks about pakai font normal */
+.about-box-content {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-/* About box */
-.about-race strong,
-.about-bio strong,
-.about-name strong {
+/* Label "Nama:", "Race:", "Bio:" */
+.about-name::before,
+.about-race::before,
+.about-bio::before {
   font-family: "Jersey 25", cursive;
+  letter-spacing: 0.5px;
 }
+
+/* Inject label text */
+.about-name::before {
+  content: "Nama: ";
+}
+
+.about-race::before {
+  content: "Race: ";
+}
+
+.about-bio::before {
+  content: "Bio: ";
+}
+
+/* Hapus style label lama agar tidak dobel */
+.about-name,
+.about-race,
+.about-bio {
+  font-family: inherit;
+}
+
 
 /* My Work labels */
 .mywork-owner strong,
@@ -194,9 +218,9 @@ document.getElementById("tagline").textContent = CONFIG.tagline;
 document.getElementById("footer-name").textContent = CONFIG.name;
 
 // About Me texts
-document.querySelector(".about-name").textContent = `Nama: ${CONFIG.aboutName}`;
-document.querySelector(".about-race").textContent = `Race: ${CONFIG.aboutRace}`;
-document.querySelector(".about-bio").innerHTML = `Bio: ${CONFIG.aboutBio.replace(/\n/g,"<br>")}`;
+document.querySelector(".about-name").textContent = CONFIG.aboutName;
+document.querySelector(".about-race").textContent = CONFIG.aboutRace;
+document.querySelector(".about-bio").innerHTML = CONFIG.aboutBio.replace(/\n/g,"<br>");
 
 // Set links
 const linksContainer=document.getElementById("links");
