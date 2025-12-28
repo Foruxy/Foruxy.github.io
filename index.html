@@ -79,6 +79,10 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .mywork-date strong,
 .mywork-status strong {font-family: var(--font-title);color: var(--mywork-color);font-weight: normal;}
 footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
+.social-icon-list {display: flex;flex-direction: column;gap: 12px;align-items: center;justify-content: center;margin-top: 12px;}
+.social-icon-list a {display: block;width: 40px;height: 40px;border-radius: 8px;overflow: hidden;transition: transform 0.2s, background 0.2s;}
+.social-icon-list a img {width: 100%;height: 100%;object-fit: cover;}
+.social-icon-list a:hover {transform: scale(1.1);background: rgba(56, 189, 248, 0.15);}
 #socialBox .bio-description a img {width: 24px;height: 24px;margin-right: 10px;vertical-align: middle;}
 </style>
 </head>
@@ -211,16 +215,20 @@ CONFIG.myWork.forEach(item=>{
 
 // Social
 const socialBoxContent = document.querySelector("#socialBox .bio-description");
-socialBoxContent.innerHTML = ""; // kosongkan dulu
+socialBoxContent.innerHTML = ""; 
+const socialList = document.createElement("div");
+socialList.className = "social-icon-list";
+
 CONFIG.social.forEach(item => {
   const a = document.createElement("a");
-  a.className = "link";
   a.href = item.url;
   a.target = "_blank";
-  a.style.marginBottom = "8px";
-  a.innerHTML = `${item.svg} <span>${item.name}</span>`;
-  socialBoxContent.appendChild(a);
+  a.innerHTML = item.svg;
+  socialList.appendChild(a);
 });
+
+socialBoxContent.appendChild(socialList);
+
 
 // Cursor
 const cursor = document.querySelector(".cursor");
