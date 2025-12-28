@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Foruxy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
 :root{
   --background-image:url("https://cdn.discordapp.com/attachments/1382212470801694770/1454463795316392057/Muffet.gif?ex=69512e77&is=694fdcf7&hm=1ecddbdcfa0ddfe3f7a0bfefb8e9254f76752014545c396a40263d07c6d1404b&");
@@ -29,7 +29,13 @@
 }
 
 /* GLOBAL FONT */
-*,body,.container,.paper-box{box-sizing:border-box;font-family: var(--font-main);cursor:none!important;margin:0;padding:0;}
+*, body, .container, .paper-box {
+    box-sizing: border-box;
+    font-family: var(--font-body); /* ganti dari --font-main */
+    cursor: none !important;
+    margin: 0;
+    padding: 0;
+}
 body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--background-image);background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;color:#e5e7eb;overflow:hidden;}
 #loadingScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--loading-background-color);display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--loading-text-color);font-size:1.6rem;z-index:99999;transition:opacity .5s;}
 #loadingScreen .bar-container{width: 50%;max-width: 260px;height: 8px;border: 2px solid var(--accent);border-radius: 6px;margin-top: 16px;overflow: hidden;}
