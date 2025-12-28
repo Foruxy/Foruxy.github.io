@@ -91,10 +91,10 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
 
 .social-icon-list a {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;   /* ukuran tombol */
-  height: 60px;  /* ukuran tombol */
+  justify-content: center; /* center horizontal */
+  align-items: center;     /* center vertical */
+  width: 60px;
+  height: 60px;
   border-radius: 12px;
   background: rgba(15,23,42,0.95);
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
@@ -102,12 +102,14 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
 }
 
 .social-icon-list a img {
-  width: 90%;   /* ikon hampir penuh tombol */
-  height: 90%;
+  max-width: 70%;   /* pastikan ikon tidak melebihi tombol */
+  max-height: 70%;
   object-fit: contain;
   display: block;
-  filter: brightness(1); /* warna putih bila PNG */
+  filter: brightness(1);
+  margin: auto; /* memastikan tetap di tengah */
 }
+
 
 .social-icon-list a:hover {
   transform: scale(1.1);
