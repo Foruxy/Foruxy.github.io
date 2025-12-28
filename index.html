@@ -23,9 +23,31 @@
   --mywork-image-outline-width:2px;
   --mywork-border-color: #8a898c;
   --mywork-box-outline-width: 2px;
+<link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
 
 }
-*,body,.container,.link,.paper-box{box-sizing:border-box;font-family:"Jersey 25", system-ui, sans-serif;cursor:none!important;margin:0;padding:0;}
+/* GLOBAL FONT (isi teks) */
+*,body,.container,.paper-box{
+  box-sizing:border-box;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  cursor:none!important;
+  margin:0;
+  padding:0;
+}
+
+/* JERSEY 25 KHUSUS JUDUL & BUTTON */
+h1,
+.link span,
+footer,
+.about-name,
+.mywork-name strong {
+  font-family: "Jersey 25", cursive;
+  letter-spacing: 0.6px;
+}
+h1 {
+  font-size: 2rem;
+}
+
 body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--background-image);background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;color:#e5e7eb;overflow:hidden;}
 #loadingScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--loading-background-color);display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--loading-text-color);font-size:1.6rem;z-index:99999;transition:opacity .5s;}
 #loadingScreen .bar-container{width: 50%;max-width: 260px;height: 8px;border: 2px solid var(--accent);border-radius: 6px;margin-top: 16px;overflow: hidden;}
