@@ -146,11 +146,37 @@ const CONFIG = {
     {image:"https://cdn.discordapp.com/icons/792733470958551040/ffd45bb32ecb865a6851ebcfa8c39eaa.png",name:"Fowl Base",owner:"Foruxy",date:"27 Desember 2020"}
   ],
 social: [
-  {name: "Instagram",url: "https://www.instagram.com/foruxy_/",icon: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"},
-  {name: "X",url: "https://x.com/Foruxy",icon: "https://upload.wikimedia.org/wikipedia/commons/4/4f/X_logo.svg"},
-  {name: "Youtube",url: "https://www.youtube.com/@Foruxy",icon: "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"},
-  {name: "Discord",url: "https://discord.com/users/797770498745303092",icon: "https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo.svg"}
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/foruxy_/",
+    svg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2.163c3.204 0 3.584.012 4.849.07..."/>
+    </svg>`
+  },
+  {
+    name: "X",
+    url: "https://x.com/Foruxy",
+    svg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg">
+      <path d="M23 2.998c0 .41-.33.75-.74.75l-4.26 4.26..."/>
+    </svg>`
+  },
+  {
+    name: "Youtube",
+    url: "https://www.youtube.com/@Foruxy",
+    svg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 15l5-3-5-3v6z"/>
+      <path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.7-.8-2.1-.9C16.1 5 12 5 12 5h0s-4.1 0-6.9.1c-.4 0-1.3 0-2.1.9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.6c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.2.9 2.8.1 6.8.1 6.8.1s4.1 0 6.9-.1c.4 0 1.3 0 2.1-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.6c0-1.6-.2-3.2-.2-3.2z"/>
+    </svg>`
+  },
+  {
+    name: "Discord",
+    url: "https://discord.com/users/797770498745303092",
+    svg: `<svg width="20" height="20" viewBox="0 0 71 55" fill="#5865F2" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60.104 4.552a58.6 58.6 0 00-14.5-4.552..."/>
+    </svg>`
+  }
 ]
+
 };
 
 // Populate content
@@ -189,13 +215,14 @@ CONFIG.myWork.forEach(item=>{
 
 // Social
 const socialBoxContent = document.querySelector("#socialBox .bio-description");
+socialBoxContent.innerHTML = ""; // kosongkan dulu
 CONFIG.social.forEach(item => {
   const a = document.createElement("a");
   a.className = "link";
   a.href = item.url;
   a.target = "_blank";
   a.style.marginBottom = "8px";
-  a.innerHTML = `<img src="${item.icon}" alt="${item.name}" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;"><span>${item.name}</span>`;
+  a.innerHTML = `${item.svg} <span>${item.name}</span>`;
   socialBoxContent.appendChild(a);
 });
 
