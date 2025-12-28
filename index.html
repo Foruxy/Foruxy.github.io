@@ -82,7 +82,7 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
 .social-icon-list {display: flex;flex-direction: row;justify-content: center;align-items: center;gap: 16px;margin-top: 20px;width: 100%;}
 .social-icon-list a {display: flex;width: 50px;height: 50px;border-radius: 12px;background: rgba(15, 23, 42, 0.95);align-items: center;justify-content: center;transition: transform 0.2s, background 0.2s, box-shadow 0.2s;cursor: pointer;text-decoration: none;}
 .social-icon-list a svg,
-.social-icon-list a img {width: 24px;height: 24px;object-fit: contain;filter: brightness(0) invert(1);margin: 0 auto;display: block;}
+.social-icon-list a img {width: 24px;height: 24px;object-fit: contain;margin: 0 auto;display: block;filter: none;}
 .social-icon-list a img.no-filter {filter: none !important;}
 .social-icon-list a:hover {transform: scale(1.1);background: rgba(56, 189, 248, 0.2);box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);}
 #socialBox .bio-description a img {width: 24px;height: 24px;margin-right: 10px;vertical-align: middle;}
@@ -155,29 +155,31 @@ const CONFIG = {
     {image:"https://cdn.discordapp.com/icons/1405524507330084936/a48a0254bb1646c05e2bf2f782a4eb5f.png",name:"[ 𝓚.𝓐.𝓒 ] 𝓚𝓪𝓲 𝓐𝔃𝓾𝓶𝓪 𝓒𝓸𝓶𝓶𝓾𝓷𝓲𝓽𝔂",owner:"Kaikaje",date:"14 Agustus 2025",status:"Finish"},
     {image:"https://cdn.discordapp.com/icons/792733470958551040/ffd45bb32ecb865a6851ebcfa8c39eaa.png",name:"Fowl Base",owner:"Foruxy",date:"27 Desember 2020",status:"Active"}
   ],
+
   social: [
     {
       name: "Instagram",
       url: "https://www.instagram.com/foruxy_/",
-      svg: `<img src="https://i.postimg.cc/RVQqLVrD/instagram-white.png" alt="Instagram" />`
+      svg: `<img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />`
     },
     {
       name: "X",
       url: "https://x.com/Foruxy",
-      svg: `<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023.svg" alt="X" />`
+      svg: `<img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X" />`
     },
     {
       name: "YouTube",
       url: "https://www.youtube.com/@Foruxy",
-      svg: `<img src="https://i.postimg.cc/3xvXxW6q/youtube-white.png" alt="YouTube" />`
+      svg: `<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />`
     },
     {
       name: "Discord",
       url: "https://discord.com/users/797770498745303092",
-      svg: `<img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo.svg" alt="Discord" />`
+      svg: `<img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" />`
     }
   ]
 };
+
 
 // Populate content
 document.querySelector(".container .avatar").style.backgroundImage = `url(${CONFIG.avatar})`;
