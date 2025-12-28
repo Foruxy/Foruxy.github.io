@@ -79,22 +79,22 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .mywork-date strong,
 .mywork-status strong {font-family: var(--font-title);color: var(--mywork-color);font-weight: normal;}
 footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
+/* SOCIAL ICONS */
 .social-icon-list {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 12px; /* jarak antar tombol */
+  gap: 16px; /* jarak antar tombol */
   margin-top: 20px;
-  width: 100%;
+  flex-wrap: wrap; /* responsif jika terlalu banyak tombol */
 }
 
 .social-icon-list a {
   display: flex;
-  justify-content: center; /* center horizontal */
-  align-items: center;     /* center vertical */
-  width: 90px;
-  height: 90px;
+  justify-content: center;
+  align-items: center;
+  width: 60px;      /* ukuran tombol */
+  height: 60px;     /* ukuran tombol */
   border-radius: 12px;
   background: rgba(15,23,42,0.95);
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
@@ -102,14 +102,13 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
 }
 
 .social-icon-list a img {
-  max-width: 80%;   /* pastikan ikon tidak melebihi tombol */
-  max-height: 80%;
-  object-fit: contain;
+  width: 60px;   /* ukuran ikon sama dengan tombol */
+  height: 60px;  /* ukuran ikon sama dengan tombol */
+  object-fit: cover; /* ikon menyesuaikan */
+  border-radius: 12px; /* membuat ikon sama bentuk dengan tombol */
   display: block;
-  filter: brightness(1);
-  margin: auto; /* memastikan tetap di tengah */
+  margin: 0; /* pastikan ikon di tengah */
 }
-
 
 .social-icon-list a:hover {
   transform: scale(1.1);
@@ -117,12 +116,9 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
   background: rgba(56, 189, 248, 0.2);
 }
 
-
 .social-icon-list a:hover img {
-  transform: scale(0.95); /* efek interaksi ikon */
+  transform: scale(0.95); /* efek ikon saat hover */
 }
-
-
 #socialBox .bio-description a img {width: 24px;height: 24px;margin-right: 10px;vertical-align: middle;}
 </style>
 </head>
@@ -256,18 +252,17 @@ CONFIG.myWork.forEach(item=>{
 
 // Social
 const socialBoxContent = document.querySelector("#socialBox .bio-description");
-socialBoxContent.innerHTML = "";
+socialBoxContent.innerHTML = ""; // kosongkan dulu
 const socialList = document.createElement("div");
 socialList.className = "social-icon-list";
+
 CONFIG.social.forEach(item => {
   const a = document.createElement("a");
   a.href = item.url;
   a.target = "_blank";
+
   a.innerHTML = item.svg;
-  if(item.name === "Instagram" || item.name === "YouTube"){
-    const img = a.querySelector("img");
-    if(img) img.classList.add("no-filter");
-  }
+  
   socialList.appendChild(a);
 });
 
