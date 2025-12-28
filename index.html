@@ -91,7 +91,7 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
 
 .social-icon-list a {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* geser ikon ke kanan */
   align-items: center;
   width: 60px;      /* ukuran tombol */
   height: 60px;     /* ukuran tombol */
@@ -99,15 +99,17 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
   background: rgba(15,23,42,0.95);
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
   cursor: pointer;
+  padding-right: 6px; /* jarak ikon ke kanan */
+  box-sizing: border-box;
 }
 
 .social-icon-list a img {
-  width: 60px;   /* ukuran ikon sama dengan tombol */
-  height: 60px;  /* ukuran ikon sama dengan tombol */
-  object-fit: cover; /* ikon menyesuaikan */
-  border-radius: 12px; /* membuat ikon sama bentuk dengan tombol */
+  width: 40px;   /* ukuran ikon kotak */
+  height: 40px;  /* ukuran ikon kotak */
+  object-fit: cover; /* isi ikon kotak */
+  border-radius: 0; /* kotak */
   display: block;
-  margin: 0; /* pastikan ikon di tengah */
+  margin: 0; /* pastikan di tengah secara vertikal */
 }
 
 .social-icon-list a:hover {
@@ -117,8 +119,9 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
 }
 
 .social-icon-list a:hover img {
-  transform: scale(0.95); /* efek ikon saat hover */
+  transform: scale(0.95);
 }
+
 #socialBox .bio-description a img {width: 24px;height: 24px;margin-right: 10px;vertical-align: middle;}
 </style>
 </head>
