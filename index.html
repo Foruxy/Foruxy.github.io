@@ -27,6 +27,7 @@
   --mywork-image-outline-width:2px;
   --mywork-border-color: #8a898c;
   --mywork-box-outline-width: 2px;
+  --mywork-color: #38bdf8;
 
 }
 /* GLOBAL FONT (isi teks) */
@@ -111,9 +112,15 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .mywork-owner strong,
 .mywork-date strong {
   font-family: var(--font-title);
+  color: var(--mywork-color);
   font-weight: normal;
 }
-
+/* Footer ikut pakai font title */
+footer {
+  font-family: var(--font-title);
+  font-weight: normal; /* supaya konsisten dengan judul lain */
+  font-size: 0.75rem; /* tetap kecil sesuai desain awal */
+}
 </style>
 </head>
 <body>
