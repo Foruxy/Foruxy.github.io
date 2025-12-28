@@ -21,14 +21,13 @@
   --loading-text-color:#38bdf8;
   --avatar-outline-color:#090933;
   --avatar-outline-width:4px;
-  --about-avatar-outline-color:#f87171;s
+  --about-avatar-outline-color:#f87171;
   --about-avatar-outline-width:3px;
   --mywork-image-outline-color:#f1f0f5;
   --mywork-image-outline-width:2px;
   --mywork-border-color: #8a898c;
   --mywork-box-outline-width: 2px;
   --mywork-color: #38bdf8;
-
 }
 /* GLOBAL FONT (isi teks) */
 *,body,.container,.paper-box{box-sizing:border-box;font-family: var(--font-main);cursor:none!important;margin:0;padding:0;}
@@ -104,8 +103,7 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 /* Judul item about */
 .about-name::before {content: "Nama: ";}
 .about-race::before {content: "Race: ";}
-.about-bio::before {content: "Bio: ";
-}
+.about-bio::before {content: "Bio: ";}
   
 /* Judul item My Work */
 .mywork-name strong,
@@ -126,45 +124,48 @@ footer {
 <body>
 
 <div id="loadingScreen">
-<div class="loading-text">Loading...</div><div class="bar-container"><div class="bar" id="loadingBar"></div></div></div>
+  <div class="loading-text">Loading...</div>
+  <div class="bar-container"><div class="bar" id="loadingBar"></div></div>
+</div>
+
 <div class="cursor"></div>
+
 <div class="container">
-<div class="avatar-wrapper"><div class="avatar"></div></div>
-<h1 id="name"></h1>
-<p id="tagline"></p>
-<div id="links"></div>
-<footer>© 2025 <span id="footer-name"></span></footer>
+  <div class="avatar-wrapper"><div class="avatar"></div></div>
+  <h1 id="name"></h1>
+  <p id="tagline"></p>
+  <div id="links"></div>
+  <footer>© 2025 <span id="footer-name"></span></footer>
 </div>
 
 <!-- OVERLAY BOXES -->
 <div class="paper-box" id="aboutBox"><div class="close-trigger"></div>
-<div class="box-content about-box-content">
-  <div class="about-avatar"></div>
-  <div class="about-text">
-    <div class="about-name"></div>
-    <div class="about-race"></div>
-    <div class="about-bio"></div>
+  <div class="box-content about-box-content">
+    <div class="about-avatar"></div>
+    <div class="about-text">
+      <div class="about-name"></div>
+      <div class="about-race"></div>
+      <div class="about-bio"></div>
+    </div>
   </div>
-</div></div>
+</div>
 
 <div class="paper-box" id="workBox"><div class="close-trigger"></div>
-<div class="box-content" id="workContent">
-  <!-- Teks Penjelasan -->
-  <h1>My Work</h1>
-  <div class="bio-description">
-    The following are Discord servers that I created and currently manage.
+  <div class="box-content" id="workContent">
+    <h1>My Work</h1>
+    <div class="bio-description">
+      The following are Discord servers that I created and currently manage.
+    </div>
+    <div class="space"></div>
   </div>
-  <div class="space"></div>
-</div></div>
+</div>
+
 <div class="paper-box" id="socialBox"><div class="close-trigger"></div>
-<div class="box-content">
-<h1>Social Media</h1>
-<div class="bio-description" style="margin-top:12px;">
-<a href="https://www.instagram.com/foruxy_/" target="_blank" class="link" style="margin-bottom:8px;"><span>📸 Instagram</span></a>
-<a href="https://x.com/Foruxy" target="_blank" class="link" style="margin-bottom:8px;"><span>✖ Twitter</span></a>
-<a href="https://www.youtube.com/@Foruxy" target="_blank" class="link" style="margin-bottom:8px;"><span>▶️ Youtube</span></a>
-<a href="https://discord.com/users/797770498745303092" target="_blank" class="link" style="margin-bottom:8px;"><span>✉ Discord</span></a>
-</div></div></div>
+  <div class="box-content">
+    <h1>Social Media</h1>
+    <div class="bio-description" style="margin-top:12px;"></div>
+  </div>
+</div>
 
 <script>
 const CONFIG = {
@@ -190,79 +191,96 @@ const CONFIG = {
   social: [
     {name:"Instagram", url:"https://www.instagram.com/foruxy_", icon:"https://www.gstatic.com/youtube/img/watch/social_media/instagram_1x.png"},
     {name:"X", url:"https://x.com/Foruxy", icon:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAAAAABXZoBIAAAA/0lEQVR4AbXPIazCMACE4d+L2qoZFEGSIGcRc/gJJB5XMzGJmK9EN0HMi+qaibkKVF1txdQe4g0YzPK5yyWXHL9TaPNQ89LojH87N1rbJcXkMF4Fk31UMrf34hm14KUeoQxGArALHTMuQD2cAWQfJXOpgTbksGr9ng8qluShJTPhyCdx63POg7rEim95ZyR68I1ggQpnCEGwyPicw6hZtPEGmnhkycqOio1zm6XuFtyw5XDXfGvuau0dXHzJp8pfBPuhIXO9ZK5ILUCdSvLYMpc6ASBtl3EaC97I4KaFaOCaBE9Zn5jUsVqR2vcTJZO1DdbGoZryVp94Ka/mQfE7f2T3df0WBhLDAAAAAElFTkSuQmCC"},
-    {name:"Youtube", url:"https://www.youtube.com/@Foruxy", icon:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABJklEQVR4Ae2WpVaFQRSFcaeS4QVwIjTiLbgk7D1w9xeg4FQcOu6acHeXtNnDmsFd7in/WetLI+f7dbYDAFEsAUvgoeAQ5k5iSQFpIH1kkMyQFXJMTsgpwTuc6jlHes2M3qNP71mge7g76DLNg8gygZ1QckGmuSdZJ7Azq8RDCSQTCJGgBCoFBWqVQLegQJcSmPnWIr9oICMXcIr4C4FJJbD9rUX+NtzX+CIQlfVbgS0lcP4jAVNt/UCA7acCZ0oAPxfQdXMLFNUBvpHflvgbAVM7h0B6zrfeD3kB+Ucg/xLKf4biPyLJX3GH9GFUogRSBQUSTSBZEwskQpFs1USyl6E0gRSRJtJPhsnci1B69oVQeqzXzOo9+kmj3juBeDw2BkSxBCyBO+9s03HRLVCoAAAAAElFTkSuQmCC"},
-    {name:"Discord", url:"https://discord.com/users/797770498745303092", icon:"https://www.gstatic.com/youtube/img/watch/social_media/discord_1x.png"}
+    {name:"Youtube", url:"https://www.youtube.com/@Foruxy", icon:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABJklEQVR4Ae2WpVaFQRSFcaeS4QVwIjTiLbgk7iIhQ4gb6B1sI7hZ+AhdyBn4OLCLtrCZsPOJvM7i4F3v+xh7zUoQKpVA6PeAUEkE+xAnHQHEloOoV9V0TzvApdrEacK4A+x7PjZ4Av7oA2RQ8wI9xBmLxD9smqXJ0/MTzvQwN3AlyPv4Cp0nS1xGONqCgw2kZgPZrrH3WfIM92H+ZQxHOkdC8IjjsRImXnPgmg+NR1vO82qCiwgnF9z35xQXoaBtPvJ/gUqaQTdY9hbiR+AWfzKJuZBuxErQyl+v3Yx+wYnpGfK0sOg0FoB7f4Zk5QYrOmxNgJOkzy1X5VpXgDgJ4V2uM8G94eRjRds3tIpYzOb+ACa7ImvA6NGr+f4Ak5D3VJYpNdLAAAAAElFTkSuQmCC"}
   ]
 };
 
+const nameEl = document.getElementById("name");
+const taglineEl = document.getElementById("tagline");
+const avatarEl = document.querySelector(".avatar");
+const footerNameEl = document.getElementById("footer-name");
+const linksEl = document.getElementById("links");
 
-// Set avatars
-document.querySelector(".container .avatar").style.backgroundImage = `url(${CONFIG.avatar})`;
-document.querySelector(".about-avatar").style.backgroundImage = `url(${CONFIG.aboutAvatar})`;
+nameEl.textContent = CONFIG.name;
+taglineEl.textContent = CONFIG.tagline;
+avatarEl.style.backgroundImage = `url(${CONFIG.avatar})`;
+footerNameEl.textContent = CONFIG.name;
 
-// Set texts
-document.getElementById("name").textContent = CONFIG.name;
-document.getElementById("tagline").textContent = CONFIG.tagline;
-document.getElementById("footer-name").textContent = CONFIG.name;
-
-// About Me texts
-document.querySelector(".about-name").textContent = CONFIG.aboutName;
-document.querySelector(".about-race").textContent = CONFIG.aboutRace;
-document.querySelector(".about-bio").innerHTML = CONFIG.aboutBio.replace(/\n/g,"<br>");
-
-// Set links
-const linksContainer=document.getElementById("links");
-CONFIG.links.forEach(item=>{
-  const a=document.createElement("a");
-  a.className="link"; a.href=item.url; a.innerHTML=`<span>${item.label}</span>`;
-  linksContainer.appendChild(a);
-});
-  
-// Set social media dengan icon
-const socialBoxContent = document.querySelector("#socialBox .bio-description");
-socialBoxContent.innerHTML = ""; // kosongkan dulu
-
-CONFIG.social.forEach(item => {
-  const a = document.createElement("a");
-  a.className = "link";
-  a.href = item.url;
-  a.target = "_blank";
-  a.style.marginBottom = "8px";
-  a.innerHTML = `<img src="${item.icon}" alt="${item.name}" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;"> <span>${item.name}</span>`;
-  socialBoxContent.appendChild(a);
+CONFIG.links.forEach(link=>{
+  const a = document.createElement("div");
+  a.className="link";
+  a.innerHTML=`<span>${link.label}</span>`;
+  linksEl.appendChild(a);
 });
 
-// Set work items
-const workContent=document.getElementById("workContent");
-CONFIG.myWork.forEach(item=>{
-  const div=document.createElement("div");
-  div.className="mywork-item";
-  div.innerHTML=`<img src="${item.image}" alt="Server Discord" class="mywork-image"><div class="mywork-desc"><div class="mywork-name"><strong>Server Name:</strong> ${item.name}</div><div class="mywork-owner"><strong>Owner:</strong> ${item.owner}</div><div class="mywork-date"><strong>Creation Date:</strong> ${item.date}</div></div>`;
-  workContent.appendChild(div);
+const container = document.querySelector(".container");
+window.addEventListener("load",()=>{
+  let bar = document.getElementById("loadingBar");
+  let width=0;
+  let interval = setInterval(()=>{
+    if(width>=100){
+      clearInterval(interval);
+      document.getElementById("loadingScreen").style.opacity=0;
+      setTimeout(()=>{document.getElementById("loadingScreen").style.display="none";container.classList.add("show");},500);
+    } else { width+=1; bar.style.width=width+"%";}
+  },15);
 });
 
-// Cursor animation
+// CURSOR
 const cursor=document.querySelector(".cursor");
-let mouseX=0,mouseY=0,currentX=0,currentY=0;
-document.addEventListener("mousemove",e=>{mouseX=e.clientX;mouseY=e.clientY;});
-function animateCursor(){currentX+=(mouseX-currentX)*.15;currentY+=(mouseY-currentY)*.15;cursor.style.left=currentX+"px";cursor.style.top=currentY+"px";requestAnimationFrame(animateCursor);}
-animateCursor();
-document.querySelectorAll(".link").forEach(btn=>{btn.addEventListener("mouseenter",()=>{btn.classList.add("hover");cursor.classList.add("magnify");});btn.addEventListener("mouseleave",()=>{btn.classList.remove("hover");btn.classList.remove("zoom-text");cursor.classList.remove("magnify");});});
+document.addEventListener("mousemove",e=>{
+  cursor.style.left=e.clientX+"px";
+  cursor.style.top=e.clientY+"px";
+});
 
-// Overlay triggers
-const [aboutBtn,workBtn,socialBtn]=document.querySelectorAll(".link");
-const [aboutBox,workBox,socialBox]=[document.getElementById("aboutBox"),document.getElementById("workBox"),document.getElementById("socialBox")];
-aboutBtn.addEventListener("click",e=>{e.preventDefault();aboutBox.classList.add("active");});
-workBtn.addEventListener("click",e=>{e.preventDefault();workBox.classList.add("active");});
-socialBtn.addEventListener("click",e=>{e.preventDefault();socialBox.classList.add("active");});
-document.querySelectorAll(".close-trigger").forEach(trigger=>{trigger.addEventListener("click",e=>{const box=e.currentTarget.parentElement;box.classList.remove("active");if(box.id==="workBox")workContent.scrollTop=0;});});
-document.querySelectorAll(".box-content").forEach(box=>box.addEventListener("click",e=>e.stopPropagation()));
+// ABOUT, WORK, SOCIAL
+const allLinks = document.querySelectorAll(".link");
+const aboutBtn = allLinks[0];
+const workBtn = allLinks[1];
+const socialBtn = allLinks[2];
 
-// Loading screen
-const loadingScreen=document.getElementById("loadingScreen"),loadingBar=document.getElementById("loadingBar");
-let width=0,totalTime=6000,intervalTime=30,increment=100/(totalTime/intervalTime);
-const loadingInterval=setInterval(()=>{width+=increment;if(width>=100)width=100;loadingBar.style.width=width+"%";},intervalTime);
-setTimeout(()=>{clearInterval(loadingInterval);loadingScreen.style.opacity=0;setTimeout(()=>{loadingScreen.style.display="none";document.querySelector(".container").classList.add("show");},500);},totalTime);
+const aboutBox = document.getElementById("aboutBox");
+const workBox = document.getElementById("workBox");
+const socialBox = document.getElementById("socialBox");
+
+const closeTriggers = document.querySelectorAll(".close-trigger");
+closeTriggers.forEach(btn=>{
+  btn.addEventListener("click",()=>{btn.parentElement.classList.remove("active");});
+});
+
+aboutBtn.addEventListener("click",()=>{aboutBox.classList.add("active");});
+workBtn.addEventListener("click",()=>{
+  workBox.classList.add("active");
+  const workContent = document.getElementById("workContent");
+  workContent.innerHTML='<h1>My Work</h1><div class="bio-description">The following are Discord servers that I created and currently manage.</div><div class="space"></div>';
+  CONFIG.myWork.forEach(w=>{
+    const div = document.createElement("div");
+    div.className="mywork-item";
+    div.innerHTML=`<img src="${w.image}" class="mywork-image"><div class="mywork-desc"><div class="mywork-name"><strong>${w.name}</strong></div><div class="mywork-owner"><strong>${w.owner}</strong></div><div class="mywork-date"><strong>${w.date}</strong></div></div>`;
+    workContent.appendChild(div);
+  });
+});
+socialBtn.addEventListener("click",()=>{
+  socialBox.classList.add("active");
+  const socialDesc = socialBox.querySelector(".bio-description");
+  socialDesc.innerHTML="";
+  CONFIG.social.forEach(s=>{
+    const a=document.createElement("a");
+    a.href=s.url;
+    a.target="_blank";
+    a.style.display="block";
+    a.style.margin="8px 0";
+    a.innerHTML=`<img src="${s.icon}" width="20" style="vertical-align:middle;margin-right:8px;"> ${s.name}`;
+    socialDesc.appendChild(a);
+  });
+});
+
+// ABOUT BOX content
+document.querySelector(".about-avatar").style.backgroundImage=`url(${CONFIG.aboutAvatar})`;
+document.querySelector(".about-name").textContent=CONFIG.aboutName;
+document.querySelector(".about-race").textContent=CONFIG.aboutRace;
+document.querySelector(".about-bio").textContent=CONFIG.aboutBio;
 </script>
+
 </body>
 </html>
