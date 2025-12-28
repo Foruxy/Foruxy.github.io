@@ -89,24 +89,23 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
 }
 
 .social-icon-list a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;    /* ukuran tombol diperbesar */
-  height: 60px;   /* ukuran tombol diperbesar */
+  position: relative;
+  width: 60px;
+  height: 60px;
   border-radius: 12px;
   background: rgba(15,23,42,0.95);
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  display: inline-block;
   overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
 .social-icon-list a img {
-  width: 100%;   /* ikon hampir penuh tombol */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  object-fit: contain;
-  display: block;
-  filter: none;
-  transition: transform 0.3s;
+  object-fit: cover;
 }
 
 .social-icon-list a:hover {
