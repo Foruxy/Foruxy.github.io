@@ -78,7 +78,11 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 #links .link span{font-family: var(--font-title);font-weight: normal;font-size: 1.05rem;}
 .paper-box h1{font-family: var(--font-title);font-weight: normal;}
 .about-name::before,.about-race::before,.about-bio::before{font-family: var(--font-title);font-weight: normal;}
-.about-name::before{content: "Nama: ";}.about-race::before{content: "Race: ";}.about-bio::before{content:"Bio: ";}
+.about-text {display: flex;flex-direction: column;gap: 12px;}
+.about-row {display: grid;grid-template-columns: 80px 1fr;gap: 12px;align-items: flex-start;}
+.about-title {font-family: var(--font-title);color: var(--accent);font-size: 0.9rem;text-align: right;padding-top: 2px;}
+.about-value {font-size: 0.85rem;line-height: 1.5;color: #e5e7eb;text-align: left;}
+.bio-row .about-value {white-space: pre-line;}
 .mywork-name strong,
 .mywork-owner strong,
 .mywork-date strong,
@@ -114,11 +118,23 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
 <div class="paper-box" id="aboutBox"><div class="close-trigger"></div>
   <div class="box-content about-box-content">
     <div class="about-avatar"></div>
-    <div class="about-text">
-      <div class="about-name"></div>
-      <div class="about-race"></div>
-      <div class="about-bio"></div>
-    </div>
+<div class="about-text">
+  <div class="about-row">
+    <div class="about-title">Name</div>
+    <div class="about-value about-name"></div>
+  </div>
+
+  <div class="about-row">
+    <div class="about-title">Race</div>
+    <div class="about-value about-race"></div>
+  </div>
+
+  <div class="about-row bio-row">
+    <div class="about-title">Bio</div>
+    <div class="about-value about-bio"></div>
+  </div>
+</div>
+
   </div>
 </div>
 
