@@ -15,7 +15,7 @@
   --main-background-color:#262525;
   --loading-bar-color:#38bdf8;
   --loading-bar-border:#38bdf8;
-  --loading-background-color:#1f1f24;
+  --loading-background-color:#282736;
   --loading-text-color:#38bdf8;
   --avatar-outline-color:#090933;
   --avatar-outline-width:4px;
@@ -28,7 +28,13 @@
   --mywork-color: #4b38f8;
 }
 /* GLOBAL FONT */
-*, body, .container, .paper-box {box-sizing: border-box;font-family: var(--font-body);cursor: none !important;margin: 0;padding: 0;}
+*, body, .container, .paper-box {
+    box-sizing: border-box;
+    font-family: var(--font-body); /* ganti dari --font-main */
+    cursor: none !important;
+    margin: 0;
+    padding: 0;
+}
 body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--background-image);background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;color:#e5e7eb;overflow:hidden;}
 #loadingScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--loading-background-color);display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--loading-text-color);font-size:1.6rem;z-index:99999;transition:opacity .5s;}
 #loadingScreen .bar-container{width: 50%;max-width: 260px;height: 8px;border: 2px solid var(--accent);border-radius: 6px;margin-top: 16px;overflow: hidden;}
@@ -61,22 +67,18 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .mywork-image{width:100px;height:100px;object-fit:cover;border-radius:12px;border:var(--mywork-image-outline-width) solid var(--mywork-image-outline-color);flex-shrink:0;}.mywork-desc{display:flex;flex-direction:column;gap:6px;color:#e5e7eb;}
 .mywork-name,.mywork-owner,.mywork-date,.mywork-status {font-size: 1rem;}
 .mywork-name strong,.mywork-owner strong,.mywork-date strong,.mywork-status strong{color:var(--accent)font-size:0.8rem;}
-.about-box-content{display:flex;gap:14px;align-items:flex-start;}
+.about-box-content{display:flex;gap:20px;align-items:flex-start;}
 .about-box-content .about-avatar{width:120px;height:120px;border-radius:12px;border:var(--about-avatar-outline-width) solid var(--about-avatar-outline-color);background-size:cover;background-position:center;flex-shrink:0;}
 .about-box-content .about-text{flex:1;color:#e5e7eb;}
 .about-box-content .about-text div{margin-bottom:8px;}
 .bio-description{font-size:.9rem;line-height:1.4;color:#e5e7eb;margin-top:12px;text-align:left;}
 .bio-description .about-bio p {font-size:.8rem;}
-.about-name::before,.about-race::before,.about-bio::before{font-family: var(--font-title);font-weight: normal;}
-.about-text {display: flex;flex-direction: column;gap: 4px;}
-.about-row {display: grid;grid-template-columns: 80px 1fr;gap: 4px;align-items: flex-start;}
-.about-title {font-family: var(--font-title);color: var(--accent);font-size: 1.2rem;text-align: right;padding-top: 2px;}
-.about-value {font-size: 0.9rem;line-height: 1.4;color: #e5e7eb;text-align: left;}
-.bio-row .about-value {white-space: pre-line;}
 @keyframes slowBlink {0%{opacity:1;}50%{opacity:.4;}100%{opacity:1;}}
 .container h1{font-family: var(--font-title);font-weight: normal;}
 #links .link span{font-family: var(--font-title);font-weight: normal;font-size: 1.05rem;}
 .paper-box h1{font-family: var(--font-title);font-weight: normal;}
+.about-name::before,.about-race::before,.about-bio::before{font-family: var(--font-title);font-weight: normal;}
+.about-name::before{content: "Nama: ";}.about-race::before{content: "Race: ";}.about-bio::before{content:"Bio: ";}
 .mywork-name strong,
 .mywork-owner strong,
 .mywork-date strong,
@@ -85,7 +87,7 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
 /* SOCIAL ICONS */
 .social-icon-list {display: flex;justify-content: center;align-items: center;gap: 16px;margin-top: 20px;flex-wrap: wrap;}
 .social-icon-list a {display: flex;justify-content: flex-end;align-items: center;width: 60px;height: 60px;border-radius: 12px;background: rgba(15,23,42,0.95);transition: transform 0.3s, box-shadow 0.3s, background 0.3s;cursor: pointer;padding-right: 8px;box-sizing: border-box;}
-.social-icon-list a img {width: 90px;height: 90px;object-fit: cover;border-radius: 0;display: block;margin: 0;}
+.social-icon-list a img {width: 60px;height: 60px;object-fit: cover;border-radius: 0;display: block;margin: 0;}
 .social-icon-list a:hover {transform: scale(1.1);box-shadow: 0 4px 12px rgba(56,189,248,0.3);background: rgba(56, 189, 248, 0.2);}
 .social-icon-list a:hover img {transform: scale(0.95)}
 #socialBox .bio-description a img {width: 24px;height: 24px;margin-right: 10px;vertical-align: middle;}
@@ -112,23 +114,11 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
 <div class="paper-box" id="aboutBox"><div class="close-trigger"></div>
   <div class="box-content about-box-content">
     <div class="about-avatar"></div>
-<div class="about-text">
-  <div class="about-row">
-    <div class="about-title">Name</div>
-    <div class="about-value about-name"></div>
-  </div>
-
-  <div class="about-row">
-    <div class="about-title">Race</div>
-    <div class="about-value about-race"></div>
-  </div>
-
-  <div class="about-row bio-row">
-    <div class="about-title">Bio</div>
-    <div class="about-value about-bio"></div>
-  </div>
-</div>
-
+    <div class="about-text">
+      <div class="about-name"></div>
+      <div class="about-race"></div>
+      <div class="about-bio"></div>
+    </div>
   </div>
 </div>
 
