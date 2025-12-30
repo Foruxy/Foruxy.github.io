@@ -1,7 +1,6 @@
 # Foruxy Landing Page
 
-![Foruxy Landing Page]
-(https://github.com/Foruxy/Foruxy.github.io/blob/3f27f7fd95ceae4a59cd594ba8c18a7b26792c49/assets/images/Preview.png)  
+![Foruxy Landing Page](https://raw.githubusercontent.com/Foruxy/Foruxy.github.io/3f27f7fd95ceae4a59cd594ba8c18a7b26792c49/assets/images/Preview.png)
 *Preview dari landing page desktop Foruxy Puppetaru*
 
 ---
@@ -45,13 +44,10 @@ Kode ini hanya untuk penggunaan pribadi, edukasi, dan non-komersial. Tidak boleh
 
 🔗 Media Sosial
 
-https://www.instagram.com/foruxy_/
-
-https://x.com/Foruxy
-
-https://www.youtube.com/@Foruxy
-
-https://discord.com/users/797770498745303092
+[<img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="32" height="32" alt="Instagram">](https://www.instagram.com/foruxy_/)  
+[<img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" width="32" height="32" alt="X">](https://x.com/Foruxy)  
+[<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="32" height="32" alt="YouTube">](https://www.youtube.com/@Foruxy)  
+[<img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" width="32" height="32" alt="Discord">](https://discord.com/users/797770498745303092)
 
 🏷️ Teknologi
 
