@@ -49,11 +49,9 @@ Kode ini hanya untuk penggunaan pribadi, edukasi, dan non-komersial. Tidak boleh
 
 🏷️ Teknologi
 
-HTML5
-
-CSS3
-
-JavaScript (Vanilla JS)
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
 
 🐞 Feedback & Bug
 
