@@ -37,22 +37,22 @@ Foruxy.github.io/
 
 ---
 
-📜 Lisensi & Penggunaan
+## 📜 Lisensi & Penggunaan
 
 Hak cipta © 2025 Foruxy Puppetaru
 
 Kode ini hanya untuk penggunaan pribadi, edukasi, dan non-komersial. Tidak boleh digunakan untuk dijual, dimonetisasi, atau dijadikan produk komersial. Semua salinan harus menyertakan lisensi ini.
 
-🔗 Media Sosial
+## 🔗 Media Sosial
 
 [<img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="32" height="32" alt="Instagram">](https://www.instagram.com/foruxy_/)  [<img src="https://cdn.simpleicons.org/x/ffffff" width="32" height="32" alt="X">](https://x.com/Foruxy)  [<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="32" height="32" alt="YouTube">](https://www.youtube.com/@Foruxy)  [<img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" width="32" height="32" alt="Discord">](https://discord.com/users/797770498745303092)
 
-🏷️ Teknologi
+## 🏷️ Teknologi
 
 - HTML5
 - CSS3
 - JavaScript (Vanilla JS)
 
-🐞 Feedback & Bug
+## 🐞 Feedback & Bug
 
 Jika menemukan bug atau ingin memberi masukan, silakan buka issue di repositori ini. Semua feedback sangat dihargai untuk pengembangan halaman ini.
