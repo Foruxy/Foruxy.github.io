@@ -336,7 +336,7 @@ document.querySelectorAll(".box-content").forEach(box=>box.addEventListener("cli
 
 // Loading screen
 const loadingScreen=document.getElementById("loadingScreen"), loadingBar=document.getElementById("loadingBar");
-let width=0, totalTime=6000, intervalTime=30, increment=100/(totalTime/intervalTime);
+let width=0, totalTime=4000, intervalTime=20, increment=100/(totalTime/intervalTime);
 const loadingInterval=setInterval(()=>{width+=increment; if(width>=100) width=100; loadingBar.style.width=width+"%";},intervalTime);
 setTimeout(()=>{
   clearInterval(loadingInterval);
