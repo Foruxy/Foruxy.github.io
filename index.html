@@ -28,13 +28,7 @@
   --mywork-color: #4b38f8;
 }
 /* GLOBAL FONT */
-*, body, .container, .paper-box {
-    box-sizing: border-box;
-    font-family: var(--font-body); /* ganti dari --font-main */
-    cursor: none !important;
-    margin: 0;
-    padding: 0;
-}
+*, body, .container, .paper-box {box-sizing: border-box;font-family: var(--font-body);cursor: none !important;margin: 0;padding: 0;}
 body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--background-image);background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;color:#e5e7eb;overflow:hidden;}
 #loadingScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--loading-background-color);display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--loading-text-color);font-size:1.6rem;z-index:99999;transition:opacity .5s;}
 #loadingScreen .bar-container{width: 50%;max-width: 260px;height: 8px;border: 2px solid var(--accent);border-radius: 6px;margin-top: 16px;overflow: hidden;}
@@ -44,24 +38,8 @@ body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)
 .cursor.magnify{width:48px;height:48px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);}
 .container{width:100%;max-width:500px;padding:30px;text-align:center;background:rgba(2,6,23,.85);backdrop-filter:blur(16px);border-radius:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px rgba(0,0,0,.8);position:relative;z-index:1;transform:translateY(0px);opacity:0;transition:transform .8s cubic-bezier(.25,1,.5,1),opacity .8s;}
 .container.show{transform:translateY(0);opacity:1;}
-.avatar-wrapper {
-  width:120px;
-  height:120px;
-  margin:0 auto 18px;
-  border-radius:50%;
-  padding:var(--avatar-outline-width);
-  background:conic-gradient(var(--avatar-outline-color), #0ea5e9, var(--avatar-outline-color));
-}
-
-.avatar {
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  border:var(--avatar-outline-width) solid #fff;
-  background-image:var(--avatar-image-background);
-  background-size:cover;
-  background-position:center;
-}
+.avatar-wrapper {width:120px;height:120px;margin:0 auto 18px;border-radius:50%;padding:var(--avatar-outline-width);background:conic-gradient(var(--avatar-outline-color), #0ea5e9, var(--avatar-outline-color));}
+.avatar {width:100%;height:100%;border-radius:50%;border:var(--avatar-outline-width) solid #fff;background-image:var(--avatar-image-background);background-size:cover;background-position:center;}
 h1{margin:0;font-size:1.7rem;font-weight:600;}p{margin:8px 0 26px;font-size:.95rem;color:#94a3b8;}
 .link{display:block;padding:18px;margin-bottom:16px;border-radius:18px;background:rgba(15,23,42,.95);color:#e5e7eb;text-decoration:none;border:1px solid rgba(255,255,255,.08);transform:translateY(0) scale(1);transition:transform .3s,box-shadow .3s;position:relative;cursor:pointer;}
 .link.hover{transform: scale(1.02);box-shadow: 0 0 25px rgba(56,189,248,.45),0 0 50px rgba(56,189,248,.25);}
@@ -79,36 +57,9 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 #workContent::-webkit-scrollbar{width:0px;}
 #workContent::-webkit-scrollbar-thumb{background-color:var(--accent);border-radius:1px;}
 #workContent::-webkit-scrollbar-track{background:rgba(255,255,255,0.05);border-radius:1px;}
-.mywork-item{
-  display:flex;
-  gap:16px;
-  background: var(--mywork-background);
-  border-radius:16px;
-  border:var(--mywork-box-outline-width) solid var(--mywork-border-color);
-  padding:12px;
-  align-items:center;
-  margin-bottom:12px;
-
-  transition: box-shadow 0.3s ease;
-}
-
-.mywork-image{
-  width:100px;
-  height:100px;
-  object-fit:cover;
-  border-radius:12px;
-  border:var(--mywork-image-outline-width) solid var(--mywork-image-outline-color);
-  flex-shrink:0;
-
-  /* transisi smooth */
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.mywork-image:hover{
-  transform: scale(1.08); /* zoom gambar */
-  box-shadow: 0 8px 20px rgba(56,189,248,0.35); /* efek glow */
-  cursor: pointer; /* optional biar jelas interaktif */
-}
+.mywork-item{display:flex;gap:16px;background: var(--mywork-background);border-radius:16px;border:var(--mywork-box-outline-width) solid var(--mywork-border-color);padding:12px;align-items:center;margin-bottom:12px;transition: box-shadow 0.3s ease;}
+.mywork-image{width:100px;height:100px;object-fit:cover;border-radius:12px;border:var(--mywork-image-outline-width) solid var(--mywork-image-outline-color);flex-shrink:0;transition: transform 0.35s ease, box-shadow 0.35s ease;}
+.mywork-image:hover{transform: scale(1.08);box-shadow: 0 8px 20px rgba(56,189,248,0.35);cursor: pointer;}
 .mywork-name,.mywork-owner,.mywork-date,.mywork-status {font-size: 1rem;}
 .mywork-name strong,.mywork-owner strong,.mywork-date strong,.mywork-status strong{color:var(--accent);font-size:1.2rem;}
 .mywork-name strong,.mywork-owner strong,.mywork-date strong,
@@ -300,9 +251,7 @@ CONFIG.social.forEach(item => {
   const a = document.createElement("a");
   a.href = item.url;
   a.target = "_blank";
-
   a.innerHTML = item.svg;
-  
   socialList.appendChild(a);
 });
 
