@@ -84,17 +84,14 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
   border:var(--mywork-image-outline-width) solid var(--mywork-image-outline-color);
   flex-shrink:0;
 
-  transition: transform 0.35s ease;
+  /* transisi smooth */
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* HOVER AKTIF HANYA DI AREA BOX */
-.mywork-item:hover{
-  box-shadow: 0 0 0 2px rgba(56,189,248,0.35),
-              0 12px 28px rgba(0,0,0,0.6);
-}
-
-.mywork-item:hover .mywork-image{
-  transform: scale(1.06);
+.mywork-image:hover{
+  transform: scale(1.08); /* zoom gambar */
+  box-shadow: 0 8px 20px rgba(56,189,248,0.35); /* efek glow */
+  cursor: pointer; /* optional biar jelas interaktif */
 }
 .mywork-name,.mywork-owner,.mywork-date,.mywork-status {font-size: 1rem;}
 .mywork-name strong,.mywork-owner strong,.mywork-date strong,.mywork-status strong{color:var(--accent)font-size:0.9rem;}
