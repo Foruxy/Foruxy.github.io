@@ -225,6 +225,7 @@ const CONFIG = {
       svg: `<img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" />`
     }
   ]
+    };
   function isMobile() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
@@ -253,8 +254,6 @@ if (isMobile()) {
     </div>
   `;
 }
-};
-
 
 // Populate content
 document.querySelector(".container .avatar").style.backgroundImage = `url(${CONFIG.avatar})`;
