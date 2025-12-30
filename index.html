@@ -346,7 +346,8 @@ setTimeout(()=>{
 
 function centerContainer() {
   const container = document.querySelector('.container');
-  container.style.marginTop = `${(window.innerHeight - container.offsetHeight) / 2}px`;
+  const offset = -20; // ubah angkanya sesuai kebutuhan (+ untuk turun, - untuk naik)
+  container.style.marginTop = `${(window.innerHeight - container.offsetHeight) / 2 + offset}px`;
 }
 
 window.addEventListener('resize', centerContainer);
