@@ -45,7 +45,7 @@ Kode ini hanya untuk penggunaan pribadi, edukasi, dan non-komersial. Tidak boleh
 
 🔗 Media Sosial
 
-[<img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="32" height="32" alt="Instagram">](https://www.instagram.com/foruxy_/)  [<img src="https://cdn-icons-png.flaticon.com/512/2111/2111728.png" width="32" height="32" alt="X">](https://x.com/Foruxy)  [<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="32" height="32" alt="YouTube">](https://www.youtube.com/@Foruxy)  [<img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" width="32" height="32" alt="Discord">](https://discord.com/users/797770498745303092)
+[<img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="32" height="32" alt="Instagram">](https://www.instagram.com/foruxy_/)  [<img src="https://cdn.simpleicons.org/x/ffffff" width="32" height="32" alt="X">](https://x.com/Foruxy)  [<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="32" height="32" alt="YouTube">](https://www.youtube.com/@Foruxy)  [<img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" width="32" height="32" alt="Discord">](https://discord.com/users/797770498745303092)
 
 🏷️ Teknologi
 
