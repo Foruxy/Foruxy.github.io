@@ -27,92 +27,135 @@
   --mywork-box-outline-width: 2px;
   --mywork-color: #4b38f8;
 }
+
 /* GLOBAL FONT */
 *, body, .container, .paper-box {
     box-sizing: border-box;
-    font-family: var(--font-body); /* ganti dari --font-main */
+    font-family: var(--font-body);
     cursor: none !important;
     margin: 0;
     padding: 0;
 }
-body{min-height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--background-image);background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;color:#e5e7eb;overflow:hidden;}
-#loadingScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--loading-background-color);display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--loading-text-color);font-size:1.6rem;z-index:99999;transition:opacity .5s;}
-#loadingScreen .bar-container{width: 50%;max-width: 260px;height: 8px;border: 2px solid var(--accent);border-radius: 6px;margin-top: 16px;overflow: hidden;}
+body{
+  min-height:100vh;
+  background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),var(--background-image);
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#e5e7eb;
+  overflow:hidden;
+}
+
+#loadingScreen{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:var(--loading-background-color);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  color:var(--loading-text-color);
+  font-size:1.6rem;
+  z-index:99999;
+  transition:opacity .5s;
+}
+#loadingScreen .bar-container{
+  width: 50%;max-width: 260px;height: 8px;border: 2px solid var(--accent);
+  border-radius: 6px;margin-top: 16px;overflow: hidden;
+}
 #loadingScreen .bar{width:0%;height:100%;background:var(--accent);transition:width .1s linear;}
 .loading-text{animation: slowBlink 2.8s ease-in-out infinite;}
-.cursor{position:fixed;width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.9);mix-blend-mode:difference;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s,border .2s;}
+
+.cursor{
+  position:fixed;width:14px;height:14px;border-radius:50%;
+  background:rgba(255,255,255,.9);mix-blend-mode:difference;
+  pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,background .2s,border .2s;
+}
 .cursor.magnify{width:48px;height:48px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);}
-.container{width:100%;max-width:500px;padding:30px;text-align:center;background:rgba(2,6,23,.85);backdrop-filter:blur(16px);border-radius:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px rgba(0,0,0,.8);position:relative;z-index:1;transform:translateY(100px);opacity:0;transition:transform .8s cubic-bezier(.25,1,.5,1),opacity .8s;}
+
+.container{
+  width:90%;
+  max-width:500px;
+  padding:30px;text-align:center;
+  background:rgba(2,6,23,.85);
+  backdrop-filter:blur(16px);
+  border-radius:20px;border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 30px 70px rgba(0,0,0,.8);
+  position:relative;z-index:1;
+  transform:translateY(100px);opacity:0;
+  transition:transform .8s cubic-bezier(.25,1,.5,1),opacity .8s;
+}
 .container.show{transform:translateY(0);opacity:1;}
+
 .avatar-wrapper {
-  width:120px;
-  height:120px;
-  margin:0 auto 18px;
-  border-radius:50%;
+  width:120px;height:120px;margin:0 auto 18px;border-radius:50%;
   padding:var(--avatar-outline-width);
   background:conic-gradient(var(--avatar-outline-color), #0ea5e9, var(--avatar-outline-color));
 }
-
 .avatar {
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  border:var(--avatar-outline-width) solid #fff;
+  width:100%;height:100%;border-radius:50%;border:var(--avatar-outline-width) solid #fff;
   background-image:var(--avatar-image-background);
-  background-size:cover;
-  background-position:center;
+  background-size:cover;background-position:center;
 }
-h1{margin:0;font-size:1.7rem;font-weight:600;}p{margin:8px 0 26px;font-size:.95rem;color:#94a3b8;}
-.link{display:block;padding:18px;margin-bottom:16px;border-radius:18px;background:rgba(15,23,42,.95);color:#e5e7eb;text-decoration:none;border:1px solid rgba(255,255,255,.08);transform:translateY(0) scale(1);transition:transform .3s,box-shadow .3s;position:relative;cursor:pointer;}
+
+h1{margin:0;font-size:1.7rem;font-weight:600;}
+p{margin:8px 0 26px;font-size:.95rem;color:#94a3b8;}
+
+.link{
+  display:block;padding:18px;margin-bottom:16px;border-radius:18px;
+  background:rgba(15,23,42,.95);color:#e5e7eb;text-decoration:none;
+  border:1px solid rgba(255,255,255,.08);transform:translateY(0) scale(1);
+  transition:transform .3s,box-shadow .3s;position:relative;cursor:pointer;
+}
 .link.hover{transform: scale(1.02);box-shadow: 0 0 25px rgba(56,189,248,.45),0 0 50px rgba(56,189,248,.25);}
 .link span{display:inline-block;font-weight:500;transition:transform .3s;}
 .link.zoom-text span{transform:scale(1.2);}
-footer{margin-top:18px;font-size:.75rem;color:#64748b;}
-.paper-box{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,.5);z-index:2;opacity:0;pointer-events:none;transition:opacity .3s;}
+
+footer{margin-top:18px;font-size:.75rem;color:#64748b;font-family: var(--font-title);font-weight: normal;}
+
+.paper-box{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  display:flex;justify-content:center;align-items:center;
+  background:rgba(0,0,0,.5);
+  z-index:2;opacity:0;pointer-events:none;transition:opacity .3s;
+}
 .paper-box.active{opacity:1;pointer-events:auto;}
-.paper-box .box-content{background:rgba(2,6,23,.95);color:#e5e7eb;border-radius:22px;padding:26px;max-width:640px;width:100%;box-shadow:0 30px 70px rgba(0,0,0,.8);backdrop-filter:blur(16px);transform:scale(.8);transition:transform .3s;}
+.paper-box .box-content{
+  background:rgba(2,6,23,.95);color:#e5e7eb;border-radius:22px;padding:26px;
+  max-width:640px;width:100%;box-shadow:0 30px 70px rgba(0,0,0,.8);backdrop-filter:blur(16px);
+  transform:scale(.8);transition:transform .3s;
+}
 .paper-box.active .box-content{transform:scale(1);}
 .paper-box .close-trigger{position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;}
+.paper-box .box-content{overflow:hidden;}
+.paper-box .box-content h1{font-family: var(--font-title);font-weight: normal;}
+
 .space {margin-top: 20px;}
 #socialBox .box-content{max-width: 360px;width: 90%;padding: 20px;}
-#workContent{max-height:540px;overflow-y:auto;padding-right:20px;margin:80px auto;}
+#workContent{max-height:540px;overflow-y:auto;padding-right:20px;margin:80px auto; -webkit-overflow-scrolling: touch;}
 #workContent::-webkit-scrollbar{width:0px;}
 #workContent::-webkit-scrollbar-thumb{background-color:var(--accent);border-radius:1px;}
 #workContent::-webkit-scrollbar-track{background:rgba(255,255,255,0.05);border-radius:1px;}
-.mywork-item{
-  display:flex;
-  gap:16px;
-  background: var(--mywork-background);
-  border-radius:16px;
-  border:var(--mywork-box-outline-width) solid var(--mywork-border-color);
-  padding:12px;
-  align-items:center;
-  margin-bottom:12px;
 
+.mywork-item{
+  display:flex;gap:16px;background: var(--mywork-background);
+  border-radius:16px;border:var(--mywork-box-outline-width) solid var(--mywork-border-color);
+  padding:12px;align-items:center;margin-bottom:12px;
   transition: box-shadow 0.3s ease;
 }
-
 .mywork-image{
-  width:100px;
-  height:100px;
-  object-fit:cover;
-  border-radius:12px;
+  width:100px;height:100px;object-fit:cover;border-radius:12px;
   border:var(--mywork-image-outline-width) solid var(--mywork-image-outline-color);
   flex-shrink:0;
-
-  /* transisi smooth */
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
-
 .mywork-image:hover{
-  transform: scale(1.08); /* zoom gambar */
-  box-shadow: 0 8px 20px rgba(56,189,248,0.35); /* efek glow */
-  cursor: pointer; /* optional biar jelas interaktif */
+  transform: scale(1.08); box-shadow: 0 8px 20px rgba(56,189,248,0.35); cursor: pointer;
 }
 .mywork-name,.mywork-owner,.mywork-date,.mywork-status {font-size: 1rem;}
-.mywork-name strong,.mywork-owner strong,.mywork-date strong,.mywork-status strong{color:var(--accent)font-size:0.9rem;}
-.mywork-name strong,.mywork-owner strong,.mywork-date strong,
-.mywork-status strong {font-family: var(--font-title);color: var(--mywork-color);font-weight: normal;}
+.mywork-name strong,.mywork-owner strong,.mywork-date strong,.mywork-status strong{
+  font-family: var(--font-title);color: var(--mywork-color);font-weight: normal;
+}
+
 .about-box-content{display:flex;gap:20px;align-items:flex-start;}
 .about-box-content .about-avatar{width:120px;height:120px;border-radius:12px;border:var(--about-avatar-outline-width) solid var(--about-avatar-outline-color);background-size:cover;background-position:center;flex-shrink:0;}
 .about-box-content .about-text{flex:1;color:#e5e7eb;}
@@ -122,28 +165,48 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .about-name::before{content: "Nama: ";}.about-race::before{content: "Race: ";}.about-bio::before{content:"Bio: ";}
 .bio-description{font-size:.9rem;line-height:1.4;color:#e5e7eb;margin-top:12px;text-align:left;}
 .bio-description .about-bio p {font-size:.8rem;}
+
 @keyframes slowBlink {0%{opacity:1;}50%{opacity:.4;}100%{opacity:1;}}
+
 .container h1{font-family: var(--font-title);font-weight: normal;}
 #links .link span{font-family: var(--font-title);font-weight: normal;font-size: 1.2rem;}
-.paper-box h1{font-family: var(--font-title);font-weight: normal;}
+
 .social-icon-list {display: flex;justify-content: center;align-items: center;gap: 16px;margin-top: 20px;flex-wrap: wrap;}
 .social-icon-list a {display: flex;justify-content: flex-end;align-items: center;width: 60px;height: 60px;border-radius: 12px;background: rgba(15,23,42,0.95);transition: transform 0.3s, box-shadow 0.3s, background 0.3s;cursor: pointer;padding-right: 8px;box-sizing: border-box;}
 .social-icon-list a img {width: 60px;height: 60px;object-fit: cover;border-radius: 0;display: block;margin: 0;}
 .social-icon-list a:hover {transform: scale(1.1);box-shadow: 0 4px 12px rgba(56,189,248,0.3);background: rgba(56, 189, 248, 0.2);}
 .social-icon-list a:hover img {transform: scale(0.95)}
 #socialBox .bio-description a img {width: 24px;height: 24px;margin-right: 10px;vertical-align: middle;}
-footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
+
+@media (max-width: 480px) {
+  .avatar-wrapper { width: 90px; height: 90px; }
+  .avatar { border-width: 3px; }
+  h1 { font-size: 1.4rem; }
+  p { font-size: 0.85rem; }
+  .link { padding: 14px; border-radius: 14px; font-size: 0.9rem; }
+  .mywork-item { flex-direction: column; align-items: flex-start; }
+  .mywork-image { width: 80px; height: 80px; }
+  .about-box-content { flex-direction: column; align-items: center; gap: 12px; }
+  .about-avatar { width: 90px; height: 90px; }
+  .social-icon-list a { width: 50px; height: 50px; }
+  .social-icon-list a img { width: 50px; height: 50px; }
+  .cursor { display: none; }
+  .paper-box .box-content { width: 90%; max-width: 400px; padding: 16px; }
+}
 </style>
 </head>
 <body>
 
+<!-- LOADING SCREEN -->
 <div id="loadingScreen">
   <div class="loading-text">Loading...</div>
   <div class="bar-container"><div class="bar" id="loadingBar"></div></div>
 </div>
 
+<!-- CURSOR -->
 <div class="cursor"></div>
 
+<!-- MAIN CONTAINER -->
 <div class="container">
   <div class="avatar-wrapper"><div class="avatar"></div></div>
   <h1 id="name"></h1>
@@ -182,6 +245,7 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
 </div>
 
 <script>
+// CONFIG
 const CONFIG = {
   name:"Foruxy Puppetaru",
   tagline:"Your Partner for VTuber Servers, Moderation, and Management",
@@ -200,124 +264,84 @@ const CONFIG = {
     {image:"https://cdn.discordapp.com/icons/1449407408081342526/51e73f36e5b8c60814ad27e1ddb9ab7e.png",name:"Amaryn Pastry Shop🎂",owner:"Amaryn",date:"21 Agustus 2025",status:"Partner"},
     {image:"https://cdn.discordapp.com/icons/1449766831710797826/20f41bc549a6e664cda39ce16998f37b.png",name:"Kayce Pavilion",owner:"Kayce Lawrence",date:"14 Desember 2025",status:"Finish"},
     {image:"https://cdn.discordapp.com/icons/1405524507330084936/a48a0254bb1646c05e2bf2f782a4eb5f.png",name:"[𝓚.𝓐.𝓒] 𝓚𝓪𝓲 𝓐𝔃𝓾𝓶𝓪 𝓒𝓸𝓶𝓶𝓾𝓷𝓲𝓽𝔂",owner:"Kaikaje",date:"14 Agustus 2025",status:"Finish"},
-    {image:"https://cdn.discordapp.com/icons/792733470958551040/ffd45bb32ecb865a6851ebcfa8c39eaa.png",name:"Fowl Base",owner:"Foruxy",date:"27 Desember 2020",status:"Active"}
+    {image:"https://cdn.discordapp.com/icons/792733470958551040/ffd45bb32ecb865a6851ebcfa8c39eaa.png",name:"Fowl Base",owner:"Foruxy Puppetaru",date:"02 Februari 2025",status:"Finish"}
   ],
-
-  social: [
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/foruxy_/",
-      svg: `<img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />`
-    },
-    {
-      name: "X",
-      url: "https://x.com/Foruxy",
-      svg: `<img src="https://logo.svgcdn.com/logos/x.png" alt="X" />`
-    },
-    {
-      name: "YouTube",
-      url: "https://www.youtube.com/@Foruxy",
-      svg: `<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />`
-    },
-    {
-      name: "Discord",
-      url: "https://discord.com/users/797770498745303092",
-      svg: `<img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" />`
-    }
+  social = [
+    {icon:"https://cdn-icons-png.flaticon.com/512/124/124010.png",url:"https://twitter.com/"},
+    {icon:"https://cdn-icons-png.flaticon.com/512/2111/2111370.png",url:"https://discord.com/"},
+    {icon:"https://cdn-icons-png.flaticon.com/512/2111/2111463.png",url:"https://youtube.com/"},
+    {icon:"https://cdn-icons-png.flaticon.com/512/2111/2111463.png",url:"https://www.instagram.com/"}
   ]
-};
+}
 
+// LOADING
+let bar = document.getElementById("loadingBar");
+let load = 0;
+let loadingScreen = document.getElementById("loadingScreen");
+let interval = setInterval(()=>{
+  load+=1;
+  bar.style.width = load+"%";
+  if(load>=100){clearInterval(interval);loadingScreen.style.opacity=0;setTimeout(()=>{loadingScreen.style.display="none";document.querySelector(".container").classList.add("show");},500);}
+},30);
 
-// Populate content
-document.querySelector(".container .avatar").style.backgroundImage = `url(${CONFIG.avatar})`;
-document.getElementById("name").textContent = CONFIG.name;
-document.getElementById("tagline").textContent = CONFIG.tagline;
-document.getElementById("footer-name").textContent = CONFIG.name;
-
-const linksContainer = document.getElementById("links");
-CONFIG.links.forEach(item=>{
-  const a = document.createElement("a");
-  a.className="link"; a.href=item.url; a.innerHTML=`<span>${item.label}</span>`;
-  linksContainer.appendChild(a);
+// SET MAIN CONTENT
+document.getElementById("name").innerText = CONFIG.name;
+document.getElementById("tagline").innerText = CONFIG.tagline;
+document.getElementById("footer-name").innerText = CONFIG.name;
+let linksDiv = document.getElementById("links");
+CONFIG.links.forEach(link=>{
+  let a = document.createElement("a");
+  a.className="link";
+  a.href=link.url;
+  a.innerHTML=`<span>${link.label}</span>`;
+  linksDiv.appendChild(a);
 });
 
-// About Box
-document.querySelector(".about-avatar").style.backgroundImage=`url(${CONFIG.aboutAvatar})`;
-document.querySelector(".about-name").textContent = CONFIG.aboutName;
-document.querySelector(".about-race").textContent = CONFIG.aboutRace;
-document.querySelector(".about-bio").innerHTML = CONFIG.aboutBio.replace(/\n/g,"<br>");
+// ABOUT BOX
+document.querySelector(".about-avatar").style.backgroundImage = `url(${CONFIG.aboutAvatar})`;
+document.querySelector(".about-name").innerText = CONFIG.aboutName;
+document.querySelector(".about-race").innerText = CONFIG.aboutRace;
+document.querySelector(".about-bio").innerText = CONFIG.aboutBio;
 
-// My Work
-const workContent = document.getElementById("workContent");
-CONFIG.myWork.forEach(item=>{
-  const div = document.createElement("div");
+// MY WORK
+let workContent = document.getElementById("workContent");
+CONFIG.myWork.forEach(w=>{
+  let div = document.createElement("div");
   div.className="mywork-item";
-  div.innerHTML = `
-    <img src="${item.image}" alt="Server Discord" class="mywork-image">
-    <div class="mywork-desc">
-      <div class="mywork-name"><strong>Server Name:</strong> ${item.name}</div>
-      <div class="mywork-owner"><strong>Owner:</strong> ${item.owner}</div>
-      <div class="mywork-date"><strong>Creation Date:</strong> ${item.date}</div>
-      <div class="mywork-status"><strong>Status:</strong> ${item.status}</div>
-    </div>`;
+  div.innerHTML = `<img class="mywork-image" src="${w.image}"><div><div class="mywork-name"><strong>${w.name}</strong></div><div class="mywork-owner"><strong>${w.owner}</strong></div><div class="mywork-date"><strong>${w.date}</strong></div><div class="mywork-status"><strong>${w.status}</strong></div></div>`;
   workContent.appendChild(div);
 });
 
-// Social
-const socialBoxContent = document.querySelector("#socialBox .bio-description");
-socialBoxContent.innerHTML = ""; // kosongkan dulu
-const socialList = document.createElement("div");
-socialList.className = "social-icon-list";
-
-CONFIG.social.forEach(item => {
-  const a = document.createElement("a");
-  a.href = item.url;
-  a.target = "_blank";
-
-  a.innerHTML = item.svg;
-  
-  socialList.appendChild(a);
+// SOCIAL
+let socialDiv = document.querySelector("#socialBox .bio-description");
+CONFIG.social.forEach(s=>{
+  let a = document.createElement("a");
+  a.href = s.url; a.target="_blank"; a.rel="noopener";
+  a.innerHTML = `<img src="${s.icon}">`;
+  socialDiv.appendChild(a);
 });
 
-socialBoxContent.appendChild(socialList);
-
-// Cursor
-const cursor = document.querySelector(".cursor");
-let mouseX=0, mouseY=0, currentX=0, currentY=0;
-document.addEventListener("mousemove",e=>{mouseX=e.clientX; mouseY=e.clientY;});
-function animateCursor(){currentX+=(mouseX-currentX)*.15; currentY+=(mouseY-currentY)*.15; cursor.style.left=currentX+"px"; cursor.style.top=currentY+"px"; requestAnimationFrame(animateCursor);}
-animateCursor();
-
-// Link hover
-document.querySelectorAll(".link").forEach(btn=>{
-  btn.addEventListener("mouseenter",()=>{btn.classList.add("hover"); cursor.classList.add("magnify");});
-  btn.addEventListener("mouseleave",()=>{btn.classList.remove("hover"); cursor.classList.remove("magnify");});
+// LINK HANDLER
+document.querySelectorAll(".link").forEach(a=>{
+  a.addEventListener("click",(e)=>{
+    e.preventDefault();
+    if(a.innerText.includes("About")){document.getElementById("aboutBox").classList.add("active");}
+    else if(a.innerText.includes("Work")){document.getElementById("workBox").classList.add("active");}
+    else if(a.innerText.includes("Social")){document.getElementById("socialBox").classList.add("active");}
+  });
 });
 
-// Overlay triggers
-const [aboutBtn, workBtn, socialBtn] = document.querySelectorAll("#links .link");
-const [aboutBox, workBox, socialBox] = [document.getElementById("aboutBox"), document.getElementById("workBox"), document.getElementById("socialBox")];
-
-aboutBtn.addEventListener("click", e=>{e.preventDefault(); aboutBox.classList.add("active");});
-workBtn.addEventListener("click", e=>{e.preventDefault(); workBox.classList.add("active"); workContent.scrollTop=0;});
-socialBtn.addEventListener("click", e=>{e.preventDefault(); socialBox.classList.add("active");});
-
-document.querySelectorAll(".close-trigger").forEach(trigger=>{
-  trigger.addEventListener("click", e=>{e.currentTarget.parentElement.classList.remove("active");});
+// CLOSE BOX
+document.querySelectorAll(".paper-box .close-trigger").forEach(c=>{
+  c.addEventListener("click",()=>{c.parentElement.classList.remove("active");});
 });
-document.querySelectorAll(".box-content").forEach(box=>box.addEventListener("click", e=>e.stopPropagation()));
 
-// Loading screen
-const loadingScreen=document.getElementById("loadingScreen"), loadingBar=document.getElementById("loadingBar");
-let width=0, totalTime=6000, intervalTime=30, increment=100/(totalTime/intervalTime);
-const loadingInterval=setInterval(()=>{width+=increment; if(width>=100) width=100; loadingBar.style.width=width+"%";},intervalTime);
-setTimeout(()=>{
-  clearInterval(loadingInterval);
-  loadingScreen.style.opacity=0;
-  setTimeout(()=>{loadingScreen.style.display="none"; document.querySelector(".container").classList.add("show");},500);
-},totalTime);
+// CURSOR
+let cursor = document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px";});
+document.querySelectorAll(".link").forEach(l=>{l.addEventListener("mouseover",()=>{cursor.classList.add("magnify");});l.addEventListener("mouseout",()=>{cursor.classList.remove("magnify");});});
+document.querySelectorAll(".mywork-image").forEach(img=>{img.addEventListener("mouseover",()=>{cursor.classList.add("magnify");});img.addEventListener("mouseout",()=>{cursor.classList.remove("magnify");});});
 
 </script>
-
 </body>
 </html>
