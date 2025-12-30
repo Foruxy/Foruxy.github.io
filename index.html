@@ -225,6 +225,34 @@ const CONFIG = {
       svg: `<img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" />`
     }
   ]
+  function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+if (isMobile()) {
+  // Hentikan interaksi halaman
+  document.body.innerHTML = `
+    <div style="
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:#111;
+      color:#fff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      font-family: monospace;
+      padding:20px;
+      z-index:99999;
+    ">
+      <div>
+        <h1>⚠️ Halaman ini hanya untuk Desktop</h1>
+        <p>Silakan buka halaman ini menggunakan perangkat Desktop untuk pengalaman terbaik.</p>
+      </div>
+    </div>
+  `;
+}
 };
 
 
