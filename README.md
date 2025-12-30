@@ -5,6 +5,14 @@
 
 ---
 
+## 📜 Lisensi & Penggunaan
+
+Hak cipta © 2025 Foruxy Puppetaru
+
+Kode ini hanya untuk penggunaan pribadi, edukasi, dan non-komersial. Tidak boleh digunakan untuk dijual, dimonetisasi, atau dijadikan produk komersial. Semua salinan harus menyertakan lisensi ini.
+
+---
+
 ## 🚀 Deskripsi
 
 Landing page ini menampilkan profil **Foruxy Puppetaru**, kreator dan manajer komunitas VTuber. Halaman ini interaktif, dengan animasi loading, kursor custom, overlay pop-up, daftar proyek/Discord server, dan tautan media sosial.
@@ -36,12 +44,6 @@ Foruxy.github.io/
 └─ README.md
 
 ---
-
-## 📜 Lisensi & Penggunaan
-
-Hak cipta © 2025 Foruxy Puppetaru
-
-Kode ini hanya untuk penggunaan pribadi, edukasi, dan non-komersial. Tidak boleh digunakan untuk dijual, dimonetisasi, atau dijadikan produk komersial. Semua salinan harus menyertakan lisensi ini.
 
 ## 🔗 Media Sosial
 
