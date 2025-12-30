@@ -73,8 +73,9 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
   align-items:center;
   margin-bottom:12px;
 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
+
 .mywork-image{
   width:100px;
   height:100px;
@@ -85,13 +86,15 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 
   transition: transform 0.35s ease;
 }
+
+/* HOVER AKTIF HANYA DI AREA BOX */
 .mywork-item:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(56,189,248,0.25);
+  box-shadow: 0 0 0 2px rgba(56,189,248,0.35),
+              0 12px 28px rgba(0,0,0,0.6);
 }
 
 .mywork-item:hover .mywork-image{
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 .mywork-name,.mywork-owner,.mywork-date,.mywork-status {font-size: 1rem;}
 .mywork-name strong,.mywork-owner strong,.mywork-date strong,.mywork-status strong{color:var(--accent)font-size:0.9rem;}
