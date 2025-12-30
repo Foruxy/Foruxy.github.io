@@ -92,42 +92,55 @@ const CONFIG={name:"Foruxy Puppetaru",tagline:"Your Partner for VTuber Servers, 
                 {name:"YouTube",url:"https://www.youtube.com/@Foruxy",svg:`<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"/>`},
                 {name:"Discord",url:"https://discord.com/users/797770498745303092",svg:`<img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord"/>`}]
 };
-<script>
-document.addEventListener("DOMContentLoaded", () => { ... });
+CONFIG.social.forEach(item => {
+  const a = document.createElement("a");
+  a.href = item.url;
+  a.target = "_blank";
 
-// Avatar & teks
-document.querySelector(".container .avatar").style.backgroundImage=`url(${CONFIG.avatar})`;
-document.getElementById("name").textContent=CONFIG.name;
-document.getElementById("tagline").textContent=CONFIG.tagline;
-document.getElementById("footer-name").textContent=CONFIG.name;
+  a.innerHTML = item.svg;
+  
+  socialList.appendChild(a);
+});
 
-// Links
-const linksContainer=document.getElementById("links"); CONFIG.links.forEach(item=>{const a=document.createElement("a"); a.className="link"; a.href=item.url; a.innerHTML=`<span>${item.label}</span>`; linksContainer.appendChild(a);});
-
-// About Box
-document.querySelector(".about-avatar").style.backgroundImage=`url(${CONFIG.aboutAvatar})`;
-document.querySelector(".about-name").textContent=CONFIG.aboutName;
-document.querySelector(".about-race").textContent=CONFIG.aboutRace;
-document.querySelector(".about-bio").innerHTML=CONFIG.aboutBio.replace(/\n/g,"<br>");
-
-// My Work
-const workContent=document.getElementById("workContent"); CONFIG.myWork.forEach(item=>{const div=document.createElement("div"); div.className="mywork-item"; div.innerHTML=`<img src="${item.image}" class="mywork-image"><div class="mywork-desc"><div class="mywork-name"><strong>Server Name:</strong> ${item.name}</div><div class="mywork-owner"><strong>Owner:</strong> ${item.owner}</div><div class="mywork-date"><strong>Creation Date:</strong> ${item.date}</div><div class="mywork-status"><strong>Status:</strong> ${item.status}</div></div>`; workContent.appendChild(div);});
-
-// Social
-const socialBoxContent=document.querySelector("#socialBox .bio-description"); socialBoxContent.innerHTML=""; const socialList=document.createElement("div"); socialList.className="social-icon-list"; CONFIG.social.forEach(item=>{const a=document.createElement("a"); a.href=item.url; a.target="_blank"; a.innerHTML=item.svg; socialList.appendChild(a);}); socialBoxContent.appendChild(socialList);
+socialBoxContent.appendChild(socialList);
 
 // Cursor
-const cursor=document.querySelector(".cursor"); let mouseX=0, mouseY=0, currentX=0, currentY=0; document.addEventListener("mousemove",e=>{mouseX=e.clientX; mouseY=e.clientY;}); function animateCursor(){currentX+=(mouseX-currentX)*.15; currentY+=(mouseY-currentY)*.15; cursor.style.left=currentX+"px"; cursor.style.top=currentY+"px"; requestAnimationFrame(animateCursor);} animateCursor();
+const cursor = document.querySelector(".cursor");
+let mouseX=0, mouseY=0, currentX=0, currentY=0;
+document.addEventListener("mousemove",e=>{mouseX=e.clientX; mouseY=e.clientY;});
+function animateCursor(){currentX+=(mouseX-currentX)*.15; currentY+=(mouseY-currentY)*.15; cursor.style.left=currentX+"px"; cursor.style.top=currentY+"px"; requestAnimationFrame(animateCursor);}
+animateCursor();
 
 // Link hover
-document.querySelectorAll(".link").forEach(btn=>{btn.addEventListener("mouseenter",()=>{btn.classList.add("hover"); cursor.classList.add("magnify");}); btn.addEventListener("mouseleave",()=>{btn.classList.remove("hover"); cursor.classList.remove("magnify");});});
+document.querySelectorAll(".link").forEach(btn=>{
+  btn.addEventListener("mouseenter",()=>{btn.classList.add("hover"); cursor.classList.add("magnify");});
+  btn.addEventListener("mouseleave",()=>{btn.classList.remove("hover"); cursor.classList.remove("magnify");});
+});
 
 // Overlay triggers
-const [aboutBtn,workBtn,socialBtn]=document.querySelectorAll("#links .link"); const [aboutBox,workBox,socialBox]=[document.getElementById("aboutBox"),document.getElementById("workBox"),document.getElementById("socialBox")]; aboutBtn.addEventListener("click",e=>{e.preventDefault(); aboutBox.classList.add("active");}); workBtn.addEventListener("click",e=>{e.preventDefault(); workBox.classList.add("active"); workContent.scrollTop=0;}); socialBtn.addEventListener("click",e=>{e.preventDefault(); socialBox.classList.add("active");});
-document.querySelectorAll(".close-trigger").forEach(trigger=>{trigger.addEventListener("click",e=>{e.currentTarget.parentElement.classList.remove("active");});}); document.querySelectorAll(".box-content").forEach(box=>box.addEventListener("click",e=>e.stopPropagation()));
+const [aboutBtn, workBtn, socialBtn] = document.querySelectorAll("#links .link");
+const [aboutBox, workBox, socialBox] = [document.getElementById("aboutBox"), document.getElementById("workBox"), document.getElementById("socialBox")];
+
+aboutBtn.addEventListener("click", e=>{e.preventDefault(); aboutBox.classList.add("active");});
+workBtn.addEventListener("click", e=>{e.preventDefault(); workBox.classList.add("active"); workContent.scrollTop=0;});
+socialBtn.addEventListener("click", e=>{e.preventDefault(); socialBox.classList.add("active");});
+
+document.querySelectorAll(".close-trigger").forEach(trigger=>{
+  trigger.addEventListener("click", e=>{e.currentTarget.parentElement.classList.remove("active");});
+});
+document.querySelectorAll(".box-content").forEach(box=>box.addEventListener("click", e=>e.stopPropagation()));
 
 // Loading screen
-const loadingScreen=document.getElementById("loadingScreen"),loadingBar=document.getElementById("loadingBar"); let width=0,totalTime=6000,intervalTime=30,increment=100/(totalTime/intervalTime); const loadingInterval=setInterval(()=>{width+=increment;if(width>=100) width=100; loadingBar.style.width=width+"%";},intervalTime); setTimeout(()=>{clearInterval(loadingInterval); loadingScreen.style.opacity=0; setTimeout(()=>{loadingScreen.style.display="none"; document.querySelector(".container").classList.add("show");},500);},totalTime);
+const loadingScreen=document.getElementById("loadingScreen"), loadingBar=document.getElementById("loadingBar");
+let width=0, totalTime=6000, intervalTime=30, increment=100/(totalTime/intervalTime);
+const loadingInterval=setInterval(()=>{width+=increment; if(width>=100) width=100; loadingBar.style.width=width+"%";},intervalTime);
+setTimeout(()=>{
+  clearInterval(loadingInterval);
+  loadingScreen.style.opacity=0;
+  setTimeout(()=>{loadingScreen.style.display="none"; document.querySelector(".container").classList.add("show");},500);
+},totalTime);
 
-});
 </script>
+
+</body>
+</html>
