@@ -1,6 +1,6 @@
 # Foruxy Landing Page
 
-![Foruxy Landing Page](https://raw.githubusercontent.com/Foruxy/Foruxy.github.io/3f27f7fd95ceae4a59cd594ba8c18a7b26792c49/assets/images/Preview.png)
+![Foruxy Landing Page](https://raw.githubusercontent.com/Foruxy/Foruxy.github.io/27bfdcfdf9b12054839c7dd4cc24adef95bde197/assets/images/Preview.png)
 *Preview dari landing page desktop Foruxy Puppetaru*
 
 ---
@@ -26,12 +26,13 @@ Dirancang khusus untuk **desktop**, proyek ini adalah playground untuk eksperime
 ---
 
 ## 📂 Struktur Proyek
-Foruxy.github.io/
-│
-├─ index.html ← Halaman utama
-├─ assets/
-│ ├─ images/ ← Avatar, background GIF, screenshot
-│ └─ icons/ ← Icon media sosial
+
+Foruxy.github.io/  
+│  
+├─ index.html       ← Halaman utama  
+├─ assets/  
+│   ├─ images/      ← Avatar, background GIF, screenshot  
+│   └─ icons/       ← Icon media sosial  
 └─ README.md
 
 ---
