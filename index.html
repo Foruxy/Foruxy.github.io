@@ -65,24 +65,12 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .mywork-name strong,.mywork-owner strong,.mywork-date strong,
 .mywork-status strong {font-family: var(--font-title);color: var(--mywork-color);font-weight: normal;}
 .about-box-content{display:flex;gap:20px;align-items:flex-start;}
-.about-box-content .about-avatar{
-  width:140px;
-  height:140px;
-  box-sizing: border-box;
-  border: var(--about-avatar-outline-width) solid var(--about-avatar-outline-color);
-  border-radius: 2px;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  background-clip: padding-box;
-}
+.about-box-content .about-avatar{width:120px;height:120px;border-radius:12px;border:var(--about-avatar-outline-width) solid var(--about-avatar-outline-color);background-size:cover;background-position:center;flex-shrink:0;}
 .about-box-content .about-text{flex:1;color:#e5e7eb;}
 .about-box-content .about-text div{margin-bottom:4px;}
 .about-text > div {display: grid;grid-template-columns: 50px auto;gap: 4px;align-items: start;}
 .about-name::before,.about-race::before,.about-bio::before{font-family: var(--font-title);font-weight: normal;font-size: 1.2rem;}
-.about-name::before{content: "Name: ";}.about-race::before{content: "Race: ";}.about-bio::before{content:"Bio: ";}
+.about-name::before{content: "Nama: ";}.about-race::before{content: "Race: ";}.about-bio::before{content:"Bio: ";}
 .bio-description{font-size:.9rem;line-height:1.4;color:#e5e7eb;margin-top:4px;text-align:left;}
 .bio-description .about-bio p {font-size:.8rem;}
 @keyframes slowBlink {0%{opacity:1;}50%{opacity:.4;}100%{opacity:1;}}
@@ -112,14 +100,13 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
   <h1 id="name"></h1>
   <p id="tagline"></p>
   <div id="links"></div>
-  <footer>© 2025 <span id="footer-name"></span> All rights reserved.</footer>
+  <footer>© 2025 <span id="footer-name"></span></footer>
 </div>
 
 <!-- OVERLAY BOXES -->
 <div class="paper-box" id="aboutBox"><div class="close-trigger"></div>
   <div class="box-content about-box-content">
-    <div class="about-avatar-wrapper">
-    <div class="about-avatar">
+    <div class="about-avatar"></div>
     <div class="about-text">
       <div class="about-name"></div>
       <div class="about-race"></div>
@@ -233,8 +220,7 @@ CONFIG.links.forEach(item=>{
 });
 
 // About Box
-const aboutAvatar = document.querySelector(".about-avatar");
-aboutAvatar.style.backgroundImage = `url(${CONFIG.aboutAvatar})`;
+document.querySelector(".about-avatar").style.backgroundImage=`url(${CONFIG.aboutAvatar})`;
 document.querySelector(".about-name").textContent = CONFIG.aboutName;
 document.querySelector(".about-race").textContent = CONFIG.aboutRace;
 document.querySelector(".about-bio").innerHTML = CONFIG.aboutBio.replace(/\n/g,"<br>");
