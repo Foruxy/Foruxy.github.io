@@ -65,7 +65,26 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .mywork-name strong,.mywork-owner strong,.mywork-date strong,
 .mywork-status strong {font-family: var(--font-title);color: var(--mywork-color);font-weight: normal;}
 .about-box-content{display:flex;gap:20px;align-items:flex-start;}
-.about-box-content .about-avatar{width:140px;height:140px;border-radius:2px;border:var(--about-avatar-outline-width) solid var(--about-avatar-outline-color);background-size:cover;background-position:center;flex-shrink:0;}
+.about-box-content .about-avatar{
+  width:140px;
+  height:140px;
+  padding: var(--about-avatar-outline-width);
+  border-radius:2px;
+  border: var(--about-avatar-outline-width) solid var(--about-avatar-outline-color);
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+.about-box-content .about-avatar::before{
+  content:"";
+  display:block;
+  width:100%;
+  height:100%;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+}
+
 .about-box-content .about-text{flex:1;color:#e5e7eb;}
 .about-box-content .about-text div{margin-bottom:4px;}
 .about-text > div {display: grid;grid-template-columns: 50px auto;gap: 4px;align-items: start;}
@@ -220,7 +239,8 @@ CONFIG.links.forEach(item=>{
 });
 
 // About Box
-document.querySelector(".about-avatar").style.backgroundImage=`url(${CONFIG.aboutAvatar})`;
+const aboutAvatar = document.querySelector(".about-avatar");
+aboutAvatar.style.backgroundImage = `url(${CONFIG.aboutAvatar})`;
 document.querySelector(".about-name").textContent = CONFIG.aboutName;
 document.querySelector(".about-race").textContent = CONFIG.aboutRace;
 document.querySelector(".about-bio").innerHTML = CONFIG.aboutBio.replace(/\n/g,"<br>");
