@@ -84,7 +84,6 @@ footer{margin-top:18px;font-size:.75rem;color:#64748b;}
 .social-icon-list a:hover img {transform: scale(0.95)}
 #socialBox .bio-description a img {width: 24px;height: 24px;margin-right: 10px;vertical-align: middle;}
 footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
-#talentBox .box-content{ width:320px; min-height:160px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;}
 </style>
 </head>
 <body>
@@ -133,16 +132,6 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
   </div>
 </div>
 
-<div class="paper-box" id="talentBox">
-  <div class="close-trigger"></div>
-  <div class="box-content talent-content">
-    <h1>My Talent</h1>
-    <div class="bio-description talent-text">
-      To Be Announce
-    </div>
-  </div>
-</div>
-  
 <script>
 const CONFIG = {
   name:"Foruxy Puppetaru",
@@ -152,11 +141,7 @@ const CONFIG = {
   aboutName:"Foruxy Puppetaru",
   aboutRace:"Silver Catfox",
   aboutBio: "Hawrru~! I'm Foruxy, the Silver Catfox!\n\nI help VTubers grow their communities by helping creating Discord servers, managing communities, and moderating YouTube channels.\n\nI also serve as a VTuber Manager, Advisor, Consultant, and Support.\n\nSince February 2025, I've been dedicated to guiding VTubers with creativity and care.",
-  links:[
-  {label:"👤 About Me",url:"#about"},
-  {label:"💼 My Work",url:"#work"},
-  {label:"⭐ My Talent",url:"#talent"},
-  {label:"🌐 Social",url:"#social"} ],
+  links:[{label:"👤 About Me",url:"#about"},{label:"💼 My Work",url:"#work"},{label:"🌐 Social",url:"#social"}],
   myWork:[
     {image:"https://cdn.discordapp.com/icons/1391655093920727040/aff24dcc07ba0d7913693c536696ee31.png",name:"Yasei Pyon’s Zoological Society",owner:"Yasei Pyon",date:"07 July 2025",status:"Partner"},
     {image:"https://cdn.discordapp.com/icons/1431225172614054000/e19f0c8cbf37b33ccab1ca9b58a7f0b9.png",name:"Hidden Peak ❄",owner:"Eseuri Krasu",date:"24 October 2025",status:"Partner"},
@@ -282,34 +267,17 @@ document.querySelectorAll(".link").forEach(btn=>{
 });
 
 // Overlay triggers
-// Overlay triggers
-const [aboutBtn, workBtn, talentBtn, socialBtn] = document.querySelectorAll("#links .link");
+const [aboutBtn, workBtn, socialBtn] = document.querySelectorAll("#links .link");
+const [aboutBox, workBox, socialBox] = [document.getElementById("aboutBox"), document.getElementById("workBox"), document.getElementById("socialBox")];
 
-const aboutBox = document.getElementById("aboutBox");
-const workBox = document.getElementById("workBox");
-const talentBox = document.getElementById("talentBox");
-const socialBox = document.getElementById("socialBox");
+aboutBtn.addEventListener("click", e=>{e.preventDefault(); aboutBox.classList.add("active");});
+workBtn.addEventListener("click", e=>{e.preventDefault(); workBox.classList.add("active"); workContent.scrollTop=0;});
+socialBtn.addEventListener("click", e=>{e.preventDefault(); socialBox.classList.add("active");});
 
-aboutBtn.addEventListener("click", e=>{
-  e.preventDefault();
-  aboutBox.classList.add("active");
+document.querySelectorAll(".close-trigger").forEach(trigger=>{
+  trigger.addEventListener("click", e=>{e.currentTarget.parentElement.classList.remove("active");});
 });
-
-workBtn.addEventListener("click", e=>{
-  e.preventDefault();
-  workBox.classList.add("active");
-  workContent.scrollTop = 0;
-});
-
-talentBtn.addEventListener("click", e=>{
-  e.preventDefault();
-  talentBox.classList.add("active");
-});
-
-socialBtn.addEventListener("click", e=>{
-  e.preventDefault();
-  socialBox.classList.add("active");
-});
+document.querySelectorAll(".box-content").forEach(box=>box.addEventListener("click", e=>e.stopPropagation()));
 
 // Loading screen
 const loadingScreen=document.getElementById("loadingScreen"), loadingBar=document.getElementById("loadingBar");
