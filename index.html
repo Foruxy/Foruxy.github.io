@@ -125,6 +125,16 @@ footer{font-family: var(--font-title);font-weight: normal;font-size: 0.75rem;}
   </div>
 </div>
 
+<div class="paper-box" id="talentBox">
+  <div class="close-trigger"></div>
+  <div class="box-content" style="max-width:400px;text-align:center;">
+    <h1>My Talent</h1>
+    <div class="bio-description" style="margin-top:15px;">
+      🚧 To Be Announce 🚧
+    </div>
+  </div>
+</div>
+  
 <div class="paper-box" id="socialBox"><div class="close-trigger"></div>
   <div class="box-content">
     <h1>Social Media</h1>
@@ -267,12 +277,34 @@ document.querySelectorAll(".link").forEach(btn=>{
 });
 
 // Overlay triggers
-const [aboutBtn, workBtn, socialBtn] = document.querySelectorAll("#links .link");
-const [aboutBox, workBox, socialBox] = [document.getElementById("aboutBox"), document.getElementById("workBox"), document.getElementById("socialBox")];
+const [aboutBtn, workBtn, talentBtn, socialBtn] =
+  document.querySelectorAll("#links .link");
 
-aboutBtn.addEventListener("click", e=>{e.preventDefault(); aboutBox.classList.add("active");});
-workBtn.addEventListener("click", e=>{e.preventDefault(); workBox.classList.add("active"); workContent.scrollTop=0;});
-socialBtn.addEventListener("click", e=>{e.preventDefault(); socialBox.classList.add("active");});
+const aboutBox = document.getElementById("aboutBox");
+const workBox = document.getElementById("workBox");
+const talentBox = document.getElementById("talentBox");
+const socialBox = document.getElementById("socialBox");
+
+aboutBtn.addEventListener("click", e=>{
+  e.preventDefault();
+  aboutBox.classList.add("active");
+});
+
+workBtn.addEventListener("click", e=>{
+  e.preventDefault();
+  workBox.classList.add("active");
+  workContent.scrollTop = 0;
+});
+
+talentBtn.addEventListener("click", e=>{
+  e.preventDefault();
+  talentBox.classList.add("active");
+});
+
+socialBtn.addEventListener("click", e=>{
+  e.preventDefault();
+  socialBox.classList.add("active");
+});
 
 document.querySelectorAll(".close-trigger").forEach(trigger=>{
   trigger.addEventListener("click", e=>{e.currentTarget.parentElement.classList.remove("active");});
